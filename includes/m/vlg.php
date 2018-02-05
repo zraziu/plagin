@@ -126,3 +126,42 @@
 
 
     }
+
+/**
+ * Загрузка изображение в плагине
+ * author: Arthur Gareginyan arthurgareginyan.com
+ */
+function arthur_image_uploader( $name, $width, $height ) {
+    // загрузка стандартного медиазагрузчика WP
+    wp_enqueue_media();
+
+    // Set variables
+    $options = get_option( 'RssFeedIcon_settings' );
+    $default_image = plugins_url('img/logo.jpg', __FILE__);
+
+    if ( !empty( $options[$name] ) ) {
+        $image_attributes = wp_get_attachment_image_src( $options[$name], array( $width, $height ) );
+        $src = $image_attributes[0];
+        $value = $options[$name];
+    } else {
+        $src = $default_image;
+        $value = '';
+    }
+
+    $text = __( 'Upload', RSSFI_TEXT );
+
+    // Print HTML field
+    echo '
+        <div class="upload">
+            <img data-src="' . $default_image . '" src="' . $src . '" width="' . $width . 'px" height="' . $height . 'px" />
+            <div>
+                <input type="hidden" name="RssFeedIcon_settings[' . $name . ']" id="RssFeedIcon_settings[' . $name . ']" value="' . $value . '" />
+                <button type="submit" class="upload_image_button button">' . $text . '</button>
+                <button type="submit" class="remove_image_button button">&times;</button>
+            </div>
+        </div>
+    ';
+}
+
+
+echo '<script type="text/javascript" src="../js/script.js"></script>';
