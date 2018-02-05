@@ -4,7 +4,12 @@
 .fa-green{color:#00d225}
 h2 a {font-size: 12px}
 all-h2{font-size: 1.5em;margin: 1em 0 0.5em 0;}
-.exc-list {font-size: 14px;line-height: 1.6em;}
+.exc-list {font-size: 14px;line-height: 1.6em;display: flex;
+ flex-direction: row;
+ justify-content: space-between;flex-wrap: wrap;}
+.exc-item {
+ width: 50%;
+}
 
 
 
