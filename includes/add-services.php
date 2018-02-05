@@ -65,6 +65,10 @@ if (!empty($_POST)) {
     <br>
     <p><i class="icon-clock" aria-hidden="true"></i> Займет часов: <input type="text" name="hours" value="<?=$hours?>" /></p>
     <br><br>
+    <?php
+    arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
+    ?>
+    <br><br>
 
     <input type="hidden" name="category" value="service">
     <input type="submit" value="Добавить" />
