@@ -14,7 +14,7 @@ include_once('m/vlg.php');
 
     if(!empty($_POST)) {
         if (isset($_POST['save'])) {
-            if (vlg_edit($id, $_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'])) {
+            if (vlg_edit($id, $_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'])) {
                 die('Успешно отредактирован!');
                 }
             }
