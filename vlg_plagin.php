@@ -116,7 +116,9 @@ function vlg_options_page() {
     }
 
     include_once ("includes/$action.php");
-    echo '<link rel="stylesheet" type="text/css" href="../wp-content/plugins/vlg_plagin/css/style.css"> ';
+
+    echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/includes/css/style.css").'">
+          <script type="text/javascript" src="'.plugins_url("vlg_plagin/includes/js/script.js").'"></script>';
 }
 
     // шорткод для вставки на сайт
