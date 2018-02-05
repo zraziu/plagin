@@ -26,7 +26,6 @@ if (!empty($_POST)) {
 } else {
     $error = false;
 }
-
 ?>
 
 <h2>Новый отель</h2>
