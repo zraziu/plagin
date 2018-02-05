@@ -30,7 +30,7 @@
         return $wpdb->get_row($query, ARRAY_A);
     }
 
-    function vlg_add($title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category) { // добавить запись
+    function vlg_add($title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload) { // добавить запись
         global $wpdb;
 
         // проверка на корректность введеных данных
@@ -51,8 +51,8 @@
 
         // добавляем в базу
         $table = $wpdb->prefix.'vlg'; // название таблицы с префиксом
-        $t = "INSERT INTO $table (name, description, pricePerPerson, prise0, prise16, prise18, prise, hours, category) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"; // запрос
-        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category); // подготовливаем строку для SQL
+        $t = "INSERT INTO $table (name, description, pricePerPerson, prise0, prise16, prise18, prise, hours, category, imgUpload) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"; // запрос
+        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload); // подготовливаем строку для SQL
         $result = $wpdb->query($query); // создаем
 
         if($result === false)
@@ -136,7 +136,7 @@ function arthur_image_uploader( $name, $width, $height ) {
     wp_enqueue_media();
 
     // Set variables
-    $options = get_option( 'RssFeedIcon_settings' );
+    $options = get_option( 'imgUpload' );
     $default_image = plugins_url('img/logo.jpg', __FILE__);
 
     if ( !empty( $options[$name] ) ) {
@@ -155,7 +155,7 @@ function arthur_image_uploader( $name, $width, $height ) {
         <div class="upload">
             <img data-src="' . $default_image . '" src="' . $src . '" width="' . $width . 'px" height="' . $height . 'px" />
             <div>
-                <input type="hidden" name="RssFeedIcon_settings[' . $name . ']" id="RssFeedIcon_settings[' . $name . ']" value="' . $value . '" />
+                <input type="hidden" name="imgUpload[' . $name . ']" id="imgUpload[' . $name . ']" value="' . $value . '" />
                 <button type="submit" class="upload_image_button button">' . $text . '</button>
                 <button type="submit" class="remove_image_button button">&times;</button>
             </div>
