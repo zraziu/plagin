@@ -34,7 +34,6 @@ if (!empty($_POST)) {
     <p>Заполните все поля</p>
 <? endif; ?>
 
-
 <form enctype="multipart/form-data" method="post">
     <p>Название: <input type="text" name="title" value="<?=$title?>" autofocus /></p>
     <br><br>
