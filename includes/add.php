@@ -34,7 +34,7 @@
 <? endif; ?>
 
 
-<form enctype="multipart/form-data" method="post">
+<form method="post">
     <p>Название: <input type="text" name="title" value="<?=$title?>" autofocus /></p>
     <br><br>
     <p style="float: top;"><i class="icon-doc-text" aria-hidden="true"></i> Описание: <textarea rows="5" cols="90" name="description"><?=$description?></textarea></p>
@@ -67,9 +67,6 @@
     <br>
     <p><i class="icon-clock" aria-hidden="true"></i> Займет часов: <input type="text" name="hours" value="<?=$hours?>" /></p>
     <br><br>
-    <input name="imgUpload" type="file" />
-    <br><br>
-
     <input type="hidden" name="category" value="excursion">
     <input type="submit" value="Добавить" />
 
