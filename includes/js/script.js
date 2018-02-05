@@ -1,5 +1,5 @@
 // Показать - скрыть блок цен
-var elems = document.getElementsByName('pricePerPerson'); //массив элементов
+var elems = document.getElementsByName('pricePerPerson'); //массив radio кнопок
 document.addEventListener("DOMContentLoaded", ready); // стр загрузилась, выполняется функия ready
 
 function ready() {
