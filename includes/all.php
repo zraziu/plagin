@@ -8,8 +8,7 @@
 <h3>Экскурсии / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h3>
 <ul class="add-prise">
     <?
-    $cat = 'excursion';
-    $vlg = vlg_cat($cat);
+    $vlg = vlg_cat('excursion');
     // выводим по одной записи
     foreach ($vlg as $op): ?>
     <li><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></li>
@@ -20,8 +19,7 @@
 <h3>Музеи / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add-musem">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h3>
 <ul class="add-prise">
     <?
-    $cat = 'musem';
-    $vlg = vlg_cat($cat);
+    $vlg = vlg_cat('musem');
     // выводим по одной записи
     foreach ($vlg as $op): ?>
         <li><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></li>
@@ -33,8 +31,7 @@
 <h3>Гостиницы / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add-hotel">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h3>
 <ul class="add-prise">
     <?
-    $cat = 'hotel';
-    $vlg = vlg_cat($cat);
+    $vlg = vlg_cat('hotel');
     // выводим по одной записи
     foreach ($vlg as $op): ?>
         <li><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></li>
@@ -46,8 +43,7 @@
 <h3>Услуги / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add-services">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h3>
 <ul class="add-prise">
     <?
-    $cat = 'service';
-    $vlg = vlg_cat($cat);
+    $vlg = vlg_cat('service');
     // выводим по одной записи
     foreach ($vlg as $op): ?>
         <li><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></li>
