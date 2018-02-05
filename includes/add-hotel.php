@@ -8,7 +8,7 @@ include_once('m/vlg.php');
 
 if (!empty($_POST)) {
     // все ли поля заполнены
-    if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'])) {
+    if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'])) {
         die('Успешно!');
 
         $title = $_POST['title'];
@@ -77,22 +77,3 @@ if (!empty($_POST)) {
     <input type="submit" value="Добавить" />
 
 </form>
-
-
-<script>
-    // Показать - скрыть блок цен
-    var elems = document.getElementsByName('pricePerPerson'); //массив элементов
-    document.addEventListener("DOMContentLoaded", ready); // стр загрузилась, выполняется функия ready
-
-    function ready() {
-        for(var i = 0; i < elems.length; i++) {
-            if (elems[i].checked) {
-                document.getElementById('Block1').style.display='none';
-                document.getElementById('Block2').style.display='none';
-                document.getElementById('Block3').style.display='none';
-
-                document.getElementById('Block'+(i+1)).style.display='block';
-            }
-        }
-    }
-</script>

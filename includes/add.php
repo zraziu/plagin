@@ -71,25 +71,3 @@
     <input type="submit" value="Добавить" />
 
 </form>
-
-
-
-
-
-<script>
-    // Показать - скрыть блок цен
-    var elems = document.getElementsByName('pricePerPerson'); //массив элементов
-    document.addEventListener("DOMContentLoaded", ready); // стр загрузилась, выполняется функия ready
-
-    function ready() {
-        for(var i = 0; i < elems.length; i++) {
-            if (elems[i].checked) {
-                document.getElementById('Block1').style.display='none';
-                document.getElementById('Block2').style.display='none';
-                document.getElementById('Block3').style.display='none';
-
-                document.getElementById('Block'+(i+1)).style.display='block';
-            }
-        }
-    }
-</script>
