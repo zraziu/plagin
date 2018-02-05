@@ -61,7 +61,7 @@
         return true;
     }
 
-    function vlg_edit($id, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category) { // изменить запись
+    function vlg_edit($id, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload) { // изменить запись
         global $wpdb;
 
         // проверка на корректность введеных данных
@@ -81,8 +81,8 @@
 
         // добавляем в базу
         $table = $wpdb->prefix.'vlg';
-        $t = "UPDATE $table SET name='%s', description='%s', pricePerPerson='%s', prise0='%s', prise16='%s', prise18='%s', prise='%s', hours='%s', category='%s' WHERE id='%d'";
-        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $id);
+        $t = "UPDATE $table SET name='%s', description='%s', pricePerPerson='%s', prise0='%s', prise16='%s', prise18='%s', prise='%s', hours='%s', category='%s', imgUpload='%s' WHERE id='%d'";
+        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload,  $id);
         $result = $wpdb->query($query);
 
         if($result === false)
