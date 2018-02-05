@@ -137,7 +137,7 @@ function arthur_image_uploader( $name, $width, $height ) {
 
     // Set variables
     $options = get_option( 'imgUpload' );
-    $default_image = plugins_url('img/logo.jpg', __FILE__);
+    $default_image = plugins_url('../img/logo.jpg', __FILE__);
 
     if ( !empty( $options[$name] ) ) {
         $image_attributes = wp_get_attachment_image_src( $options[$name], array( $width, $height ) );
@@ -164,4 +164,3 @@ function arthur_image_uploader( $name, $width, $height ) {
 }
 
 
-echo '<script type="text/javascript" src="../js/script.js"></script>';
