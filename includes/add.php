@@ -8,7 +8,7 @@
 
     if (!empty($_POST)) {
         // все ли поля заполнены
-        if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['imgUpload'])) {
+        if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['urlPage'])) {
             die('Успешно!');
 
             $title = $_POST['title'];
@@ -19,7 +19,7 @@
             $prise18 = $_POST['prise18'];
             $prise = $_POST['prise'];
             $hours = $_POST['hours'];
-            $imgUpload = $_POST['imgUpload'];
+            $urlPage = $_POST['urlPage'];
 
             $error = true;
 
@@ -68,7 +68,7 @@
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
     <br><br>
-    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$imgUpload?>" autofocus /></p>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$urlPage?>" autofocus /></p>
     <br><br>
 
     <input type="hidden" name="category" value="excursion">

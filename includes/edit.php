@@ -100,7 +100,7 @@ include_once('m/vlg.php');
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
     <br><br>
-    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$imgUpload?>" autofocus /></p>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$urlPage?>" autofocus /></p>
     <br><br>
 
     <input type="hidden" name="category" value="<?=$category?>">

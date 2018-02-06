@@ -30,7 +30,7 @@
         return $wpdb->get_row($query, ARRAY_A);
     }
 
-    function vlg_add($title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $imgUpload) { // добавить запись
+    function vlg_add($title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $urlPage) { // добавить запись
         global $wpdb;
 
         // проверка на корректность введеных данных
@@ -43,6 +43,7 @@
         $prise = absint($prise);
         $hours = absint($hours);
         $category = trim($category);
+        $urlPage = trim($urlPage);
 
 
         // пустые ли поля
@@ -51,8 +52,8 @@
 
         // добавляем в базу
         $table = $wpdb->prefix.'vlg'; // название таблицы с префиксом
-        $t = "INSERT INTO $table (name, description, pricePerPerson, prise0, prise16, prise18, prise, hours, category, imgUpload, imgUpload) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"; // запрос
-        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $imgUpload); // подготовливаем строку для SQL
+        $t = "INSERT INTO $table (name, description, pricePerPerson, prise0, prise16, prise18, prise, hours, category, imgUpload, urlPage) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"; // запрос
+        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $urlPage); // подготовливаем строку для SQL
         $result = $wpdb->query($query); // создаем
 
         if($result === false)
@@ -61,7 +62,7 @@
         return true;
     }
 
-    function vlg_edit($id, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload) { // изменить запись
+    function vlg_edit($id, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $urlPage) { // изменить запись
         global $wpdb;
 
         // проверка на корректность введеных данных
@@ -74,6 +75,7 @@
         $prise = absint($prise);
         $hours = absint($hours);
         $category = trim($category);
+        $urlPage = trim($urlPage);
 
         // пустые ли поля
         if ($title == '')
@@ -81,8 +83,8 @@
 
         // добавляем в базу
         $table = $wpdb->prefix.'vlg';
-        $t = "UPDATE $table SET name='%s', description='%s', pricePerPerson='%s', prise0='%s', prise16='%s', prise18='%s', prise='%s', hours='%s', category='%s', imgUpload='%s' WHERE id='%d'";
-        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload,  $id);
+        $t = "UPDATE $table SET name='%s', description='%s', pricePerPerson='%s', prise0='%s', prise16='%s', prise18='%s', prise='%s', hours='%s', category='%s', imgUpload='%s', urlPage='%s' WHERE id='%d'";
+        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $urlPage,  $id);
         $result = $wpdb->query($query);
 
         if($result === false)
