@@ -14,7 +14,7 @@ include_once('m/vlg.php');
 
     if(!empty($_POST)) {
         if (isset($_POST['save'])) {
-            if (vlg_edit($id, $_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['imgUpload'])) {
+            if (vlg_edit($id, $_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['urlPage'])) {
                 die('Успешно отредактирован!');
                 }
             }
@@ -34,6 +34,7 @@ include_once('m/vlg.php');
         $prise = $_POST['prise'];
         $hours = $_POST['hours'];
         $imgUpload = $_POST['imgUpload'];
+        $urlPage = $_POST['urlPage'];
         $error = true;
 
 } else {
@@ -47,7 +48,8 @@ include_once('m/vlg.php');
     $prise = $vlg['prise'];
     $hours = $vlg['hours'];
     $category = $vlg['category'];
-    $imgUpload = $vlg['imgUpload'];
+    $imgUpload = $_POST['imgUpload'];
+    $urlPage = $vlg['urlPage'];
 
     $error = false;
 }
@@ -100,7 +102,7 @@ include_once('m/vlg.php');
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
     <br><br>
-    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$urlPage?>" autofocus /></p>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" autofocus /></p>
     <br><br>
 
     <input type="hidden" name="category" value="<?=$category?>">

@@ -75,7 +75,6 @@
         $prise = absint($prise);
         $hours = absint($hours);
         $category = trim($category);
-        $urlPage = trim($urlPage);
 
         // пустые ли поля
         if ($title == '')
@@ -152,7 +151,7 @@ function arthur_image_uploader( $name, $width, $height ) {
         $value = $options[$name];
     } else {
         $src = $default_image;
-        $value = '';
+        $value = $imgUpload;
     }
 
     $text = __( 'Upload', RSSFI_TEXT );
