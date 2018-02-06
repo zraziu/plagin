@@ -8,7 +8,7 @@ include_once('m/vlg.php');
 
 if (!empty($_POST)) {
     // все ли поля заполнены
-    if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'])) {
+    if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['imgUpload'])) {
         die('Успешно!');
 
         $title = $_POST['title'];
@@ -19,6 +19,7 @@ if (!empty($_POST)) {
         $prise18 = $_POST['prise18'];
         $prise = $_POST['prise'];
         $hours = $_POST['hours'];
+        $imgUpload = $_POST['imgUpload'];
 
         $error = true;
 
@@ -68,6 +69,8 @@ if (!empty($_POST)) {
     <?php
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
+    <br><br>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$imgUpload?>" autofocus /></p>
     <br><br>
 
     <input type="hidden" name="category" value="service">

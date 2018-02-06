@@ -8,7 +8,7 @@
 
     if (!empty($_POST)) {
         // все ли поля заполнены
-        if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'])) {
+        if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['imgUpload'])) {
             die('Успешно!');
 
             $title = $_POST['title'];
@@ -19,6 +19,7 @@
             $prise18 = $_POST['prise18'];
             $prise = $_POST['prise'];
             $hours = $_POST['hours'];
+            $imgUpload = $_POST['imgUpload'];
 
             $error = true;
 
@@ -54,14 +55,10 @@
         </p>
     </div>
     <div id='Block2' style='display: none;'>
-        <p>
-            <i class="icon-male" aria-hidden="true"></i> Цена <input type="text" name="prise" value="<?=$prise?>" />
-        </p>
+        <p><i class="icon-male" aria-hidden="true"></i> Цена <input type="text" name="prise" value="<?=$prise?>" /></p>
     </div>
     <div id='Block3' style='display: none;'>
-        <p>
-            <i class="icon-users" aria-hidden="true"></i> Цена <input type="text" name="prise" value="<?=$prise?>" />
-        </p>
+        <p><i class="icon-users" aria-hidden="true"></i> Цена <input type="text" name="prise" value="<?=$prise?>" /></p>
     </div>
     <br>
     <br>
@@ -71,6 +68,9 @@
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
     <br><br>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="title" value="<?=$imgUpload?>" autofocus /></p>
+    <br><br>
+
     <input type="hidden" name="category" value="excursion">
     <input type="submit" value="Добавить" />
 

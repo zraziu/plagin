@@ -31,6 +31,7 @@ function vlg_activation() {
                       `category` varchar(120) NOT NULL,
                       `pricePerPerson` varchar(20) NOT NULL,
                       `imgUpload` varchar(250) NOT NULL,
+                      `urlPage` varchar(250) NOT NULL,
                       PRIMARY KEY (`id`)
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
         $wpdb->query($sql);

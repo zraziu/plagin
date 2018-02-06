@@ -30,7 +30,7 @@
         return $wpdb->get_row($query, ARRAY_A);
     }
 
-    function vlg_add($title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload) { // добавить запись
+    function vlg_add($title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $imgUpload) { // добавить запись
         global $wpdb;
 
         // проверка на корректность введеных данных
@@ -51,8 +51,8 @@
 
         // добавляем в базу
         $table = $wpdb->prefix.'vlg'; // название таблицы с префиксом
-        $t = "INSERT INTO $table (name, description, pricePerPerson, prise0, prise16, prise18, prise, hours, category, imgUpload) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"; // запрос
-        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload); // подготовливаем строку для SQL
+        $t = "INSERT INTO $table (name, description, pricePerPerson, prise0, prise16, prise18, prise, hours, category, imgUpload, imgUpload) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"; // запрос
+        $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $imgUpload); // подготовливаем строку для SQL
         $result = $wpdb->query($query); // создаем
 
         if($result === false)

@@ -1,4 +1,5 @@
 <?php
+// вывод записей
 include_once('m/vlg.php');
 $vlg = vlg_all();
 ?>
