@@ -10,7 +10,7 @@
     <?
     $vlg = vlg_cat('excursion');
     foreach ($vlg as $op): ?>
-    <div class="exc-item"><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
+    <div class="exc-item"><?=wp_unslash($op['name'])?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
     <? endforeach; ?>
 </div>
 <br><hr>
@@ -20,7 +20,7 @@
     <?
     $vlg = vlg_cat('musem');
     foreach ($vlg as $op): ?>
-        <div class="exc-item"><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
+        <div class="exc-item"><?=wp_unslash($op['name'])?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
     <? endforeach; ?>
 </div>
 <br><hr>
@@ -30,7 +30,7 @@
     <?
     $vlg = vlg_cat('hotel');
     foreach ($vlg as $op): ?>
-        <div class="exc-item"><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
+        <div class="exc-item"><?=wp_unslash($op['name'])?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
     <? endforeach; ?>
 </div>
 <br><hr>
@@ -40,7 +40,7 @@
     <?
     $vlg = vlg_cat('service');
     foreach ($vlg as $op): ?>
-        <div class="exc-item"><?=$op['name']?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
+        <div class="exc-item"><?=wp_unslash($op['name'])?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
     <? endforeach; ?>
 </div>
 <br><hr>
