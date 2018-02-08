@@ -39,8 +39,8 @@ include_once('m/vlg.php');
 
 } else {
     $vlg = vlg_get($id);
-    $title = $vlg['name'];
-    $description = $vlg['description'];
+    $title = esc_html(wp_unslash($vlg['name']));
+    $description = wp_unslash($vlg['description']);
     $pricePerPerson = $vlg['pricePerPerson'];
     $prise0 = $vlg['prise0'];
     $prise16 = $vlg['prise16'];
@@ -61,7 +61,7 @@ include_once('m/vlg.php');
 <? endif; ?>
 
 <form method="post">
-    <p>Название: <input type="text" name="title" value="<?=$title?>" autofocus required /></p>
+    <p>Название: <input type="text" name="title" value='<?=$title?>' autofocus required /></p>
     <br><br>
 
     <?php
