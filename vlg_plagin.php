@@ -127,11 +127,8 @@ function vlg_options_page() {
         ob_start(); // открытие буфера
         include_once("includes/intro.php");
         return ob_get_clean(); //очищаем
-
     }
     add_filter('widget_text', 'do_shortcode');
     add_shortcode('vlg', 'vlg_short');
-
-
 
 ?>
