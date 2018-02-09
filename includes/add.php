@@ -36,7 +36,7 @@
 
 
 <form method="post">
-    <p>Название: <input type="text" name="title" value="<?=$title?>" autofocus /></p>
+    <p>Название: <input type="text" size="90" name="title" value="<?=$title?>" autofocus /></p>
     <br><br>
     <p style="float: top;"><i class="icon-doc-text" aria-hidden="true"></i> Описание: <textarea rows="5" cols="90" name="description"><?=$description?></textarea></p>
     <br><br>
