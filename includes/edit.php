@@ -61,7 +61,7 @@ include_once('m/vlg.php');
 <? endif; ?>
 
 <form method="post">
-    <p>Название: <input type="text" name="title" size="90" value='<?=$title?>' autofocus required /></p>
+    <p>Название: &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="88" name="title" value="<?=$title?>" autofocus /></p>
     <br><br>
 
     <?php

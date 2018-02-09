@@ -36,7 +36,7 @@ if (!empty($_POST)) {
 
 
 <form method="post">
-    <p>Название: <input type="text" size="90" name="title" value="<?=$title?>" autofocus /></p>
+    <p>Название: &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="88" name="title" value="<?=$title?>" autofocus /></p>
     <br><br>
     <p><i class="icon-rouble" aria-hidden="true"></i> Цена:
         <label><input id="ppba" type="radio" name="pricePerPerson" value="per-person-by-age" aria-required="true" onChange="ready()" checked>На чел по возрасту</label>
