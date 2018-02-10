@@ -4,7 +4,6 @@ include_once('m/vlg.php');
 
 <h3><a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg"><< Назад</a></h3>
 
-
 <?php
 // получаем id записи
     $id = (int)$_GET['id'];
@@ -25,17 +24,17 @@ include_once('m/vlg.php');
             }
 
 
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $pricePerPerson = $_POST['pricePerPerson'];
-        $prise0 = $_POST['prise0'];
-        $prise16 = $_POST['prise16'];
-        $prise18 = $_POST['prise18'];
-        $prise = $_POST['prise'];
-        $hours = $_POST['hours'];
-        $imgUpload = $_POST['imgUpload'];
-        $urlPage = $_POST['urlPage'];
-        $error = true;
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $pricePerPerson = $_POST['pricePerPerson'];
+            $prise0 = $_POST['prise0'];
+            $prise16 = $_POST['prise16'];
+            $prise18 = $_POST['prise18'];
+            $prise = $_POST['prise'];
+            $hours = $_POST['hours'];
+            $imgUpload = $_POST['imgUpload'];
+            $urlPage = $_POST['urlPage'];
+            $error = true;
 
 } else {
     $vlg = vlg_get($id);
