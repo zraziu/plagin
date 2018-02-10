@@ -19,8 +19,8 @@
             $prise18 = $_POST['prise18'];
             $prise = $_POST['prise'];
             $hours = $_POST['hours'];
+            $imgUpload = $_POST['imgUpload'];
             $urlPage = $_POST['urlPage'];
-
             $error = true;
 
         }
@@ -31,7 +31,7 @@
 
 <h2>Новая экскурсия</h2>
 <? if ($error): ?>
-<p>Заполните все поля</p>
+    <p>Заполните все поля</p>
 <? endif; ?>
 
 
