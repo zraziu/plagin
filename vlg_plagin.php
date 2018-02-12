@@ -28,7 +28,7 @@ function vlg_activation() {
                       `bus18` int(20) NOT NULL,
                       `bus40` int(20) NOT NULL,
                       `bus60` int(20) NOT NULL,
-                      `rating` int(10) NOT NULL AUTO_INCREMENT,
+                      `rating` int(10) NOT NULL,
                       `category` varchar(120) NOT NULL,
                       `pricePerPerson` varchar(20) NOT NULL,
                       `imgUpload` varchar(250) NOT NULL,
