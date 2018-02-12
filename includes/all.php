@@ -37,6 +37,7 @@
 
 <h2 class="all-h2">Услуги / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add-services">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h2>
 <div class="exc-list">
+    <div class="exc-item">Трансфер <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit-transfer&id=2"><i class="fa fa-pencil"></i> изменить</a></div>
     <?
     $vlg = vlg_cat('service');
     foreach ($vlg as $op): ?>
@@ -46,4 +47,4 @@
 <br><hr>
 
 <h2 class="all-h2">Комиссия</h2>
-<a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit-commission&id=1"><i class="icon-sliders"></i> Редактировать комиссию</a>
+<a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit-commission&id=1"><i class="icon-sliders"></i> Редактировать комиссию</a>
