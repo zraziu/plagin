@@ -13,7 +13,7 @@ include_once('m/vlg.php');
 
     if(!empty($_POST)) {
         if (isset($_POST['save'])) {
-            if (vlg_edit($id, $_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['urlPage'])) {
+            if (vlg_edit($id, $_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['urlPage'], $_POST['rating'])) {
                 die('Успешно отредактирован!');
                 }
             }
@@ -33,6 +33,7 @@ include_once('m/vlg.php');
             $hours = $_POST['hours'];
             $imgUpload = $_POST['imgUpload'];
             $urlPage = $_POST['urlPage'];
+            $rating = $_POST['rating'];
             $error = true;
 
 } else {
@@ -48,6 +49,7 @@ include_once('m/vlg.php');
     $category = $vlg['category'];
     $imgUpload = $_POST['imgUpload'];
     $urlPage = $vlg['urlPage'];
+    $rating = $vlg['rating'];
 
     $error = false;
 }
@@ -101,6 +103,7 @@ include_once('m/vlg.php');
     <br><br>
     <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" /></p>
     <br><br>
+    <p><i class="icon-link" aria-hidden="true"></i> Рейтинг: <input type="text" name="rating" value="<?=$rating?>" /></p>
 
     <input type="hidden" name="category" value="<?=$category?>">
     <input type="submit" name="save" value="Сохранить" />

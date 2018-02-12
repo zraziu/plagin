@@ -8,7 +8,7 @@
 
     if (!empty($_POST)) {
         // все ли поля заполнены
-        if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['urlPage'])) {
+        if(vlg_add($_POST['title'], $_POST['description'], $_POST['pricePerPerson'], $_POST['prise0'], $_POST['prise16'], $_POST['prise18'], $_POST['prise'], $_POST['hours'], $_POST['category'], $_POST['imgUpload'], $_POST['urlPage'], $_POST['rating'])) {
             die('Успешно!');
 
             $title = $_POST['title'];
@@ -21,6 +21,7 @@
             $hours = $_POST['hours'];
             $imgUpload = $_POST['imgUpload'];
             $urlPage = $_POST['urlPage'];
+            $rating = $_POST['rating'];
             $error = true;
 
         }
@@ -70,6 +71,7 @@
     <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" /></p>
     <br><br>
     <p><i class="icon-link" aria-hidden="true"></i> Рейтинг: <input type="text" name="rating" value="<?=$rating?>" /></p>
+
     <input type="hidden" name="category" value="excursion">
     <input type="submit" value="Добавить" />
 
