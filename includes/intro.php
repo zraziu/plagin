@@ -11,7 +11,7 @@
     <?
     $vlg = vlg_cat('excursion');
     foreach ($vlg as $op): ?>
-    <div class="exc-item"><?=$op['name']?></div>
+    <div class="exc-item"><?=$op['name']?> - </div>
     <? endforeach; ?>
 </div>
 
