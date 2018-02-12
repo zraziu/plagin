@@ -17,7 +17,7 @@ function vlg_activation() {
     if ($wpdb->get_var("SHOW TABLES LIKE $table_name") != $table_name) { // проверяем есть ли такая таблица
         // создаем таблицу
         $sql = "CREATE TABLE IF NOT EXISTS `$table_name` (
-                    `id` int(5) NOT NULL AUTO_INCREMENT,
+                    `id` int(10) NOT NULL AUTO_INCREMENT,
                       `name` varchar(120) NOT NULL,
                       `description` text NOT NULL,
                       `hours` int(20) NOT NULL,
@@ -28,6 +28,7 @@ function vlg_activation() {
                       `bus18` int(20) NOT NULL,
                       `bus40` int(20) NOT NULL,
                       `bus60` int(20) NOT NULL,
+                      `rating` int(10) NOT NULL AUTO_INCREMENT,
                       `category` varchar(120) NOT NULL,
                       `pricePerPerson` varchar(20) NOT NULL,
                       `imgUpload` varchar(250) NOT NULL,
@@ -36,14 +37,22 @@ function vlg_activation() {
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
         $wpdb->query($sql);
 
-
-        $comis = "INSERT INTO $table_name (name, prise, prise0, prise16, prise18, pricePerPerson, category) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')";
-        $comis_query = $wpdb->prepare($comis, 'Комиссия', '300', '300', '250', '135', 'per-person', 'commission'); // подготовливаем строку для SQL
+        // комиссия
+        $comis = "INSERT INTO $table_name (id, name, prise, prise0, prise16, prise18, pricePerPerson, category) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+        $comis_query = $wpdb->prepare($comis, 1, 'Комиссия', '300', '300', '250', '135', 'per-person', 'commission'); // подготовливаем строку для SQL
         $comis_result = $wpdb->query($comis_query); // создаем
 
         if($comis_result === false)
             die('Ошибка записи Комиссии в БД');
+        return true;
 
+        //трансфер
+        $transfer = "INSERT INTO $table_name (id, name, prise, prise0, prise16, prise18, pricePerPerson, category) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+        $transfer_query = $wpdb->prepare($transfer, 2, 'Трансфер', '800', '1000', '1500', '1800', 'per-group', 'transfer'); // подготовливаем строку для SQL
+        $transfer_result = $wpdb->query($transfer_query); // создаем
+
+        if($transfer_result === false)
+            die('Ошибка записи Трансфера в БД');
         return true;
     }
 
@@ -110,6 +119,9 @@ function vlg_options_page() {
             break;
         case 'edit-commission':
             $action = 'edit-commission';
+            break;
+        case 'edit-transfer':
+            $action = 'edit-transfer';
             break;
         default:
             $action = 'all';
