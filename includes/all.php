@@ -1,6 +1,6 @@
 <?php
     include_once('m/vlg.php');
-    //$vlg = vlg_all();
+    //$vlg = vlg_all(); - теперь все по категориям
 ?>
 
 <h1>Настройка цен</h1>
