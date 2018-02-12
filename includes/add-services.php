@@ -73,7 +73,7 @@ if (!empty($_POST)) {
     <br><br>
     <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" /></p>
     <br><br>
-    <p><i class="icon-link" aria-hidden="true"></i> Рейтинг: <input type="text" name="rating" value="<?=$rating?>" /></p>
+    <p><i class="icon-star-half-alt" aria-hidden="true"></i> Рейтинг: <input type="text" name="rating" value="<?=$rating?>" /></p>
 
     <input type="hidden" name="category" value="service">
     <input type="submit" value="Добавить" />
