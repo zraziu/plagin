@@ -84,7 +84,7 @@
 
         // добавляем в базу
         $table = $wpdb->prefix.'vlg';
-        $t = "UPDATE $table SET name='%s', description='%s', pricePerPerson='%s', prise0='%s', prise16='%s', prise18='%s', prise='%s', hours='%s', category='%s', imgUpload='%s', rating='%s', urlPage='%s' WHERE id='%d'";
+        $t = "UPDATE $table SET name='%s', description='%s', pricePerPerson='%s', prise0='%s', prise16='%s', prise18='%s', prise='%s', hours='%s', category='%s', imgUpload='%s', urlPage='%s', rating='%s' WHERE id='%d'";
         $query = $wpdb->prepare($t, $title, $description, $pricePerPerson, $prise0, $pris16, $prise18, $prise, $hours, $category, $imgUpload, $urlPage, $rating,  $id);
         $result = $wpdb->query($query);
 
