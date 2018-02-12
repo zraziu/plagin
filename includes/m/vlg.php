@@ -126,49 +126,41 @@
         $t = "DELETE FROM $table WHERE id='%d'";
         $query = $wpdb->prepare($t, $id);
         return $wpdb->query($query);
-
-
     }
 
-/**
- * Загрузка изображение в плагине
- * author: Arthur Gareginyan arthurgareginyan.com
- */
-function arthur_image_uploader( $name, $width, $height ) {
-    // получаем id сохраненного фото
-    $id = (int)$_GET['id'];
-    $vlg = vlg_get($id);
-    $imgUpload = $vlg['imgUpload'];
+    function arthur_image_uploader( $name, $width, $height ) { //Загрузка изображение в плагине arthurgareginyan.com
+        // получаем id сохраненного фото
+        $id = (int)$_GET['id'];
+        $vlg = vlg_get($id);
+        $imgUpload = $vlg['imgUpload'];
 
-    // загрузка стандартного медиазагрузчика WP
-    wp_enqueue_media();
+        // загрузка стандартного медиазагрузчика WP
+        wp_enqueue_media();
 
-    // Set variables
-    $options = get_option( 'imgUpload' );
-    $default_image =  $imgUpload ? wp_get_attachment_image_url($imgUpload) : plugins_url('../img/logo.jpg', __FILE__);
+        // Set variables
+        $options = get_option( 'imgUpload' );
+        $default_image =  $imgUpload ? wp_get_attachment_image_url($imgUpload) : plugins_url('../img/logo.jpg', __FILE__);
 
-    if ( !empty( $options[$name] ) ) {
-        $image_attributes = wp_get_attachment_image_src( $options[$name], array( $width, $height ) );
-        $src = $image_attributes[0];
-        $value = $options[$name];
-    } else {
-        $src = $default_image;
-        $value = $imgUpload;
-    }
+        if ( !empty( $options[$name] ) ) {
+            $image_attributes = wp_get_attachment_image_src( $options[$name], array( $width, $height ) );
+            $src = $image_attributes[0];
+            $value = $options[$name];
+        } else {
+            $src = $default_image;
+            $value = $imgUpload;
+        }
 
-    $text = __( 'Upload', RSSFI_TEXT );
+        $text = __( 'Upload', RSSFI_TEXT );
 
-    // Print HTML field
-    echo '
-        <div class="upload">
-            <img data-src="' . $default_image . '" src="' . $src . '" width="' . $width . 'px" height="' . $height . 'px" />
-            <div>
-                <input type="hidden" name="imgUpload" id="imgUpload[' . $name . ']" value="' . $value . '" /> 
-                <button type="submit" class="upload_image_button button">' . $text . '</button>
-                <button type="submit" class="remove_image_button button">&times;</button>
+        // Print HTML field
+        echo '
+            <div class="upload">
+                <img data-src="' . $default_image . '" src="' . $src . '" width="' . $width . 'px" height="' . $height . 'px" />
+                <div>
+                    <input type="hidden" name="imgUpload" id="imgUpload[' . $name . ']" value="' . $value . '" /> 
+                    <button type="submit" class="upload_image_button button">' . $text . '</button>
+                    <button type="submit" class="remove_image_button button">&times;</button>
+                </div>
             </div>
-        </div>
-    '; //imgUpload[' . $name . ']
-}
-
-
+        '; //imgUpload[' . $name . ']
+    }
