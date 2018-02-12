@@ -23,7 +23,6 @@ include_once('m/vlg.php');
                 }
             }
 
-
             $title = $_POST['title'];
             $description = $_POST['description'];
             $pricePerPerson = $_POST['pricePerPerson'];
@@ -93,15 +92,14 @@ include_once('m/vlg.php');
             <i class="icon-users" aria-hidden="true"></i> Цена <input type="text" name="prise" value="<?=$prise?>" />
         </p>
     </div>
-    <br>
-    <br>
+    <br><br>
     <p><i class="icon-clock" aria-hidden="true"></i> Займет часов: <input type="text" name="hours" value="<?=$hours?>" /></p>
     <br><br>
     <?php
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
     <br><br>
-    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" autofocus /></p>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" /></p>
     <br><br>
 
     <input type="hidden" name="category" value="<?=$category?>">

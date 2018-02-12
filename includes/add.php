@@ -37,7 +37,6 @@
 
 <form method="post">
     <p>Название: &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="88" name="title" value="<?=$title?>" autofocus /></p>
-    <br><br>
     <p style="float: top;"><i class="icon-doc-text" aria-hidden="true"></i> Описание: <textarea rows="5" cols="90" name="description"><?=$description?></textarea></p>
     <br><br>
     <p><i class="icon-rouble" aria-hidden="true"></i> Цена:
@@ -68,9 +67,9 @@
     arthur_image_uploader( 'custom_image', $width = 115, $height = 115 );
     ?>
     <br><br>
-    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" autofocus /></p>
+    <p><i class="icon-link" aria-hidden="true"></i> URL: <input type="text" name="urlPage" value="<?=$urlPage?>" /></p>
     <br><br>
-
+    <p><i class="icon-link" aria-hidden="true"></i> Рейтинг: <input type="text" name="rating" value="<?=$rating?>" /></p>
     <input type="hidden" name="category" value="excursion">
     <input type="submit" value="Добавить" />
 
