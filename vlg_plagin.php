@@ -60,7 +60,6 @@ function vlg_activation() {
     //добавляем опции
     //add_option('vlg_prise1', '0');
     //add_option('vlg_prise2', '0');
-
 }
 
 // Деактивация
@@ -68,7 +67,6 @@ function vlg_deactivation() {
     // удаляем опции
     //delete_option('vlg_prise1');
     //delete_option('vlg_prise2');
-
 }
 
 //Удаление
