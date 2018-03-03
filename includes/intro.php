@@ -9,7 +9,7 @@
 <h2>Спланировать тур / Основные данные</h2>
 <div class="vlg-one">
     <div class="vlg-one__day">Количество дней </div>
-    
+
     <div class="vlg-one__people"><button class="" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users fa-icon-btn"></i> Количество человек: <span class="btnDropdownPeople"></span> <span class="btnDropdownPeopleFree"></span></button>
         <div class="dropdown-menu">
             <div class="dropdown-item"><div class="dropdown-item-people">Дети до 15 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople16" class="input-calc-exc" type="text" min="0" max="100" value="40"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
@@ -33,7 +33,7 @@
 
 
 <h2>Места, которые Вы хотите посетить</h2>
-<div  class="vlg-two">
+<div class="vlg-two">
     <h3>Выберите экскурсии, которые вы хотите посетить</h3>
     <div class="exc-list">
         <?
@@ -54,3 +54,6 @@
 </div>
 
 <h2>Условия проживания</h2>
+<div class="vlg-three">
+
+</div>
