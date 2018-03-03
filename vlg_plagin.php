@@ -25,9 +25,6 @@ function vlg_activation() {
                       `prise0` int(20) NOT NULL,
                       `prise16` int(20) NOT NULL,
                       `prise18` int(20) NOT NULL,
-                      `bus18` int(20) NOT NULL,
-                      `bus40` int(20) NOT NULL,
-                      `bus60` int(20) NOT NULL,
                       `rating` int(10) NOT NULL,
                       `category` varchar(120) NOT NULL,
                       `pricePerPerson` varchar(20) NOT NULL,
@@ -44,7 +41,6 @@ function vlg_activation() {
 
         if($comis_result === false)
             die('Ошибка записи Комиссии в БД');
-        return true;
 
         //трансфер
         $transfer = "INSERT INTO $table_name (id, name, prise, prise0, prise16, prise18, pricePerPerson, category) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
@@ -55,7 +51,6 @@ function vlg_activation() {
             die('Ошибка записи Трансфера в БД');
         return true;
     }
-
 
     //добавляем опции
     //add_option('vlg_prise1', '0');
@@ -76,7 +71,6 @@ function vlg_uninstall() {
     // удаляем таблицу
     $sql = "DROP TABLE IF EXISTS $table_name";
     $wpdb->query($sql);
-
 }
 
 
@@ -90,7 +84,6 @@ function vlg_add_menu(){
 }
 // добавляем меню
 add_action('admin_menu', 'vlg_add_menu');
-
 
 
 // шаблон стр настроек в админке
@@ -129,7 +122,7 @@ function vlg_options_page() {
     include_once ("includes/$action.php");
 
     echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/includes/css/style.css").'">
-          <script type="text/javascript" src="'.plugins_url("vlg_plagin/includes/js/script.js").'"></script>';
+          <script type="text/javascript" src="'.plugins_url("vlg_plagin/includes/js/script-a.js").'"></script>';
 }
 
     // шорткод для вставки на сайт
