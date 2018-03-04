@@ -49,13 +49,17 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 </div>
 <div class="vlg-two__list">
     <div class="vlg-two__item">
-        <div class="vlg-two__time">1 ч 30 м</div>
-        <div class="vlg-two__bus">Автобус</div>
-        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows-v vlg-two__move"></i></div></div>
+        <div class="vlg-two_info">
+            <div class="vlg-two__time">1 ч 30 м</div>
+            <div class="vlg-two__bus">Автобус</div>
+        </div>
+        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows-v vlg-two__move"></i></div></div>
     </div>
     <div class="vlg-two__item">
-        <div class="vlg-two__time">0 ч 40 м</div>
-        <div class="vlg-two__bus">Автобус</div>
+        <div class="vlg-two_info">
+            <div class="vlg-two__time">0 ч 40 м</div>
+            <div class="vlg-two__bus">Автобус</div>
+        </div>
         <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows-v vlg-two__move"></i></div></div>
     </div>
 </div>
