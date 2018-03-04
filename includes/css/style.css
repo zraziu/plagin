@@ -55,6 +55,7 @@
 .vlg-two_info {
  display: flex;
  flex-direction: row;
+ background: #33BBD4;
 }
 .vlg-two__time {
  width: 105px;
@@ -68,7 +69,7 @@
  background: #33BBD4;
  border-right-color: #33BBD4;
 }
-.vlg-two__item:hover .vlg-two__time {
+.vlg-two__item:hover .vlg-two__time, .vlg-two__item:hover .vlg-two__bus {
  color: #33BBD4;
  background: #fff;
 }
@@ -79,10 +80,10 @@
  padding: 10px 20px;
  -webkit-transition: .2s background, .2s color;
  transition: .2s background, .2s color;
- /* border-width: 0 1px 0 0; */
+ border-width: 0 1px 0 0;
  border-style: solid;
  background: #33BBD4;
- /* border-right-color: #33BBD4; */
+ border-right-color: #33BBD4;
 }
 .vlg-two_title {
  background: #fff;
@@ -106,20 +107,57 @@
  width: calc(100% - 180px);
 }
 .vlg-two__btn{
+ display: flex;
+ flex-direction: row;
  min-width: 45px;
 }
 .vlg-two__item .vlg-two_title i {
  display: none;
 }
 .vlg-two__item:hover .vlg-two_title i {
- display: inline-block;
+ display: flex;
  width: 45px;
  padding: 15px 15px;
  border-left: 1px solid #33BBD4;
  text-align: center;
+}
+.vlg-two__delete {
  cursor: pointer;
 }
-
+.vlg-two__move {
+ cursor: all-scroll;
+}
+.vlg-two__add {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: nowrap;
+ background: #fff;
+ font-size: 16px;
+ font-weight: 700;
+ color: #363636;
+ min-height: 50px;
+ border: 1px solid #00d124;
+ justify-content: center;
+ -webkit-box-align: center;
+ -webkit-align-items: center;
+ -ms-flex-align: center;
+ align-items: center;
+ cursor: pointer;
+}
+.vlg-two__add:hover {
+ background: #00d124;
+ color: #fff;
+ -webkit-box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
+ box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
+ z-index: 2;
+ }
+.vlg-two__add i {
+ margin-right: 10px;
+ margin-top: 5px;
+}
+.vlg-two__add:hover i {
+ color: #fff;
+}
 
 
 
@@ -130,10 +168,20 @@
 
 
 
-
-
-
-
+/* Модальный блок */
+.vlg-modal {
+ margin: 10px 25px;
+}
+@media (min-width: 1100px) {
+ .modal-lg {
+  max-width: 1000px;
+ }
+}
+@media (min-width: 1500px) {
+ .modal-lg {
+  max-width: 1300px;
+ }
+}
 
 
 
@@ -142,10 +190,15 @@
 @media (max-width:767px){
  .vlg-two_info {
   flex-direction: column;
+  min-height: 92px;
  }
  .vlg-two_title {
+  padding: 0 0 0 5px;
   width: -webkit-calc(100% - 105px);
   width: calc(100% - 105px);
+ }
+ .vlg-two__btn {
+  flex-direction: column;
  }
 }
 
