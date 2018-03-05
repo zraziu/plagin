@@ -76,7 +76,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div>
         <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows-v vlg-two__move"></i></div></div>
     </div>
-    <div class="vlg-two__add">
+    <div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-help">
         <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
     </div>
 </div>
@@ -88,7 +88,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
 <h2 class="excursion-switch-title">ШАГ 4: Бронирование</h2>
 <div class="vlg-four">
-    <button type="button" class="btn btn-primary excursion-support-btn linkButton" data-toggle="modal" data-target=".modal-sm-help" title="">Задать</button>
+
 </div>
 
 
@@ -112,12 +112,22 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
             </ul>
 
             <div class="tab-content vlg-modal" id="myTabContent">
-                    <div class="tab-pane fade in active show" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        
+                    <div class="tab-pane fade in active show vlg-catalog" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="vlg-catalog__item">
+                            <div class="vlg-catalog__photo"><img src="http://parusvlg.ru/wp-content/themes/mBr/images/manager/mariy-serafimovich.jpg" alt=""></div>
+                            <div class="vlg-catalog__discription">
+                                <h3>Название</h3>
+                                <div class="vlg-catalog__text">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
+                                <div class="vlg-catalog__time">3 часа</div>
+                            </div>
+                        </div>
+
                             <?
                             $vlg = vlg_cat('excursion');
                             foreach ($vlg as $op): ?>
+
                                 <div class="exc-item"><?=$op['name']?> - </div>
+
                             <? endforeach; ?>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
