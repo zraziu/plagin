@@ -172,7 +172,7 @@
 .vlg-modal {
  margin: 10px 25px;
 }
-.vlg-catalog__item {
+.vlg-catalog__item, .vlg-catalog__item2 {
  display: flex;
  flex-direction: column;
  width: 300px;
