@@ -334,13 +334,15 @@
  -o-text-overflow: ellipsis;
  color: #474d4e;
  /* height: 65px; */
- background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
+ /*background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
  background-repeat: no-repeat;
  background-position: 50% 100%;
  background-size: 80% 1px;
+ */
 }
 .vlg-catalog__time2 {
  position: relative;
+ cursor: pointer;
 }
 .vlg-catalog__time2 i {
  position: absolute;
@@ -351,16 +353,25 @@
  font-size: 20px;
 }
 .vlg-catalog__time2 span {
- background: url(/wp-content/plugins/vlg_plagin/includes/img/button-add2.svg) no-repeat;
+ /* background: url(/wp-content/plugins/vlg_plagin/includes/img/button-add2.svg) no-repeat; */
  position: absolute;
  width: 300px;
- height: 50px;
+ /* height: 50px; */
  padding-top: 22px;
  color: #fff;
  text-align: center;
  font: bold 20px Calibri;
+ z-index: 12;
 }
-
+#button-add {
+ position: absolute;
+ z-index: 2;
+}
+.vlg-catalog__time2:hover #button-add {
+ /* transform: translate(-5px,-5px); */
+ filter: url(#dropShadow);
+ /* transition: transform .1s; */
+}
 
 
 
