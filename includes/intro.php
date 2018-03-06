@@ -139,6 +139,20 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     <div class="vlg-catalog__time2">
                                         <i class="fa fa-plus"></i>
                                         <span>Добавить</span>
+                                        <svg id="button-add" width="300" height="50" xmlns="http://www.w3.org/2000/svg">
+                                            <title>background</title>
+                                            <path fill="none" d="M-1-1h302v52H-1z"/>
+                                            <g>
+                                                <title>button add</title>
+                                                <linearGradient id="linear-gradient" x2="0%" y2="100%">
+                                                    <stop offset="0%" stop-color="#fbb731"/>
+                                                    <stop offset="80%" stop-color="#fbb731"/>
+                                                    <stop offset="100%" stop-color="#efac2f"/>
+                                                </linearGradient>
+                                                <rect rx="4" height="30" width="200" y="19.25" x="50" fill="url(#linear-gradient)"/>
+                                                <ellipse ry="21.5" rx="21.5" cy="22.25" cx="150" fill="#fbb731"/>
+                                            </g>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
