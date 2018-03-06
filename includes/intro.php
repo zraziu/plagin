@@ -114,7 +114,10 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
             <div class="tab-content vlg-modal" id="myTabContent">
                     <div class="tab-pane fade in active show vlg-catalog" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="vlg-catalog__item">
-                            <div class="vlg-catalog__photo"><img src="http://parusvlg.ru/wp-content/themes/mBr/images/manager/mariy-serafimovich.jpg" alt=""></div>
+                            <div class="vlg-catalog__photo">
+                                <img src="http://parusvlg.ru/wp-content/themes/mBr/images/manager/mariy-serafimovich.jpg" alt="">
+                                <div class="vlg-catalog__add"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                            </div>
                             <div class="vlg-catalog__discription">
                                 <h3>Название</h3>
                                 <div class="vlg-catalog__text">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
