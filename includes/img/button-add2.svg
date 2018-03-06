@@ -1,8 +1,8 @@
-<svg id="" width="300" height="50" xmlns="http://www.w3.org/2000/svg">
+<svg id="button-add" width="300" height="50" xmlns="http://www.w3.org/2000/svg">
     <title>background</title>
     <path fill="none" d="M-1-1h302v52H-1z"/>
     <g>
-        <title>Layer 1</title>
+        <title>button add</title>
         <linearGradient id="linear-gradient" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#fbb731"/>
             <stop offset="80%" stop-color="#fbb731"/>
