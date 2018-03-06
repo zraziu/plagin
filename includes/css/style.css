@@ -172,15 +172,21 @@
 .vlg-modal {
  margin: 10px 25px;
 }
+.vlg-catalog {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+}
 .vlg-catalog__item, .vlg-catalog__item2 {
  display: flex;
  flex-direction: column;
  width: 300px;
  height: 450px;
+ margin: 0 10px 10px 0;
  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
  position: relative;
 }
-.vlg-catalog__photo {
+.vlg-catalog__photo, .vlg-catalog__photo2 {
  display: block;
  margin-bottom: 10px;
  background-repeat: no-repeat;
@@ -189,7 +195,7 @@
  background-size: cover;
  position: relative;
 }
-.vlg-catalog__photo img {
+.vlg-catalog__photo img, .vlg-catalog__photo2 img {
  width: 100%;
  margin: 0;
  padding: 0;
@@ -247,6 +253,112 @@
  padding-bottom: 10px;
  text-overflow: ellipsis;
  overflow: hidden;
+}
+
+
+/* Вариант блока 2 */
+.vlg-catalog__item2 {
+ border-radius: 3px 3px 3px 3px;
+}
+.vlg-catalog__triangle {
+ background: url(/wp-content/plugins/vlg_plagin/includes/img/triangle.svg) no-repeat;
+ position: relative;
+ margin-top: -30.1px;
+ height: 25px;
+ background-position: 50% 100%;
+}
+/*
+.vlg-catalog__treugolnic {
+ width: 0;
+ height: 0;
+ margin: 0;
+ padding: 0;
+ border-left: 150px solid transparent;
+ border-right: 150px solid transparent;
+ border-bottom: 26px solid white;
+ position: relative;
+ margin-top: -31.1px;
+ display: block;
+}
+.vlg-catalog__treugolnic2 {
+ width: 0;
+ height: 0;
+ margin: 0;
+ padding: 0;
+ border-left: 150px solid rgba(0, 0, 0, 0);
+ border-right: 150px solid rgba(0, 0, 0, 0);
+ border-bottom: 26px solid rgba(0, 0, 0, 0.1);
+ position: absolute;
+ margin-top: -33px;
+ display: block;
+}
+*/
+.vlg-catalog__add2 {
+ /* background: url(/wp-content/plugins/vlg_plagin/includes/img/ugol.png) no-repeat; */
+ /* background-position: center top; */
+ margin-top: -25px;
+ /* display: block; */
+ height: 60px;
+ text-align: center;
+ color: #474d4e;
+ padding: 20px 10px 0 10px;
+ /* z-index: 26; */
+ font: bold 20px Calibri;
+ position: relative;
+ text-transform: uppercase;
+/* подчеркивание*/
+ background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
+ background-repeat: no-repeat;
+ background-position: 50% 100%;
+ background-size: 80% 1px;
+}
+.vlg-catalog__rating {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ font-size: 14px;
+ height: 35px;
+ background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
+ background-repeat: no-repeat;
+ background-position: 50% 100%;
+ background-size: 80% 1px;
+}
+.vlg-catalog__text2 {
+ text-align: center;
+ font: 13px Calibri;
+ display: block;
+ padding-top: 10px;
+ padding-bottom: 15px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ -o-text-overflow: ellipsis;
+ color: #474d4e;
+ /* height: 65px; */
+ background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
+ background-repeat: no-repeat;
+ background-position: 50% 100%;
+ background-size: 80% 1px;
+}
+.vlg-catalog__time2 {
+ position: relative;
+}
+.vlg-catalog__time2 i {
+ position: absolute;
+ top: 5px;
+ left: 142px;
+ z-index: 10;
+ color: #fff;
+ font-size: 20px;
+}
+.vlg-catalog__time2 span {
+ background: url(/wp-content/plugins/vlg_plagin/includes/img/button-add2.svg) no-repeat;
+ position: absolute;
+ width: 300px;
+ height: 50px;
+ padding-top: 22px;
+ color: #fff;
+ text-align: center;
+ font: bold 20px Calibri;
 }
 
 

@@ -130,13 +130,16 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             <div class="vlg-catalog__item2">
                                 <div class="vlg-catalog__photo2">
                                     <img src="http://parusvlg.ru/wp-content/themes/mBr/images/manager/mariy-serafimovich.jpg" alt="">
-                                    <div class="vlg-catalog__add2"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                    <div class="vlg-catalog__prise2">123<i class="fa fa-rub" aria-hidden="true"></i></div>
+                                    <div class="vlg-catalog__triangle"></div>
+                                    <div class="vlg-catalog__add2">Название экскурсии</div>
                                 </div>
                                 <div class="vlg-catalog__discription2">
-                                    <h3>Название</h3>
+                                    <div class="vlg-catalog__rating"><span>2 часа</span><span>Рейтинг</span></div>
                                     <div class="vlg-catalog__text2">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
-                                    <div class="vlg-catalog__time2">3 часа</div>
+                                    <div class="vlg-catalog__time2">
+                                        <i class="fa fa-plus"></i>
+                                        <span>Добавить</span>
+                                    </div>
                                 </div>
                             </div>
 
