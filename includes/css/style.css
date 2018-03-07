@@ -349,8 +349,9 @@
  top: 5px;
  left: 142px;
  z-index: 10;
- color: #fff;
+ color: rgb(204, 149, 39);
  font-size: 20px;
+ text-shadow: -1px -1px rgb(114, 110, 105), 0 1px 0 #f3c468;
 }
 .vlg-catalog__time2 span {
  /* background: url(/wp-content/plugins/vlg_plagin/includes/img/button-add2.svg) no-repeat; */
