@@ -141,6 +141,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                     </div>
                     <!-- вкладка 2 -->
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="vlg-catalog">
                             <?
                             $vlg = vlg_cat('musem');
                             foreach ($vlg as $op): ?>
@@ -163,6 +164,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     </div>
                                 </div>
                             <? endforeach; ?>
+                        </div>
                     </div>
             </div>
 
