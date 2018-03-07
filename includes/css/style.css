@@ -176,6 +176,7 @@
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+ justify-content: space-around;
 }
 .vlg-catalog__item, .vlg-catalog__item2 {
  display: flex;
