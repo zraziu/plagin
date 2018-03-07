@@ -3,6 +3,14 @@
     <path fill="none" d="M-1-1h302v52H-1z"/>
     <g>
         <title>button add</title>
+        <filter id="dropShadow">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+            <feOffset dx="2" dy="2" />
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
         <linearGradient id="linear-gradient" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#fbb731"/>
             <stop offset="80%" stop-color="#fbb731"/>
