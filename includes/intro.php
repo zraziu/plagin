@@ -111,91 +111,13 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                 </li>
             </ul>
 
-            <!-- кнопка добавить -->
-            <svg width="300" height="50" xmlns="http://www.w3.org/2000/svg">
-                <title>background</title>
-
-                <g>
-                    <filter id="dropShadow">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
-                        <feOffset dx="2" dy="2" />
-                        <feMerge>
-                            <feMergeNode />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                    </filter>
-                    <linearGradient id="linear-gradient" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#fbb731"/>
-                        <stop offset="80%" stop-color="#fbb731"/>
-                        <stop offset="100%" stop-color="#efac2f"/>
-                    </linearGradient>
-                    <defs>
-                        <symbol id="button-add">
-                            <rect rx="4" height="30" width="200" y="19.25" x="50" fill="url(#linear-gradient)"/>
-                            <ellipse ry="21.5" rx="21.5" cy="22.25" cx="150" fill="#fbb731"/>
-                        </symbol>
-                    </defs>
-                </g>
-            </svg>
-            <!-- КОНЕЦ кнопка добавить -->
-
             <div class="tab-content vlg-modal" id="myTabContent">
                 <!-- вкладка 1 -->
                     <div class="tab-pane fade in active show" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="vlg-catalog">
-<!--                            <div class="vlg-catalog__item">
-                                <div class="vlg-catalog__photo">
-                                    <img src="/wp-content/plugins/vlg_plagin/includes/img/mountains_lake.jpg" alt="">
-                                    <div class="vlg-catalog__add"><i class="fa fa-plus" aria-hidden="true"></i></div>
-                                    <div class="vlg-catalog__prise">123<i class="fa fa-rub" aria-hidden="true"></i></div>
-                                </div>
-                                <div class="vlg-catalog__discription">
-                                    <h3>Название экскурсии 1</h3>
-                                    <div class="vlg-catalog__text">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
-                                    <div class="vlg-catalog__time">3 часа</div>
-                                </div>
-                            </div>
-                            <div class="vlg-catalog__item2">
-                                <div class="vlg-catalog__photo2">
-                                    <img src="/wp-content/plugins/vlg_plagin/includes/img/mountains_lake.jpg" alt="">
-                                    <div class="vlg-catalog__triangle"></div>
-                                    <div class="vlg-catalog__add2">Название экскурсии 2</div>
-                                </div>
-                                <div class="vlg-catalog__discription2">
-                                    <div class="vlg-catalog__info"><span>2 часа</span><span>Рейтинг</span></div>
-                                    <div class="vlg-catalog__text2">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
-                                    <div class="vlg-catalog__time2">
-                                        <i class="fa fa-plus"></i>
-                                        <span>Добавить</span>
-                                        <svg class="button-add" x="0" y="0">
-                                            <use xlink:href="#button-add">
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <div class="vlg-catalog__item2">
-                                <div class="vlg-catalog__photo2">
-                                    <img src="/wp-content/plugins/vlg_plagin/includes/img/mountains_lake.jpg" alt="">
-                                    <div class="vlg-catalog__triangle"></div>
-                                    <div class="vlg-catalog__add2">Название экскурсии 3</div>
-                                </div>
-                                <div class="vlg-catalog__discription2">
-                                    <div class="vlg-catalog__info">
-                                        <span class="vlg-catalog__hours">1</span>
-                                        <span class="vlg-catalog__rating">4,5</span>
-                                    </div>
-                                    <div class="vlg-catalog__text2">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
-                                    <div class="vlg-catalog__time3">
-                                        <i class="fa fa-link fa-link-exc"><span>Подробно</span></i>
-                                        <i class="fa fa-plus fa-add-exc"><span>Добавить</span></i>
-                                    </div>
-                                </div>
-                            </div>
-
                             <?
                             $vlg = vlg_cat('excursion');
                             foreach ($vlg as $op): ?>
-
                                 <div class="vlg-catalog__item2">
                                     <div class="vlg-catalog__photo2">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
@@ -214,7 +136,6 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                         </div>
                                     </div>
                                 </div>
-
                             <? endforeach; ?>
                         </div>
                     </div>
