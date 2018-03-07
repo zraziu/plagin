@@ -144,7 +144,24 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             <?
                             $vlg = vlg_cat('musem');
                             foreach ($vlg as $op): ?>
-                                <div class="exc-item"><?=$op['name']?></div>
+                                <div class="vlg-catalog__item2">
+                                    <div class="vlg-catalog__photo2">
+                                        <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
+                                        <div class="vlg-catalog__triangle"></div>
+                                        <div class="vlg-catalog__add2"><?=$op['name']?></div>
+                                    </div>
+                                    <div class="vlg-catalog__discription2">
+                                        <div class="vlg-catalog__info">
+                                            <span class="vlg-catalog__hours"><?=$op['hours']?></span>
+                                            <span class="vlg-catalog__rating"><?=$op['rating']?></span>
+                                        </div>
+                                        <div class="vlg-catalog__text2"><?=$op['description']?></div>
+                                        <div class="vlg-catalog__time3">
+                                            <i class="fa fa-link fa-link-exc"><span>Подробно</span></i>
+                                            <i class="fa fa-plus fa-add-exc"><span>Добавить</span></i>
+                                        </div>
+                                    </div>
+                                </div>
                             <? endforeach; ?>
                     </div>
             </div>
