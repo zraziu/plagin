@@ -187,18 +187,22 @@
  position: relative;
 }
 .vlg-catalog__photo, .vlg-catalog__photo2 {
- display: block;
+ /* display: block; */
+ /* height: 235px; */
  margin-bottom: 10px;
- background-repeat: no-repeat;
- background-position: 50% 50%;
- -webkit-background-size: cover;
- background-size: cover;
- position: relative;
+ /* background-repeat: no-repeat; */
+ /* background-position: 50% 50%; */
+ /* -webkit-background-size: cover; */
+ /* background-size: cover; */
+ /* position: relative; */
 }
 .vlg-catalog__photo img, .vlg-catalog__photo2 img {
- width: 100%;
- margin: 0;
- padding: 0;
+ display: inline-flex;
+ width: 300px;
+ height: 200px;
+ object-fit: cover;
+ /* margin: 0; */
+ /* padding: 0; */
 }
 .vlg-catalog__add {
  position: absolute;
@@ -298,7 +302,7 @@
  /* background-position: center top; */
  margin-top: -25px;
  /* display: block; */
- height: 60px;
+ height: 70px;
  text-align: center;
  color: #474d4e;
  padding: 20px 10px 0 10px;
@@ -306,7 +310,6 @@
  font: bold 20px Calibri;
  position: relative;
  text-transform: uppercase;
-/* подчеркивание*/
  background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
  background-repeat: no-repeat;
  background-position: 50% 100%;
@@ -349,12 +352,7 @@
  text-overflow: ellipsis;
  -o-text-overflow: ellipsis;
  color: #474d4e;
- /* height: 65px; */
- /*background-image: linear-gradient(to left, #ffffff 10%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 80%, #ffffff 90%);
- background-repeat: no-repeat;
- background-position: 50% 100%;
- background-size: 80% 1px;
- */
+ max-height: 100px;
 }
 .vlg-catalog__time2 {
  position: relative;
@@ -396,10 +394,17 @@ svg.button-add {
  filter: url(#dropShadow);
 }
 /* 3 блок */
+.vlg-catalog__discription2 {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ height: 185px;
+}
+
 .vlg-catalog__time3 {
  display: flex;
  justify-content: space-around;
- margin-top: 15px;
+ margin-top: 10px;
 }
 .vlg-catalog__time3 .fa-link-exc {
  padding: 10px;
