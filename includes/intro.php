@@ -162,7 +162,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     <div class="vlg-catalog__add2">Название экскурсии 2</div>
                                 </div>
                                 <div class="vlg-catalog__discription2">
-                                    <div class="vlg-catalog__rating"><span>2 часа</span><span>Рейтинг</span></div>
+                                    <div class="vlg-catalog__info"><span>2 часа</span><span>Рейтинг</span></div>
                                     <div class="vlg-catalog__text2">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
                                     <div class="vlg-catalog__time2">
                                         <i class="fa fa-plus"></i>
@@ -180,7 +180,10 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     <div class="vlg-catalog__add2">Название экскурсии 3</div>
                                 </div>
                                 <div class="vlg-catalog__discription2">
-                                    <div class="vlg-catalog__rating"><span>1 часа</span><span>Рейтинг</span></div>
+                                    <div class="vlg-catalog__info">
+                                        <span class="vlg-catalog__hours">1</span>
+                                        <span class="vlg-catalog__rating">4,5</span>
+                                    </div>
                                     <div class="vlg-catalog__text2">описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание </div>
                                     <div class="vlg-catalog__time3">
                                         <i class="fa fa-link fa-link-exc"><span>Подробно</span></i>

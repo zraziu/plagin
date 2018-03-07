@@ -312,7 +312,7 @@
  background-position: 50% 100%;
  background-size: 80% 1px;
 }
-.vlg-catalog__rating {
+.vlg-catalog__info {
  display: flex;
  flex-direction: row;
  justify-content: space-around;
@@ -322,6 +322,22 @@
  background-repeat: no-repeat;
  background-position: 50% 100%;
  background-size: 80% 1px;
+}
+.vlg-catalog__hours {
+ color: #3dbed6;
+ font-weight: bold;
+ font-size: 20px;
+}
+.vlg-catalog__hours:after {
+ content: "ч";
+}
+.vlg-catalog__rating {
+ color: #fbb731;
+ font-weight: bold;
+ font-size: 20px;
+}
+.vlg-catalog__rating:after {
+ content: "+";
 }
 .vlg-catalog__text2 {
  text-align: center;
@@ -408,7 +424,7 @@ svg.button-add {
  border-radius: 4px;
  left: 0px;
  top: -2px;
- transition: .1s;
+ transition: .3s;
 }
 .vlg-catalog__time3 .fa-link-exc:hover span {
  color: #fff;
@@ -437,7 +453,7 @@ svg.button-add {
  border-radius: 4px;
  right: 0px;
  top: -2px;
- transition: .1s;
+ transition: .3s;
 }
 .vlg-catalog__time3 .fa-add-exc:hover span {
  color: #fff;
