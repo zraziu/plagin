@@ -131,7 +131,14 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                         </div>
                                         <div class="vlg-catalog__text2"><?=$op['description']?></div>
                                         <div class="vlg-catalog__time3">
-                                            <i class="fa fa-link fa-link-exc"><span>Подробно</span></i>
+                                            <?
+                                            if ($op['urlPage']) {
+                                                echo '<a href="'.$op['urlPage'].'" target="_blank"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
+                                            }
+                                            else {
+                                                echo '<div></div>';
+                                            }
+                                            ?>
                                             <i class="fa fa-plus fa-add-exc"><span>Добавить</span></i>
                                         </div>
                                     </div>
