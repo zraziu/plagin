@@ -61,24 +61,24 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 <h2 class="excursion-switch-title">ШАГ 2: Места, которые Вы хотите посетить</h2>
 <div class="vlg-two">
 </div>
-<div class="vlg-two__list">
+<div id="sortable" class="vlg-two__list">
     <div class="vlg-two__item">
         <div class="vlg-two_info">
             <div class="vlg-two__time">1 ч 30 м</div>
             <div class="vlg-two__bus">Автобус</div>
         </div>
-        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows-v vlg-two__move"></i></div></div>
+        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div>
     </div>
     <div class="vlg-two__item">
         <div class="vlg-two_info">
             <div class="vlg-two__time">0 ч 40 м</div>
             <div class="vlg-two__bus">Автобус</div>
         </div>
-        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows-v vlg-two__move"></i></div></div>
+        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div>
     </div>
-    <div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-help">
-        <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
-    </div>
+</div>
+<div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-help">
+    <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
 </div>
 
 <h2 class="excursion-switch-title">ШАГ 3: Условия проживания</h2>
@@ -165,7 +165,14 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                         </div>
                                         <div class="vlg-catalog__text2"><?=$op['description']?></div>
                                         <div class="vlg-catalog__time3">
-                                            <i class="fa fa-link fa-link-exc"><span>Подробно</span></i>
+                                            <?
+                                            if ($op['urlPage']) {
+                                                echo '<a href="'.$op['urlPage'].'" target="_blank"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
+                                            }
+                                            else {
+                                                echo '<div></div>';
+                                            }
+                                            ?>
                                             <i class="fa fa-plus fa-add-exc"><span>Добавить</span></i>
                                         </div>
                                     </div>

@@ -37,7 +37,6 @@
  display: flex;
  flex-direction: row;
  flex-wrap: nowrap;
- /* justify-content: space-between; */
  border-color: #33BBD4;
  margin-bottom: 10px;
  border-width: 1px;
@@ -46,6 +45,12 @@
  transition: .2s -webkit-box-shadow;
  transition: .2s box-shadow;
  transition: .2s box-shadow, .2s -webkit-box-shadow;
+}
+/* фон под блоками */
+.vlg-placeholder {
+ border: 1px dotted #33BBD4;
+ margin: 10px 0 10px 0;
+ height: 52px;
 }
 .vlg-two__item:hover {
  -webkit-box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
