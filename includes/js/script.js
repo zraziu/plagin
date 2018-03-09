@@ -2,8 +2,8 @@
 $(document).ready(function() {
     /* Перетаскивание блоков */
     $(function () {
-        $("#sortable").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
-        $("#sortable").disableSelection();
+        $("#vlgListExc").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
+        $("#vlgListExc").disableSelection();
     });
     /*
     Нажимаем на блок в модал - добавляем класс + добавляем в список
@@ -16,6 +16,11 @@ $(document).ready(function() {
             $(this).find('i').removeClass('fa-plus fa-add-green');
             $(this).find('i').addClass('fa-times fa-add-red');
             $(this).find('span').text('Удалить');
+
+            // добавить в список
+            var vlgListExc = '<div class="vlg-two__item"><div class="vlg-two_info"><div class="vlg-two__time">'+ parentBlock.find('.vlg-catalog__hours').text() +'</div><div class="vlg-two__bus">Автобус</div></div><div class="vlg-two_title">'+ parentBlock.find('.vlg-catalog__title').text() +'<div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div></div>';
+
+            $('#vlgListExc').append(vlgListExc);
             
         },
         function () {
@@ -24,6 +29,9 @@ $(document).ready(function() {
             $(this).find('i').removeClass('fa-times fa-add-red');
             $(this).find('i').addClass('fa-plus fa-add-green');
             $(this).find('span').text('Добавить');
+
+            // удалить из списка
+            $('#vlgListExc .vlg-two__item').remove(":empty");
 
         }
     );
