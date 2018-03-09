@@ -117,8 +117,20 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                         <div class="vlg-catalog">
                             <?
                             $vlg = vlg_cat('excursion');
-                            foreach ($vlg as $op): ?>
-                                <div class="vlg-catalog__item">
+
+                            foreach ($vlg as $op):
+
+                                $priceInfo = '';
+
+                                if ($op['pricePerPerson'] == 'per-person-by-age') {
+                                    $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                                } else {
+                                    $priceInfo = 'data-price="'.$op['prise'].'"';
+                                }
+                                ?>
+
+
+                                <div class="vlg-catalog__item" <? echo $priceInfo ?>>
                                     <div class="vlg-catalog__photo">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                         <div class="vlg-catalog__triangle"></div>
@@ -151,8 +163,17 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                         <div class="vlg-catalog">
                             <?
                             $vlg = vlg_cat('musem');
-                            foreach ($vlg as $op): ?>
-                                <div class="vlg-catalog__item">
+                            foreach ($vlg as $op):
+
+                                $priceInfo = '';
+
+                                if ($op['pricePerPerson'] == 'per-person-by-age') {
+                                    $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                                } else {
+                                    $priceInfo = 'data-price="'.$op['prise'].'"';
+                                }
+                                ?>
+                                <div class="vlg-catalog__item" <? echo $priceInfo ?>>
                                     <div class="vlg-catalog__photo">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                         <div class="vlg-catalog__triangle"></div>
