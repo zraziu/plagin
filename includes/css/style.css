@@ -192,6 +192,25 @@
  bottom: 5px;
  position: relative;
 }
+#myTab a {
+ /*position: relative;*/
+}
+#myTab #vlgSelectExc, #vlgSelectMusem {
+ font-size: 12px;
+ position: relative;
+ margin-left: 5px;
+ padding: 2px;
+ bottom: 1px;
+ width: 20px;
+ height: 20px;
+ text-align: center;
+ border: 1px solid #fab72d;
+ border-radius: 25%;
+ background: #fab72d;
+ color: #fff;
+ font-weight: bold;
+}
+
 .vlg-modal {
  margin: 10px 25px;
 }
