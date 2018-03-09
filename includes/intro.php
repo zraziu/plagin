@@ -160,7 +160,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                                 echo '<div></div>';
                                             }
                                             ?>
-                                            <a href="#" class="vlg-add-exc"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></a>
+                                            <div class="vlg-add-exc"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                                 echo '<div></div>';
                                             }
                                             ?>
-                                            <a href="#" class="vlg-add-musem"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></a>
+                                            <div class="vlg-add-musem"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></div>
                                         </div>
                                     </div>
                                 </div>
