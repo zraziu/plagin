@@ -131,15 +131,14 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                 // время
                                 $timeInfo = '';
                                 if (strlen($op['hours']) >= 2) {
-                                    $timeInfo = $op['hours']."ч 00 мин";
+                                    $timeInfo = substr($op['hours'], 0, 1)."ч <i>".substr($op['hours'], 2, 2)."</i> <i>мин</i>";
                                 } else {
-                                    $timeInfo = $op['hours'].'ч';
+                                    $timeInfo = $op['hours'].'ч <i>00</i> <i>мин</i>';
                                 }
-
 
                                 ?>
 
-                                <div class="vlg-catalog__item" <? echo $priceInfo ?>>
+                                <div class="vlg-catalog__item" <?=$priceInfo?>>
                                     <div class="vlg-catalog__photo">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                         <div class="vlg-catalog__triangle"></div>
@@ -147,7 +146,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     </div>
                                     <div class="vlg-catalog__discription">
                                         <div class="vlg-catalog__info">
-                                            <span class="vlg-catalog__hours"><? echo $timeInfo ?></span>
+                                            <span class="vlg-catalog__hours"><?=$timeInfo?></span>
                                             <span class="vlg-catalog__rating"><?=$op['rating']?></span>
                                         </div>
                                         <div class="vlg-catalog__text"><?=$op['description']?></div>
@@ -190,7 +189,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     </div>
                                     <div class="vlg-catalog__discription">
                                         <div class="vlg-catalog__info">
-                                            <span class="vlg-catalog__hours"><?=$op['hours']?></span>
+                                            <span class="vlg-catalog__hours"><?=$timeInfo?></span>
                                             <span class="vlg-catalog__rating"><?=$op['rating']?></span>
                                         </div>
                                         <div class="vlg-catalog__text"><?=$op['description']?></div>

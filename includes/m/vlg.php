@@ -41,7 +41,7 @@
         $pris16 = absint($pris16);
         $prise18 = absint($prise18);
         $prise = absint($prise);
-        $hours = absint($hours);
+        $hours = trim($hours);
         $rating = absint($rating);
         $category = trim($category);
         $urlPage = trim($urlPage);
