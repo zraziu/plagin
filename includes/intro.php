@@ -122,7 +122,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     <div class="vlg-catalog__photo">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                         <div class="vlg-catalog__triangle"></div>
-                                        <div class="vlg-catalog__add"><?=$op['name']?></div>
+                                        <div class="vlg-catalog__title"><?=$op['name']?></div>
                                     </div>
                                     <div class="vlg-catalog__discription">
                                         <div class="vlg-catalog__info">
@@ -130,10 +130,10 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                             <span class="vlg-catalog__rating"><?=$op['rating']?></span>
                                         </div>
                                         <div class="vlg-catalog__text"><?=$op['description']?></div>
-                                        <div class="vlg-catalog__time">
+                                        <div class="vlg-catalog__footer">
                                             <?
                                             if ($op['urlPage']) {
-                                                echo '<a href="'.$op['urlPage'].'" target="_blank"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
+                                                echo '<a href="'.$op['urlPage'].'" target="_blank" class="vlg-catalog__link"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
                                             }
                                             else {
                                                 echo '<div></div>';
@@ -156,7 +156,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     <div class="vlg-catalog__photo">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                         <div class="vlg-catalog__triangle"></div>
-                                        <div class="vlg-catalog__add"><?=$op['name']?></div>
+                                        <div class="vlg-catalog__title"><?=$op['name']?></div>
                                     </div>
                                     <div class="vlg-catalog__discription">
                                         <div class="vlg-catalog__info">
@@ -164,10 +164,10 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                             <span class="vlg-catalog__rating"><?=$op['rating']?></span>
                                         </div>
                                         <div class="vlg-catalog__text"><?=$op['description']?></div>
-                                        <div class="vlg-catalog__time">
+                                        <div class="vlg-catalog__footer">
                                             <?
                                             if ($op['urlPage']) {
-                                                echo '<a href="'.$op['urlPage'].'" target="_blank"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
+                                                echo '<a href="'.$op['urlPage'].'" target="_blank" class="vlg-catalog__link"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
                                             }
                                             else {
                                                 echo '<div></div>';
