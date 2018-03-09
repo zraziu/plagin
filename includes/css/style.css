@@ -51,6 +51,7 @@
  border: 1px dotted #33BBD4;
  margin: 10px 0 10px 0;
  height: 52px;
+ background: #faebb4;
 }
 .vlg-two__item:hover {
  -webkit-box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
@@ -377,9 +378,9 @@
 
 
 
-/* Убираем блок помощь */
+/* Отодвигаем блок помощь */
 #sh_button {
- display: none;
+ right: 20px;
 }
 
 /***** Перенести в основные стили *****/
