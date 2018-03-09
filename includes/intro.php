@@ -111,7 +111,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                 </li>
             </ul>
 
-            <div class="tab-content vlg-modal" id="myTabContent">
+            <div class="tab-content vlg-modal" id="vlgModal">
                 <!-- вкладка 1 -->
                     <div class="tab-pane fade in active show" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="vlg-catalog">
@@ -121,14 +121,12 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             foreach ($vlg as $op):
 
                                 $priceInfo = '';
-
                                 if ($op['pricePerPerson'] == 'per-person-by-age') {
                                     $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
                                 } else {
                                     $priceInfo = 'data-price="'.$op['prise'].'"';
                                 }
                                 ?>
-
 
                                 <div class="vlg-catalog__item" <? echo $priceInfo ?>>
                                     <div class="vlg-catalog__photo">
@@ -151,7 +149,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                                 echo '<div></div>';
                                             }
                                             ?>
-                                            <i class="fa fa-plus fa-add-exc"><span>Добавить</span></i>
+                                            <a href="#" class="vlg-add-exc"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +192,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                                 echo '<div></div>';
                                             }
                                             ?>
-                                            <i class="fa fa-plus fa-add-exc"><span>Добавить</span></i>
+                                            <a href="#" class="vlg-add-musem"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></a>
                                         </div>
                                     </div>
                                 </div>

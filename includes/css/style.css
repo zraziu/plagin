@@ -175,6 +175,8 @@
 
 
 /* Модальный блок */
+
+/* ТАБЫ */
 #myTab {
  position: relative;
 }
@@ -204,6 +206,7 @@
  font-weight: bold;
 }
 
+/* Блоки Мод окна */
 .vlg-modal {
  margin: 10px 25px;
 }
@@ -216,12 +219,15 @@
 .vlg-catalog__item {
  display: flex;
  flex-direction: column;
- width: 300px;
+ width: 302px;
  height: 450px;
  margin: 0 10px 10px 0;
  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
  position: relative;
  border-radius: 3px;
+}
+.vlg-catalog__BlActive {
+ box-shadow: 1px 1px 5px 1px #79D570;
 }
 .vlg-catalog__photo {
  margin-bottom: 10px;
@@ -337,23 +343,17 @@
 }
 .vlg-catalog__footer .fa-add-exc {
  padding: 10px;
- border: 2px solid #63B660;
- color: #63B660;
  border-radius: 4px;
  position: relative;
  cursor: pointer;
 }
 .vlg-catalog__footer .fa-add-exc:hover {
  color: #fff;
- background: #63B660;
 }
 .vlg-catalog__footer .fa-add-exc span {
  opacity: 0;
  position: absolute;
- background: #63B660;
  padding: 10px;
- border: 2px solid #63B660;
- color: #63B660;
  border-radius: 4px;
  right: 0px;
  top: -2px;
@@ -364,8 +364,30 @@
  opacity: 1;
  right: 29px;
 }
-
-
+.vlg-catalog__footer .fa-add-green {
+ border: 2px solid #63B660;
+ color: #63B660;
+}
+.vlg-catalog__footer .fa-add-green:hover {
+ background: #63B660;
+}
+.vlg-catalog__footer .fa-add-green span {
+ border: 2px solid #63B660;
+ color: #63B660;
+ background: #63B660;
+}
+.vlg-catalog__footer .fa-add-red {
+ border: 2px solid red;
+ color: red;
+}
+.vlg-catalog__footer .fa-add-red:hover {
+ background: red;
+}
+.vlg-catalog__footer .fa-add-red span {
+ border: 2px solid red;
+ color: red;
+ background: red;
+}
 
 
 
