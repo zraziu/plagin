@@ -192,18 +192,11 @@
  bottom: 5px;
  position: relative;
 }
-#myTab a {
- /*position: relative;*/
-}
 #myTab #vlgSelectExc, #vlgSelectMusem {
  font-size: 12px;
  position: relative;
- margin-left: 5px;
- padding: 2px;
- bottom: 1px;
- width: 20px;
- height: 20px;
- text-align: center;
+ padding: 2px 4px;
+ bottom: 2px;
  border: 1px solid #fab72d;
  border-radius: 25%;
  background: #fab72d;
