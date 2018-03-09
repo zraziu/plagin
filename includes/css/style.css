@@ -175,6 +175,23 @@
 
 
 /* Модальный блок */
+#myTab {
+ position: relative;
+}
+#myTab .nav-link.active {
+ position: relative;
+ bottom: 5px;
+ font-size: 20px;
+}
+.nav-tabs .nav-item{
+ margin-bottom: -5px;
+}
+#myTab .nav-link:focus, #myTab .nav-link:hover {
+ border-color: rgba(0, 0, 0, 0);
+ border-bottom: 1px dashed #058bff;
+ bottom: 5px;
+ position: relative;
+}
 .vlg-modal {
  margin: 10px 25px;
 }
