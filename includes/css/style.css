@@ -183,7 +183,7 @@
  flex-wrap: wrap;
  justify-content: space-around;
 }
-.vlg-catalog__item2 {
+.vlg-catalog__item {
  display: flex;
  flex-direction: column;
  width: 300px;
@@ -193,23 +193,23 @@
  position: relative;
  border-radius: 3px;
 }
-.vlg-catalog__photo2 {
+.vlg-catalog__photo {
  margin-bottom: 10px;
 }
-.vlg-catalog__photo2 img {
+.vlg-catalog__photo img {
  display: inline-flex;
  width: 300px;
  height: 200px;
  object-fit: cover;
 }
 .vlg-catalog__triangle {
- background: url(/wp-content/plugins/vlg_plagin/includes/img/triangle.svg) no-repeat;
+ background: url(../img/triangle.svg) no-repeat;
  position: relative;
  margin-top: -30.1px;
  height: 25px;
  background-position: 50% 100%;
 }
-.vlg-catalog__add2 {
+.vlg-catalog__add {
  margin-top: -25px;
  height: 70px;
  text-align: center;
@@ -224,7 +224,7 @@
  background-size: 80% 1px;
 }
 
-.vlg-catalog__discription2 {
+.vlg-catalog__discription {
  display: flex;
  flex-direction: column;
  justify-content: space-between;
@@ -258,7 +258,7 @@
 .vlg-catalog__rating:after {
  content: "+";
 }
-.vlg-catalog__text2 {
+.vlg-catalog__text {
  text-align: center;
  font: 13px Calibri;
  display: block;
@@ -270,12 +270,12 @@
  color: #474d4e;
  max-height: 100px;
 }
-.vlg-catalog__time3 {
+.vlg-catalog__time {
  display: flex;
  justify-content: space-around;
  margin-top: 10px;
 }
-.vlg-catalog__time3 .fa-link-exc {
+.vlg-catalog__time .fa-link-exc {
  padding: 10px;
  border: 2px solid #33BBD4;
  color: #33bbd4;
@@ -284,11 +284,11 @@
  position: relative;
  cursor: pointer;
 }
-.vlg-catalog__time3 .fa-link-exc:hover {
+.vlg-catalog__time .fa-link-exc:hover {
  color: #fff;
  background: #33bbd4;
 }
-.vlg-catalog__time3 .fa-link-exc span {
+.vlg-catalog__time .fa-link-exc span {
  opacity: 0;
  position: absolute;
  background: #33bbd4;
@@ -300,12 +300,12 @@
  top: -2px;
  transition: .3s;
 }
-.vlg-catalog__time3 .fa-link-exc:hover span {
+.vlg-catalog__time .fa-link-exc:hover span {
  color: #fff;
  opacity: 1;
  left: 32px;
 }
-.vlg-catalog__time3 .fa-add-exc {
+.vlg-catalog__time .fa-add-exc {
  padding: 10px;
  border: 2px solid #63B660;
  color: #63B660;
@@ -313,11 +313,11 @@
  position: relative;
  cursor: pointer;
 }
-.vlg-catalog__time3 .fa-add-exc:hover {
+.vlg-catalog__time .fa-add-exc:hover {
  color: #fff;
  background: #63B660;
 }
-.vlg-catalog__time3 .fa-add-exc span {
+.vlg-catalog__time .fa-add-exc span {
  opacity: 0;
  position: absolute;
  background: #63B660;
@@ -329,7 +329,7 @@
  top: -2px;
  transition: .3s;
 }
-.vlg-catalog__time3 .fa-add-exc:hover span {
+.vlg-catalog__time .fa-add-exc:hover span {
  color: #fff;
  opacity: 1;
  right: 29px;
