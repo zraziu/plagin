@@ -118,6 +118,8 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             <?
                             $vlg = vlg_cat('excursion');
 
+                            $count = 0;
+
                             foreach ($vlg as $op):
 
                                 // цена
@@ -138,7 +140,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
                                 ?>
 
-                                <div class="vlg-catalog__item" <?=$priceInfo?>>
+                                <div id="vlgEcx<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?>>
                                     <div class="vlg-catalog__photo">
                                         <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                         <div class="vlg-catalog__triangle"></div>
@@ -162,7 +164,11 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                         </div>
                                     </div>
                                 </div>
-                            <? endforeach; ?>
+
+
+                            <?
+                            $count++;
+                            endforeach; ?>
                         </div>
                     </div>
                     <!-- вкладка 2 -->
