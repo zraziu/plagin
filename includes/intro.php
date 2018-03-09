@@ -131,9 +131,9 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                 // время
                                 $timeInfo = '';
                                 if (strlen($op['hours']) >= 2) {
-                                    $timeInfo = substr($op['hours'], 0, 1)."ч <i>".substr($op['hours'], 2, 2)."</i> <i>мин</i>";
+                                    $timeInfo = substr($op['hours'], 0, 1)." ч <i>".substr($op['hours'], 2, 2)."</i> <i>мин</i>";
                                 } else {
-                                    $timeInfo = $op['hours'].'ч <i>00</i> <i>мин</i>';
+                                    $timeInfo = $op['hours'].' ч <i>00</i> <i>мин</i>';
                                 }
 
                                 ?>
