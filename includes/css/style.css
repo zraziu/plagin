@@ -282,9 +282,11 @@
  font-weight: bold;
  font-size: 20px;
 }
+/*
 .vlg-catalog__hours:after {
  content: "ч";
 }
+*/
 
 .vlg-catalog__rating {
  color: #fbb731;

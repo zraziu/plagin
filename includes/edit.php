@@ -45,7 +45,7 @@ include_once('m/vlg.php');
     $prise16 = $vlg['prise16'];
     $prise18 = $vlg['prise18'];
     $prise = $vlg['prise'];
-    $hours = $vlg['hours'];
+    $hours = wp_unslash($vlg['hours']);
     $category = $vlg['category'];
     $imgUpload = $_POST['imgUpload'];
     $urlPage = $vlg['urlPage'];

@@ -120,12 +120,23 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
                             foreach ($vlg as $op):
 
+                                // цена
                                 $priceInfo = '';
                                 if ($op['pricePerPerson'] == 'per-person-by-age') {
                                     $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
                                 } else {
                                     $priceInfo = 'data-price="'.$op['prise'].'"';
                                 }
+
+                                // время
+                                $timeInfo = '';
+                                if (strlen($op['hours']) >= 2) {
+                                    $timeInfo = $op['hours']."ч 00 мин - ".strlen($op['hours']);
+                                } else {
+                                    $timeInfo = $op['hours'].'ч - '.strlen($op['hours']);
+                                }
+
+
                                 ?>
 
                                 <div class="vlg-catalog__item" <? echo $priceInfo ?>>
@@ -136,7 +147,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                     </div>
                                     <div class="vlg-catalog__discription">
                                         <div class="vlg-catalog__info">
-                                            <span class="vlg-catalog__hours"><?=$op['hours']?></span>
+                                            <span class="vlg-catalog__hours"><? echo $timeInfo ?></span>
                                             <span class="vlg-catalog__rating"><?=$op['rating']?></span>
                                         </div>
                                         <div class="vlg-catalog__text"><?=$op['description']?></div>

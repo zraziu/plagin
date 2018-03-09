@@ -20,7 +20,7 @@ function vlg_activation() {
                     `id` int(10) NOT NULL AUTO_INCREMENT,
                       `name` varchar(120) NOT NULL,
                       `description` text NOT NULL,
-                      `hours` int(20) NOT NULL,
+                      `hours` varchar(5) NOT NULL,
                       `prise` int(20) NOT NULL,
                       `prise0` int(20) NOT NULL,
                       `prise16` int(20) NOT NULL,
