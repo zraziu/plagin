@@ -31,7 +31,8 @@ $(document).ready(function() {
             $(this).find('span').text('Добавить');
 
             // удалить из списка
-            $('#vlgListExc .vlg-two__item').remove(":empty");
+            var vlgTitleExc = parentBlock.find('.vlg-catalog__title').text();
+            $('#vlgListExc .vlg-two__item').filter(':contains('+ vlgTitleExc +')').remove();
 
         }
     );

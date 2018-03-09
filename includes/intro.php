@@ -154,8 +154,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                             <?
                                             if ($op['urlPage']) {
                                                 echo '<a href="'.$op['urlPage'].'" target="_blank" class="vlg-catalog__link"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
-                                            }
-                                            else {
+                                            } else {
                                                 echo '<div></div>';
                                             }
                                             ?>
