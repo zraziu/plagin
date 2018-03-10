@@ -22,13 +22,7 @@ $(document).ready(function() {
             $('#vlgListExc [id ^= "'+ parentBlock.attr('id') +'"]').remove();
             
             // счетчик
-            if (parentBlock.is('[id ^= vlgEcx]')) {
-               vlgA--;
-            } else if (parentBlock.is('[id ^= vlgMusem]')) {
-                vlgB--;
-            }
-
-            // элемент - установить текст = countExc();
+            countExc(parentBlock, 'minus');
 
         } else {  // добавление
             parentBlock.addClass('vlg-catalog__BlActive'); // стиль блок м
@@ -42,15 +36,10 @@ $(document).ready(function() {
             $('#vlgListExc').append(vlgListExc);
 
             // счетчик
-            if (parentBlock.is('[id ^= vlgEcx]')) {
-                vlgA++;
-            } else if (parentBlock.is('[id ^= vlgMusem]')) {
-                vlgB++;
-            }
+            countExc(parentBlock, 'plus');
 
         }
 
-        countExc(); // ставим кол-во выбр экск
     });
 
     $('#vlgListExc').on('click', 'i.vlg-two__delete', function(){
@@ -66,12 +55,7 @@ $(document).ready(function() {
 
 
         // счетчик
-        if (vlgListItemId.is('[id ^= vlgEcx]')) {
-            vlgA--;
-        } else if (vlgListItemId.is('[id ^= vlgMusem]')) {
-            vlgB--;
-        }
-        countExc(); // ставим кол-во выбр экск
+        countExc(vlgListItemId, 'minus');
 
     });
 
@@ -82,15 +66,25 @@ $(document).ready(function() {
 
 
     // функции 
-    function countExc() {
+    function countExc(block, operator) {
+        // счетчик
+        if (operator == 'plus') {
+            if (block.is('[id ^= vlgEcx]')) {
+                vlgA++;
+            } else if (block.is('[id ^= vlgMusem]')) {
+                vlgB++;
+            }
+        } else {
+            if (block.is('[id ^= vlgEcx]')) {
+                vlgA--;
+            } else if (block.is('[id ^= vlgMusem]')) {
+                vlgB--;
+            }
+        }
+
         $('#vlgExcModal #vlgSelectExc').text(vlgA);
         $('#vlgExcModal #vlgSelectMusem').text(vlgB);
     }
-
-
-
-
-
 
 
 
