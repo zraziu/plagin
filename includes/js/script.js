@@ -64,6 +64,15 @@ $(document).ready(function() {
         vlgListItemId.find('i.fa-add-exc').addClass('fa-plus fa-add-green');
         vlgListItemId.find('i.fa-add-exc span').text('Добавить');
 
+
+        // счетчик
+        if (vlgListItemId.is('[id ^= vlgEcx]')) {
+            vlgA--;
+        } else if (vlgListItemId.is('[id ^= vlgMusem]')) {
+            vlgB--;
+        }
+        countExc(); // ставим кол-во выбр экск
+
     });
 
 
