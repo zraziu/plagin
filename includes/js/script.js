@@ -14,10 +14,10 @@ $(document).ready(function() {
         var parentBlock = $(this).closest('.vlg-catalog__item');
 
         if (parentBlock.is('.vlg-catalog__BlActive')) { // удаление
+
             parentBlock.removeClass('vlg-catalog__BlActive');
-            $(this).find('i.fa-add-exc').removeClass('fa-times fa-add-red');
-            $(this).find('i.fa-add-exc').addClass('fa-plus fa-add-green');
-            $(this).find('i.fa-add-exc span').text('Добавить');
+            parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i>');
+
             // удалить из списка
             $('#vlgListExc [id ^= "'+ parentBlock.attr('id') +'"]').remove();
             
@@ -25,11 +25,9 @@ $(document).ready(function() {
             countExc(parentBlock, 'minus');
 
         } else {  // добавление
-            parentBlock.addClass('vlg-catalog__BlActive'); // стиль блок м
 
-            $(this).find('i.fa-add-exc').removeClass('fa-plus fa-add-green');
-            $(this).find('i.fa-add-exc').addClass('fa-times fa-add-red');
-            $(this).find('i.fa-add-exc span').text('Удалить');
+            parentBlock.addClass('vlg-catalog__BlActive'); // стиль блок м
+            parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Удалить</span></i>');
 
             // добавить в список строку
             var vlgListExc = '<div id="'+ parentBlock.attr('id') +'list" class="vlg-two__item '+ parentBlock.attr('id') +'"><div class="vlg-two_info"><div class="vlg-two__time">'+ parentBlock.find('.vlg-catalog__hours').text() +'</div><div class="vlg-two__bus">Автобус</div></div><div class="vlg-two_title">'+ parentBlock.find('.vlg-catalog__title').text() +'<div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div></div>';
@@ -37,7 +35,6 @@ $(document).ready(function() {
 
             // счетчик
             countExc(parentBlock, 'plus');
-
         }
 
     });
@@ -49,10 +46,7 @@ $(document).ready(function() {
         vlgListItem.remove(); // удалить в списке
 
         vlgListItemId.removeClass('vlg-catalog__BlActive'); // удалить в модальном
-        vlgListItemId.find('i.fa-add-exc').removeClass('fa-times fa-add-red');
-        vlgListItemId.find('i.fa-add-exc').addClass('fa-plus fa-add-green');
-        vlgListItemId.find('i.fa-add-exc span').text('Добавить');
-
+        vlgListItemId.find('i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i>');
 
         // счетчик
         countExc(vlgListItemId, 'minus');
@@ -66,8 +60,7 @@ $(document).ready(function() {
 
 
     // функции 
-    function countExc(block, operator) {
-        // счетчик
+    function countExc(block, operator) { // счетчик
         if (operator == 'plus') {
             if (block.is('[id ^= vlgEcx]')) {
                 vlgA++;
