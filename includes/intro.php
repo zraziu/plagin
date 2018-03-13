@@ -10,46 +10,30 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 <h1>Калькулятор</h1>
 <h2 class="excursion-switch-title">ШАГ 1: Спланировать тур / Основные данные</h2>
 
-<div class="row d-flex justify-content-between">
-    <div class="col">
-        <div class="btn-group btn-group-margin"><button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users fa-icon-btn" aria-hidden="true"></i> Человек: <span class="btnDropdownPeople"></span> <span class="btnDropdownPeopleFree"></span></button>
-            <div class="dropdown-menu">
-                <div class="dropdown-item"><div class="dropdown-item-people">Дети до 15 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople16" class="input-calc-exc" type="text" min="0" max="100" value="40"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                    </div>
+<div class="vlg-one">
+    <div class="btn-group btn-group-margin">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users fa-icon-btn" aria-hidden="true"></i> Человек: <span class="btnDropdownPeople"></span> <span class="btnDropdownPeopleFree"></span>
+        </button>
+        <div class="dropdown-menu">
+            <div class="dropdown-item"><div class="dropdown-item-people">Дети до 15 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople16" class="input-calc-exc" type="text" min="0" max="100" value="40"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
                 </div>
-                <div class="dropdown-item"><div class="dropdown-item-people">Дети до 18 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople18" class="input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
-                </div>
-                <div class="dropdown-item"><div class="dropdown-item-people">Взрослые</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople" class="input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
-                </div>
-                <div class="dropdown-divider"></div>
-                <div class="dropdown-item"><div class="dropdown-item-people">Бесплатно</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeopleFree"  class="input-calc-exc" type="text" min="0" max="10" value="4"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                    </div>
+            </div>
+            <div class="dropdown-item"><div class="dropdown-item-people">Дети до 18 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople18" class="input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+            </div>
+            <div class="dropdown-item"><div class="dropdown-item-people">Взрослые</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople" class="input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><div class="dropdown-item-people">Бесплатно</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeopleFree"  class="input-calc-exc" type="text" min="0" max="10" value="4"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
                 </div>
             </div>
         </div>
     </div>
     <div class="col">
         <div class="btn-group btn-group-margin">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <span class="btnDropdownDay">1</span></button>
-            <div class="dropdown-menu">
-                <div class="dropdown-item"><div class="dropdown-item-people"> </div>
-                    <div class="number dropdown-item-number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputDays" class="input-calc-exc" type="text" min="1" max="5" value="1"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="btn-group btn-group-margin">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span class="btnDropdownBus">0</span></button>
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <input id="vlgDropdownDay" type="text" style="border:0;" ></button>
             <div class="dropdown-menu">
                 <div class="dropdown-item">
-                    <label class="tgl" style="font-size:22px"><input type="checkbox" class="bus-to-or-no" checked /><span data-on="Туроператора" data-off="&nbsp;&nbsp;&nbsp;Заказчика&nbsp;&nbsp;&nbsp;"></span></label>
-                </div>
-                <div class="block-input-bus">
-                    <div class="dropdown-item"><div class="dropdown-item-people">Часов</div><div class="number dropdown-item-number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputBus" class="inputBus input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
+                    <div id="day-slider"></div>
                 </div>
             </div>
         </div>
@@ -59,24 +43,8 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 <!-- btnDropdownDay #inputDays  vlg-two__delete vlg-two__move -->
 
 <h2 class="excursion-switch-title">ШАГ 2: Места, которые Вы хотите посетить</h2>
-<div class="vlg-two">
-</div>
-<div id="vlgListExc" class="vlg-two__list">
-<!--    <div class="vlg-two__item">
-        <div class="vlg-two_info">
-            <div class="vlg-two__time">1 ч 30 м</div>
-            <div class="vlg-two__bus">Автобус</div>
-        </div>
-        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div>
-    </div>
-    <div class="vlg-two__item">
-        <div class="vlg-two_info">
-            <div class="vlg-two__time">0 ч 40 м</div>
-            <div class="vlg-two__bus">Автобус</div>
-        </div>
-        <div class="vlg-two_title">Обзорная экскурсия «Город-герой Волгоград» <div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div>
-    </div>-->
-</div>
+<div class="vlg-two"></div>
+<div id="vlgListExc" class="vlg-two__list"></div> <!-- список -->
 <div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-help">
     <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
 </div>
@@ -118,10 +86,9 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                         <?
                         $vlg = vlg_cat('excursion');
 
-                        $count = 0;
+                        $count = 0; // для id
 
                         foreach ($vlg as $op):
-
                             // цена
                             $priceInfo = '';
                             if ($op['pricePerPerson'] == 'per-person-by-age') {
@@ -129,13 +96,12 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             } else {
                                 $priceInfo = 'data-price="'.$op['prise'].'"';
                             }
-
                             // время
                             $timeInfo = '';
                             if (strlen($op['hours']) >= 2) {
-                                $timeInfo = substr($op['hours'], 0, 1)." ч <i>".substr($op['hours'], 2, 2)."</i> <i>мин</i>";
+                                $timeInfo = "<span>".substr($op['hours'], 0, 1)." ч ".substr($op['hours'], 2, 2)."м</span> <div>продолжительность</div>";
                             } else {
-                                $timeInfo = $op['hours'].' ч <i>00</i> <i>мин</i>';
+                                $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
                             }
 
                             ?>
@@ -148,8 +114,8 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                 </div>
                                 <div class="vlg-catalog__discription">
                                     <div class="vlg-catalog__info">
-                                        <span class="vlg-catalog__hours"><?=$timeInfo?></span>
-                                        <span class="vlg-catalog__rating"><?=$op['rating']?></span>
+                                        <div class="vlg-catalog__hours"><?=$timeInfo?></div>
+                                        <div class="vlg-catalog__rating"><?=$op['rating']?><div>рейтинг</div></div>
                                     </div>
                                     <div class="vlg-catalog__text"><?=$op['description']?></div>
                                     <div class="vlg-catalog__footer">
@@ -167,7 +133,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
 
                         <?
-                            $count++;
+                            $count++; // id
                             endforeach;
                         ?>
                     </div>
@@ -178,17 +144,24 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                         <?
                         $vlg = vlg_cat('musem');
 
-                        $count = 0;
+                        $count = 0; // для id
 
                         foreach ($vlg as $op):
-
+                            // цена
                             $priceInfo = '';
-
                             if ($op['pricePerPerson'] == 'per-person-by-age') {
                                 $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
                             } else {
                                 $priceInfo = 'data-price="'.$op['prise'].'"';
                             }
+                            // время
+                            $timeInfo = '';
+                            if (strlen($op['hours']) >= 2) {
+                                $timeInfo = "<span>".substr($op['hours'], 0, 1)." ч ".substr($op['hours'], 2, 2)."м</span> <div>продолжительность</div>";
+                            } else {
+                                $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
+                            }
+
                             ?>
                             <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?>>
                                 <div class="vlg-catalog__photo">
@@ -198,8 +171,8 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                 </div>
                                 <div class="vlg-catalog__discription">
                                     <div class="vlg-catalog__info">
-                                        <span class="vlg-catalog__hours"><?=$timeInfo?></span>
-                                        <span class="vlg-catalog__rating"><?=$op['rating']?></span>
+                                        <div class="vlg-catalog__hours"><?=$timeInfo?></div>
+                                        <div class="vlg-catalog__rating"><?=$op['rating']?><div>рейтинг</div></div>
                                     </div>
                                     <div class="vlg-catalog__text"><?=$op['description']?></div>
                                     <div class="vlg-catalog__footer">

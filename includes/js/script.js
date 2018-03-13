@@ -5,6 +5,19 @@ $(document).ready(function() {
         $("#vlgListExc").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
         $("#vlgListExc").disableSelection();
     });
+    /* Слайдер кол-ва дней */
+    $( "#day-slider" ).slider({
+        range: "min",
+        value: 1,
+        min: 1,
+        max: 5,
+        slide: function( event, ui ) {
+            $( "#vlgDropdownDay" ).val( ui.value );
+        }
+    });
+    $( "#vlgDropdownDay" ).val( $( "#day-slider" ).slider( "value" ) );
+
+
 
     // счетчики экск
     let vlgA = 0;
