@@ -11,7 +11,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 <h2 class="excursion-switch-title">ШАГ 1: Спланировать тур / Основные данные</h2>
 
 <div class="vlg-one">
-    <div class="btn-group btn-group-margin">
+    <div id="vlgPeople" class="btn-group btn-group-margin">
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users fa-icon-btn" aria-hidden="true"></i> Человек: <span class="btnDropdownPeople"></span> <span class="btnDropdownPeopleFree"></span>
         </button>
         <div class="dropdown-menu">
@@ -28,14 +28,13 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
             </div>
         </div>
     </div>
-    <div class="col">
-        <div class="btn-group btn-group-margin">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <input id="vlgDropdownDay" type="text" style="border:0;" ></button>
-            <div class="dropdown-menu">
-                <div class="dropdown-item">
-                    <div id="day-slider"></div>
-                </div>
+    <div id="vlgDay" class="btn-group btn-group-margin">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <input id="vlgDropdownDay" type="text" style="border:0;" ></button>
+        <div class="dropdown-menu">
+            <div class="dropdown-item">
+                <div id="day-slider"></div>
             </div>
+            <div style="margin:15px 0 0 17px;letter-spacing:7px;color: rgba(0, 0, 0, 0.5);">1 2 3 4 5</div>
         </div>
     </div>
 </div>

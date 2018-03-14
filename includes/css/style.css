@@ -37,20 +37,44 @@
  box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
  z-index: 2;
 }
+#vlgPeople {
+ margin-right: 20px;
+}
 #vlgDropdownDay {
  border: 0;
- font-weight: bold;
  width: 20px;
+}
+.show>.btn-secondary.dropdown-toggle {
+ background-color: #fff;
+}
+#vlgDay .dropdown-menu {
+ padding: 20px 10px;
+}
+#vlgDay .dropdown-item {
+ /* display: flex; */
+ padding: 10px 1rem;
+ /* margin-right: 50px; */
+}
+#vlgDay .dropdown-item.active, #vlgDay .dropdown-item:active {
+ background-color: #fff;
 }
 #day-slider {
  width: 100%;
+ position: relative;
+}
+#day-slider.ui-slider-range {
+ height: 25px;
+ background: aliceblue;
 }
 #day-slider .ui-slider-handle {
- height: 10px;
- width: 10px;
+ height: 50px;
+ width: 43px;
+ margin-left: -1em;
  position: absolute;
+ top: -22px;
  z-index: 3;
  cursor: pointer;
+ background: url(../img/day-slider.png) no-repeat;
 }
 /*
 .vlg-one__people {
