@@ -40,10 +40,31 @@
 #vlgPeople {
  margin-right: 20px;
 }
+#vlgPeople button {
+ min-width: 250px;
+}
 #vlgDropdownDay {
  border: 0;
  width: 20px;
 }
+#vlgDay .dropdown-item {
+ display: flex;
+ flex-direction: column;
+ padding: 0;
+ margin: 0;
+}
+#vlgDay .dropdown-item label {
+ width: 100%;
+ text-align: center;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+ cursor: pointer;
+}
+#vlgDay .dropdown-item input[type="radio"] {
+ display: none;
+}
+
+
+/*
 .show>.btn-secondary.dropdown-toggle {
  background-color: #fff;
 }
@@ -51,9 +72,7 @@
  padding: 20px 10px;
 }
 #vlgDay .dropdown-item {
- /* display: flex; */
  padding: 10px 1rem;
- /* margin-right: 50px; */
 }
 #vlgDay .dropdown-item.active, #vlgDay .dropdown-item:active {
  background-color: #fff;
@@ -81,6 +100,7 @@
  letter-spacing:7px;
  color: rgba(0, 0, 0, 0.5);
 }
+*/
 /*
 .vlg-one__people {
  display: flex;

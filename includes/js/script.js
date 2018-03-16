@@ -5,8 +5,14 @@ $(document).ready(function() {
         $("#vlgListExc").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
         $("#vlgListExc").disableSelection();
     });
-    /* Слайдер кол-ва дней */
-    $( "#day-slider" ).slider({
+    /* кол-ва дней */
+    $('#vlgDay input:radio').change(function() {
+        $( "#vlgDropdownDay" ).val($('#vlgDay input:checked').val());
+    });
+
+
+    /*
+        $( "#day-slider" ).slider({
         range: "min",
         value: 1,
         min: 1,
@@ -15,7 +21,7 @@ $(document).ready(function() {
             $( "#vlgDropdownDay" ).val( ui.value );
         }
     });
-    $( "#vlgDropdownDay" ).val( $( "#day-slider" ).slider( "value" ) );
+    $( "#vlgDropdownDay" ).val( $( "#day-slider" ).slider( "value" ) );*/
 
 
 

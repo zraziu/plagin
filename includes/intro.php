@@ -29,12 +29,13 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div>
     </div>
     <div id="vlgDay" class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <input id="vlgDropdownDay" type="text" style="border:0;" ></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <input id="vlgDropdownDay" type="text" style="border:0;" min="1" max="5" value="1"></button>
         <div class="dropdown-menu">
-            <div class="dropdown-item">
-                <div id="day-slider"></div>
-            </div>
-            <div id="day-slider__n">1 2 3 4 5</div>
+            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="1"> 1</label></div>
+            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="2"> 2</label></div>
+            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="3"> 3</label></div>
+            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="4"> 4</label></div>
+            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="5"> 5</label></div>
         </div>
     </div>
 </div>
