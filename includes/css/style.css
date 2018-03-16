@@ -76,6 +76,11 @@
  cursor: pointer;
  background: url(../img/day-slider.png) no-repeat;
 }
+#day-slider__n {
+ margin:15px 0 0 17px;
+ letter-spacing:7px;
+ color: rgba(0, 0, 0, 0.5);
+}
 /*
 .vlg-one__people {
  display: flex;
@@ -112,7 +117,6 @@ i.vlg-one__p-icon {
 
 
 /* Второй блок */
-.vlg-two {}
 .vlg-two__list {
  display: flex;
  flex-direction: column;

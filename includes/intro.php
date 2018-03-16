@@ -34,15 +34,13 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
             <div class="dropdown-item">
                 <div id="day-slider"></div>
             </div>
-            <div style="margin:15px 0 0 17px;letter-spacing:7px;color: rgba(0, 0, 0, 0.5);">1 2 3 4 5</div>
+            <div id="day-slider__n">1 2 3 4 5</div>
         </div>
     </div>
 </div>
 
-<!-- btnDropdownDay #inputDays  vlg-two__delete vlg-two__move -->
 
 <h2 class="excursion-switch-title">ШАГ 2: Места, которые Вы хотите посетить</h2>
-<div class="vlg-two"></div>
 <div id="vlgListExc" class="vlg-two__list"></div> <!-- список -->
 <div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-help">
     <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
