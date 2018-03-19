@@ -43,14 +43,15 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
 <h2 class="excursion-switch-title">ШАГ 2: Места, которые Вы хотите посетить</h2>
 <div id="vlgListExc" class="vlg-two__list"></div> <!-- список -->
-<div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-help">
+<div class="vlg-two__add" data-toggle="modal" data-target=".modal-sm-exc">
     <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
 </div>
 
 <h2 class="excursion-switch-title">ШАГ 3: Условия проживания</h2>
-<div class="vlg-three">
-    <div>Отель</div>
+<div id="vlgHotel" class="btn-group btn-group-margin">
+    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <input id="vlgDropdownHotel" type="text" style="border:0;" value="нет"></button>
 </div>
+
 
 <h2 class="excursion-switch-title">ШАГ 4: Бронирование</h2>
 <div class="vlg-four">
@@ -61,7 +62,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
 
 <!-- Модальное Экскурсии -->
-<div id="vlgExcModal" class="modal fade modal-sm-help" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="vlgExcModal" class="modal fade modal-sm-exc" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="">
@@ -191,6 +192,65 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             endforeach;
                         ?>
                     </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- Модальное Проживание -->
+<div id="vlgHotelModal" class="modal fade modal-sm-hotel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <!-- Форма -->
+            <div class="tab-content vlg-modal">
+                <div class="vlg-catalog">
+                    <?
+                    $vlg = vlg_cat('hotel');
+
+                    $count = 0; // для id
+
+                    foreach ($vlg as $op):
+                        // цена
+                        $priceInfo = '';
+                        if ($op['pricePerPerson'] == 'per-person-by-age') {
+                            $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                        } else {
+                            $priceInfo = 'data-price="'.$op['prise'].'"';
+                        }
+
+                        ?>
+
+                        <div id="vlgHotel<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> style="order:<?=$op['rating']?>">
+                            <div class="vlg-catalog__photo">
+                                <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
+                                <div class="vlg-catalog__triangle"></div>
+                                <div class="vlg-catalog__title"><?=$op['name']?></div>
+                            </div>
+                            <div class="vlg-catalog__discription">
+                                <div class="vlg-catalog__text"><?=$op['description']?></div>
+                                <div class="vlg-catalog__footer">
+                                    <?
+                                    if ($op['urlPage']) {
+                                        echo '<a href="'.$op['urlPage'].'" target="_blank" class="vlg-catalog__link"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
+                                    } else {
+                                        echo '<div></div>';
+                                    }
+                                    ?>
+                                    <div class="vlg-add-exc"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <?
+                        $count++; // id
+                    endforeach;
+                    ?>
                 </div>
             </div>
 

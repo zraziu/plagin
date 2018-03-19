@@ -11,10 +11,7 @@ $(document).ready(function() {
     });
 
 
-    // счетчики экск
-    let vlgA = 0;
-    let vlgB = 0;
-
+    /* Выбор экскурсий */
     $("#vlgModal .vlg-add-exc, #vlgModal .vlg-add-musem").click(function () {
         var parentBlock = $(this).closest('.vlg-catalog__item');
 
@@ -35,7 +32,6 @@ $(document).ready(function() {
             countExc(parentBlock, 'plus');
         }
     });
-
     $('#vlgListExc').on('click', 'i.vlg-two__delete', function(){ // удаление блоков в списке
         var vlgListItem = $(this).closest('.vlg-two__item'); // нужный блок
         var vlgListItemId = $('#vlgModal #'+vlgListItem.attr("id").split('list')[0]); // нужный блок модал
@@ -52,7 +48,11 @@ $(document).ready(function() {
 
 
 
-    // функции 
+    // функции
+
+    // счетчики экск
+    let vlgA = 0;
+    let vlgB = 0;
     function countExc(block, operator) { // счетчик
         if (operator == 'plus') {
             if (block.is('[id ^= vlgEcx]')) {
