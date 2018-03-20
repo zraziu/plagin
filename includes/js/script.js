@@ -42,8 +42,26 @@ $(document).ready(function() {
         countExc(vlgListItemId, 'minus');
     });
 
+    /* Выбор отеля */
+    $('#vlgHotelModal .vlg-add-exc').click(function() {
+        var parentBlock = $(this).closest('.vlg-catalog__item'); // блок
+        // поставить отметку
+        if (parentBlock.is('.vlg-catalog__BlActive')) { // уже отмечен
+            // все сбросить
+            $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
+            $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
+            $('#vlgDropdownHotel').val(' без проживания');
+        } else {
+            $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
+            $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
+            $('#vlgDropdownHotel').val(' без проживания');
 
+            parentBlock.addClass('vlg-catalog__BlActive');
+            parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Отменить</span></i>');
+            $('#vlgDropdownHotel').val(parentBlock.find('.vlg-catalog__title').text());
+        }
 
+    });
 
 
 
