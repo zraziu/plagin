@@ -29,7 +29,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div>
     </div>
     <div id="vlgDay" class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <input id="vlgDropdownDay" type="text" style="border:0;" min="1" max="5" value="1"></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <span id="vlgDropdownDay">1</span></button>
         <div class="dropdown-menu">
             <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="1"> 1</label></div>
             <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="2"> 2</label></div>
@@ -49,7 +49,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
 <h2 class="excursion-switch-title">ШАГ 3: Условия проживания</h2>
 <div id="vlgHotel" class="btn-group btn-group-margin">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <input id="vlgDropdownHotel" type="text" style="border:0;" value="нет"></button>
+    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <span id="vlgDropdownHotel">без проживания</span></button>
 </div>
 
 
@@ -222,7 +222,6 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                         } else {
                             $priceInfo = 'data-price="'.$op['prise'].'"';
                         }
-
                         ?>
 
                         <div id="vlgHotel<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> style="order:<?=$op['rating']?>">
@@ -245,7 +244,6 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                                 </div>
                             </div>
                         </div>
-
 
                         <?
                         $count++; // id
