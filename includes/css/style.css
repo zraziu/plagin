@@ -65,78 +65,6 @@
 }
 
 
-/*
-.show>.btn-secondary.dropdown-toggle {
- background-color: #fff;
-}
-#vlgDay .dropdown-menu {
- padding: 20px 10px;
-}
-#vlgDay .dropdown-item {
- padding: 10px 1rem;
-}
-#vlgDay .dropdown-item.active, #vlgDay .dropdown-item:active {
- background-color: #fff;
-}
-#day-slider {
- width: 100%;
- position: relative;
-}
-#day-slider.ui-slider-range {
- height: 25px;
- background: aliceblue;
-}
-#day-slider .ui-slider-handle {
- height: 50px;
- width: 43px;
- margin-left: -1em;
- position: absolute;
- top: -22px;
- z-index: 3;
- cursor: pointer;
- background: url(../img/day-slider.png) no-repeat;
-}
-#day-slider__n {
- margin:15px 0 0 17px;
- letter-spacing:7px;
- color: rgba(0, 0, 0, 0.5);
-}
-*/
-/*
-.vlg-one__people {
- display: flex;
- flex-direction: row;
- justify-content: start;
- margin-bottom: 25px;
-}
-.vlg-one__p-item {
- width: 300px;
- padding: 21px 15px;
- margin: 0 25px 0 0;
- color: #777777;
- background: #fff;
- border: 3px solid #d2d2d4;
- border-radius: 4px;
- text-align: center;
- font-size: 17px;
-}
-i.vlg-one__p-icon {
- font-size: 60px;
-}
-.vlg-one__p-input {
- font-size: 30px;
-}
-.vlg-one__p-input input {
- border: none;
- text-align: center;
- font-size: 34px;
- color: #414141;
- width: 150px;
- font-weight: 700;
-}
-*/
-
-
 /* Второй блок */
 .vlg-two__list {
  display: flex;
@@ -275,15 +203,9 @@ i.vlg-one__p-icon {
 
 /* Третий блок */
 .vlg-three {}
-#vlgDropdownHotel {
- text-align: center;
-}
-
-
 
 
 /* Модальный блок */
-
 /* ТАБЫ */
 #myTab {
  position: relative;
