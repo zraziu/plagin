@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
     /* кол-ва дней */
     $('#vlgDay input:radio').change(function() {
-        $( "#vlgDropdownDay" ).val($('#vlgDay input:checked').val());
+        $( "#vlgDropdownDay" ).text($('#vlgDay input:checked').val());
     });
 
 
@@ -50,15 +50,15 @@ $(document).ready(function() {
             // все сбросить
             $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
             $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
-            $('#vlgDropdownHotel').val(' без проживания');
+            $('#vlgDropdownHotel').text(' без проживания');
         } else {
             $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
             $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
-            $('#vlgDropdownHotel').val(' без проживания');
+            $('#vlgDropdownHotel').text(' без проживания');
 
             parentBlock.addClass('vlg-catalog__BlActive');
             parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Отменить</span></i>');
-            $('#vlgDropdownHotel').val(parentBlock.find('.vlg-catalog__title').text());
+            $('#vlgDropdownHotel').text(parentBlock.find('.vlg-catalog__title').text());
         }
 
     });
