@@ -8,7 +8,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 ?>
 
 <h1>Калькулятор</h1>
-<h2 class="excursion-switch-title">ШАГ 1: Спланировать тур / Основные данные</h2>
+<h2 class="excursion-switch-title">ШАГ 1: Основные данные</h2>
 
 <div class="vlg-one">
     <div id="vlgPeople" class="btn-group btn-group-margin">
@@ -31,12 +31,15 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
     <div id="vlgDay" class="btn-group btn-group-margin">
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <span id="vlgDropdownDay">1</span></button>
         <div class="dropdown-menu">
-            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="1"> 1</label></div>
-            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="2"> 2</label></div>
-            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="3"> 3</label></div>
-            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="4"> 4</label></div>
-            <div class="dropdown-item"><label><input type="radio" name="vlgDay" value="5"> 5</label></div>
+            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1"> <label for="vlgDay1">1</label></div>
+            <div class="dropdown-item"><input id="vlgDay2" type="radio" name="vlgDay" value="2"> <label for="vlgDay2">2</label></div>
+            <div class="dropdown-item"><input id="vlgDay3" type="radio" name="vlgDay" value="3"> <label for="vlgDay3">3</label></div>
+            <div class="dropdown-item"><input id="vlgDay4" type="radio" name="vlgDay" value="4"> <label for="vlgDay4">4</label></div>
+            <div class="dropdown-item"><input id="vlgDay5" type="radio" name="vlgDay" value="5"> <label for="vlgDay5">5</label></div>
         </div>
+    </div>
+    <div id="vlgHotel" class="btn-group btn-group-margin">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <span id="vlgDropdownHotel">без проживания</span></button>
     </div>
 </div>
 
@@ -47,10 +50,141 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
     <i class="fa fa-plus fa-lg fa-green"></i> Добавить экскурсию
 </div>
 
-<h2 class="excursion-switch-title">ШАГ 3: Условия проживания</h2>
-<div id="vlgHotel" class="btn-group btn-group-margin">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <span id="vlgDropdownHotel">без проживания</span></button>
+<h2 class="excursion-switch-title">ШАГ 3: Дополнительные условия</h2>
+<div class="vlg-three">
+    <div id="vlgEatDay1" class="vlg-three__item">
+        <div class="vlg-three_info"><div class="vlg-two__time">1 день</div>
+        </div><div class="vlg-three__title">
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Завтрак</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Обед</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Ужин</b></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="vlgEatDay2" class="vlg-three__item">
+        <div class="vlg-three_info"><div class="vlg-two__time">2 день</div>
+        </div><div class="vlg-three__title">
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Завтрак</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Обед</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Ужин</b></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="vlgEatDay3" class="vlg-three__item">
+        <div class="vlg-three_info"><div class="vlg-two__time">3 день</div>
+        </div><div class="vlg-three__title">
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Завтрак</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Обед</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Ужин</b></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="vlgEatDay4" class="vlg-three__item">
+        <div class="vlg-three_info"><div class="vlg-two__time">4 день</div>
+        </div><div class="vlg-three__title">
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Завтрак</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Обед</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Ужин</b></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="vlgEatDay5" class="vlg-three__item">
+        <div class="vlg-three_info"><div class="vlg-two__time">5 день</div>
+        </div><div class="vlg-three__title">
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Завтрак</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Обед</b></span>
+                </label>
+            </div>
+            <div class="vlg-three__input">
+                <label class="custom-control custom-checkbox">
+                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><b>Ужин</b></span>
+                </label>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 
 <h2 class="excursion-switch-title">ШАГ 4: Бронирование</h2>

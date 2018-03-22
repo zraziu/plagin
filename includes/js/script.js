@@ -10,7 +10,26 @@ $(document).ready(function() {
         $( "#vlgDropdownDay" ).text($('#vlgDay input:checked').val());
     });
 
+    /* Выбор отеля */
+    $('#vlgHotelModal .vlg-add-exc').click(function() {
+        var parentBlock = $(this).closest('.vlg-catalog__item'); // блок
+        // поставить отметку
+        if (parentBlock.is('.vlg-catalog__BlActive')) { // уже отмечен
+            // все сбросить
+            $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
+            $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
+            $('#vlgDropdownHotel').text(' без проживания');
+        } else {
+            $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
+            $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
+            $('#vlgDropdownHotel').text(' без проживания');
 
+            parentBlock.addClass('vlg-catalog__BlActive');
+            parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Отменить</span></i>');
+            $('#vlgDropdownHotel').text(parentBlock.find('.vlg-catalog__title').text());
+        }
+
+    });
     /* Выбор экскурсий */
     $("#vlgModal .vlg-add-exc, #vlgModal .vlg-add-musem").click(function () {
         var parentBlock = $(this).closest('.vlg-catalog__item');
@@ -42,29 +61,28 @@ $(document).ready(function() {
         countExc(vlgListItemId, 'minus');
     });
 
-    /* Выбор отеля */
-    $('#vlgHotelModal .vlg-add-exc').click(function() {
-        var parentBlock = $(this).closest('.vlg-catalog__item'); // блок
-        // поставить отметку
-        if (parentBlock.is('.vlg-catalog__BlActive')) { // уже отмечен
-            // все сбросить
-            $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
-            $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
-            $('#vlgDropdownHotel').text(' без проживания');
-        } else {
-            $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
-            $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
-            $('#vlgDropdownHotel').text(' без проживания');
+    /* Выбор питания */
+    // выбор дней - открыть кол-во блоков
+    $('#vlgDay').on('click', '.dropdown-item label', function(){
+        let vlgDayN = $(this).text();
 
-            parentBlock.addClass('vlg-catalog__BlActive');
-            parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Отменить</span></i>');
-            $('#vlgDropdownHotel').text(parentBlock.find('.vlg-catalog__title').text());
+        if (vlgDayN >= 2) { // Блок проживание
+            $('#vlgHotel').css('display', 'flex');
+        } else {
+            $('#vlgHotel').css('display', 'none');
+        }
+
+        /* Питание */
+        // сбросить все
+        $('[id ^= vlgEatDay]').css('display', 'none');
+
+        let i = 1;
+        while (i <= vlgDayN) {
+            $('#vlgEatDay'+i).css('display', 'flex');
+            i++;
         }
 
     });
-
-
-
 
     // функции
 
@@ -92,6 +110,12 @@ $(document).ready(function() {
 
 
 
-
+    /* Отодвигаем блок помощь */
+    $('#vlgExcModal, #vlgHotelModal').on('show.bs.modal', function (e) {
+        $('#sh_button').css('right', '20px');
+    });
+    $('#vlgExcModal, #vlgHotelModal').on('hide.bs.modal', function (e) {
+        $('#sh_button').css('right', '0');
+    });
 
 });
