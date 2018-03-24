@@ -51,27 +51,38 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 </div>
 
 <h2 class="excursion-switch-title">ШАГ 3: Дополнительные условия</h2>
-<div class="vlg-three">
-    <div id="vlgEatDay1" class="vlg-three__item">
+
+<?php
+$vlg = vlg_get(4);
+$priceEat = 'data-eat="'.$vlg['prise'].';';
+
+$vlg = vlg_get(5);
+$priceEat = $priceEat.$vlg['prise'].';';
+
+$vlg = vlg_get(6);
+$priceEat = $priceEat.$vlg['prise'].'"';
+?>
+<div id="vlgEat" class="vlg-three" <?=$priceEat?>>
+    <div id="vlgEatDay1" class="vlg-three__item vlg-eat__BlActive">
         <div class="vlg-three_info"><div class="vlg-two__time">1 день</div>
         </div><div class="vlg-three__title">
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Завтрак</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Обед</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Ужин</b></span>
                 </label>
@@ -83,21 +94,21 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div><div class="vlg-three__title">
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Завтрак</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Обед</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Ужин</b></span>
                 </label>
@@ -109,21 +120,21 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div><div class="vlg-three__title">
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Завтрак</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Обед</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Ужин</b></span>
                 </label>
@@ -135,21 +146,21 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div><div class="vlg-three__title">
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Завтрак</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Обед</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Ужин</b></span>
                 </label>
@@ -161,21 +172,21 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div><div class="vlg-three__title">
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatBreakfast" type="checkbox" class="custom-control-input" value="Завтрак в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Завтрак</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatLunch" type="checkbox" class="custom-control-input" value="Обед в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Обед</b></span>
                 </label>
             </div>
             <div class="vlg-three__input">
                 <label class="custom-control custom-checkbox">
-                    <input id="eatDinner" type="checkbox" class="custom-control-input" value="Ужин в кафе города">
+                    <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description"><b>Ужин</b></span>
                 </label>

@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     let vlgExc = 0; // цена экскурсий
     let vlgHotel = 0; // цена на отель
-    let vlgEat = 0; // цена на пиптание
+    let vlgEat = 0; // цена на питание
 
 
     /* кол-во человек */
@@ -100,10 +100,12 @@ $(document).ready(function() {
         /* Питание */
         // сбросить все
         $('[id ^= vlgEatDay]').css('display', 'none');
+        $('[id ^= vlgEatDay]').removeClass('vlg-eat__BlActive');
 
         let eati = 1;
         while (eati <= vlgDayN) {
             $('#vlgEatDay'+eati).css('display', 'flex');
+            $('#vlgEatDay'+eati).addClass('vlg-eat__BlActive');
             eati++;
         }
 
@@ -113,6 +115,7 @@ $(document).ready(function() {
     $('#vlgBtnPrise').click(function() {
         vlgExc = 0;
         vlgHotel = 0;
+        vlgEat = 0;
 
         /* экскурсии */
         function calcExc () {
@@ -141,13 +144,16 @@ $(document).ready(function() {
 
         /* Питание */
         function calcEat () {
-            if ($("#vlgHotelModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
-                $("#vlgHotelModal .vlg-catalog__BlActive").each(function(){
-                    vlgEat = vlgEat + $(this).data('price') * calcInputPeople;
-                })
-            }
-        }
+            vlgEatP = $('#vlgEat').data('eat').split(';');
+            $("#vlgEat .vlg-eat__BlActive").each(function(){  // кол-во дней
+                // кол-во завтр отмеч * завтр цена * кол-во чел
+                let vlgEat1 = $('#vlgEat input.eat-breakfast:checked').length * vlgEatP[0] * calcInputPeople;
+                let vlgEat2 = $('#vlgEat input.eat-lunch:checked').length * vlgEatP[1] * calcInputPeople;
+                let vlgEat3 = $('#vlgEat input.eat-dinner:checked').length * vlgEatP[2] * calcInputPeople;
+                vlgEat = vlgEat1 + vlgEat2 + vlgEat3; // итого
+            })
 
+        }
 
         /* Комиссия */
         function calcCommission() {
@@ -175,6 +181,7 @@ $(document).ready(function() {
         calcExc();
         calcHotel();
         calcEat();
+        calcCommission();
         console.log(vlgEat);
     });
 
