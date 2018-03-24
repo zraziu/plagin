@@ -25,7 +25,7 @@
         global $wpdb;
         $table = $wpdb->prefix.'vlg';
 
-        $t = "SELECT * FROM $table WHERE id='%d'"; //id, name, prise, category
+        $t = "SELECT * FROM $table WHERE id='%d'"; //было - id, name, prise, category
         $query = $wpdb->prepare($t, $id);
         return $wpdb->get_row($query, ARRAY_A);
     }
