@@ -10,6 +10,8 @@ $(document).ready(function() {
     let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
 
     let vlgExc = 0; // цена экскурсий
+    let vlgHotel = 0; // цена на отель
+    let vlgEat = 0; // цена на пиптание
 
 
     /* кол-во человек */
@@ -110,8 +112,7 @@ $(document).ready(function() {
     /* Расчет стоимости */
     $('#vlgBtnPrise').click(function() {
         vlgExc = 0;
-        calcInputPeople = inputPeople + inputPeople18 + inputPeople16 + inputPeopleFree; /* Кол-во человек */
-
+        vlgHotel = 0;
 
         /* экскурсии */
         function calcExc () {
@@ -122,20 +123,32 @@ $(document).ready(function() {
                     } else if ($(this).data('person') == 'per-group') { // на группу
                         vlgExc = vlgExc + $(this).data('price');
                     } else {                                            // на чел по возр
-                        vlgExc = vlgExc + $(this).data('price');
+                        let p = $(this).data('price').split(';');
+                        vlgExc = vlgExc + (p[0] * inputPeople16) + (p[1] * inputPeople18) + (p[2] * inputPeople) + (p[2] * inputPeopleFree);
                     }
-
                 })
-
             }
         }
-        calcExc();
 
         /* Проживание */
-    
+        function calcHotel () {
+            if ($("#vlgHotelModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
+                $("#vlgHotelModal .vlg-catalog__BlActive").each(function(){
+                        vlgHotel = vlgHotel + $(this).data('price') * calcInputPeople;
+                })
+            }
+        }
+
         /* Питание */
-    
-    
+        function calcEat () {
+            if ($("#vlgHotelModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
+                $("#vlgHotelModal .vlg-catalog__BlActive").each(function(){
+                    vlgEat = vlgEat + $(this).data('price') * calcInputPeople;
+                })
+            }
+        }
+
+
         /* Комиссия */
         function calcCommission() {
             var commis;
@@ -159,7 +172,10 @@ $(document).ready(function() {
             return (commis > 20000) ? 20000 : commis;  // не больше 20000
         }
 
-        console.log(vlgExc);
+        calcExc();
+        calcHotel();
+        calcEat();
+        console.log(vlgEat);
     });
 
 
