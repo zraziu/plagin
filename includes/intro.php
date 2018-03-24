@@ -189,6 +189,12 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 
 <h2 class="excursion-switch-title">ШАГ 4: Бронирование</h2>
 <div class="vlg-four">
+    <?php
+    $vlg = vlg_get(1);
+    $priceCommis = 'data-commis="'.$vlg['prise'].';'.$vlg['prise0'].';'.$vlg['prise16'].';'.$vlg['prise18'].'"';
+    ?>
+
+<button id="vlgBtnPrise" <?=$priceCommis?>>Кнопка рассчитать стоимость</button>
 
 </div>
 
@@ -236,10 +242,12 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             } else {
                                 $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
                             }
+                            // цена на чел или группу
+                            $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
 
                             ?>
 
-                            <div id="vlgEcx<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?>>
+                            <div id="vlgEcx<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?>>
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>
@@ -294,9 +302,10 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
                             } else {
                                 $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
                             }
-
+                            // цена на чел или группу
+                            $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
                             ?>
-                            <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?>>
+                            <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?>>
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>

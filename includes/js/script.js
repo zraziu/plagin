@@ -1,13 +1,34 @@
 /***** FRONTEND *****/
 $(document).ready(function() {
-    /* Перетаскивание блоков */
-    $(function () {
-        $("#vlgListExc").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
-        $("#vlgListExc").disableSelection();
+    let inputPeople = 0;
+    let inputPeople16 = 40;
+    let inputPeople18 = 0;
+    let inputPeopleFree = 4;
+    let calcInputPeople = 0;
+    let vlgDay = 1;
+    let vlgHotelPrise = 0;
+    let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
+
+    let vlgExc = 0; // цена экскурсий
+
+
+    /* кол-во человек */
+    $('#vlgPeople input').change(function() {
+        inputPeople = $.isNumeric($("input#inputPeople").val()) ? +$("input#inputPeople").val() : 0;
+        inputPeople16 = $.isNumeric($("input#inputPeople16").val()) ? +$("input#inputPeople16").val() : 0;
+        inputPeople18 = $.isNumeric($("input#inputPeople18").val()) ? +$("input#inputPeople18").val() : 0;
+        inputPeopleFree = $.isNumeric($("input#inputPeopleFree").val()) ? +$("input#inputPeopleFree").val() : 0;
+        calcInputPeople = inputPeople + inputPeople18 + inputPeople16 + inputPeopleFree; /* Кол-во человек */
+
+        $("#inputPeopleFree").attr( "max", (calcInputPeople != 0) ? calcInputPeople-1 : 0 ); // Макс бесплатных чел
+        $("span.btnDropdownPeople").text(Math.round(calcInputPeople - inputPeopleFree)); // итого человек на кноп
+        $("span.btnDropdownPeopleFree").text(' + ' + Math.round(inputPeopleFree)); // итого беспатно на кноп
     });
+
     /* кол-ва дней */
     $('#vlgDay input:radio').change(function() {
-        $( "#vlgDropdownDay" ).text($('#vlgDay input:checked').val());
+        vlgDay = $('#vlgDay input:checked').val();
+        $( "#vlgDropdownDay" ).text(vlgDay);
     });
 
     /* Выбор отеля */
@@ -19,6 +40,7 @@ $(document).ready(function() {
             $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
             $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
             $('#vlgDropdownHotel').text(' без проживания');
+            vlgHotelPrise = 0; // цена проживания
         } else {
             $('#vlgHotelModal .vlg-catalog__item').removeClass('vlg-catalog__BlActive');
             $('#vlgHotelModal i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Выбрать</span></i>');
@@ -27,9 +49,11 @@ $(document).ready(function() {
             parentBlock.addClass('vlg-catalog__BlActive');
             parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Отменить</span></i>');
             $('#vlgDropdownHotel').text(parentBlock.find('.vlg-catalog__title').text());
+            vlgHotelPrise = parentBlock.data("price"); // цена проживания
         }
 
     });
+
     /* Выбор экскурсий */
     $("#vlgModal .vlg-add-exc, #vlgModal .vlg-add-musem").click(function () {
         var parentBlock = $(this).closest('.vlg-catalog__item');
@@ -62,7 +86,6 @@ $(document).ready(function() {
     });
 
     /* Выбор питания */
-    // выбор дней - открыть кол-во блоков
     $('#vlgDay').on('click', '.dropdown-item label', function(){
         let vlgDayN = $(this).text();
 
@@ -76,16 +99,71 @@ $(document).ready(function() {
         // сбросить все
         $('[id ^= vlgEatDay]').css('display', 'none');
 
-        let i = 1;
-        while (i <= vlgDayN) {
-            $('#vlgEatDay'+i).css('display', 'flex');
-            i++;
+        let eati = 1;
+        while (eati <= vlgDayN) {
+            $('#vlgEatDay'+eati).css('display', 'flex');
+            eati++;
         }
 
     });
 
-    // функции
+    /* Расчет стоимости */
+    $('#vlgBtnPrise').click(function() {
+        vlgExc = 0;
+        calcInputPeople = inputPeople + inputPeople18 + inputPeople16 + inputPeopleFree; /* Кол-во человек */
 
+
+        /* экскурсии */
+        function calcExc () {
+            if ($("#vlgExcModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
+                $("#vlgExcModal .vlg-catalog__BlActive").each(function(){
+                    if ($(this).data('person') == 'per-person') {       // на любого чел
+                        vlgExc = vlgExc + $(this).data('price') * calcInputPeople;
+                    } else if ($(this).data('person') == 'per-group') { // на группу
+                        vlgExc = vlgExc + $(this).data('price');
+                    } else {                                            // на чел по возр
+                        vlgExc = vlgExc + $(this).data('price');
+                    }
+
+                })
+
+            }
+        }
+        calcExc();
+
+        /* Проживание */
+    
+        /* Питание */
+    
+    
+        /* Комиссия */
+        function calcCommission() {
+            var commis;
+            var people = calcInputPeople; // - inputPeopleFree
+            var chk = $('#accordion').find('input[type=checkbox]:checked').length - 4;
+    
+            var commisP = 0;
+            var ii = 1;
+            while (ii <= chk) {
+                ii++;
+                commisP += 20;
+            }
+    
+            if (people<30) {
+                commis = (excCommission[0]+commisP*chk)*people;
+            } else if (people<40) {
+                commis = (excCommission[2]+commisP*chk)*people;
+            } else {
+                commis = (excCommission[3]+commisP*chk)*people; // больше 41 чел
+            }
+            return (commis > 20000) ? 20000 : commis;  // не больше 20000
+        }
+
+        console.log(vlgExc);
+    });
+
+
+    // функции
     // счетчики экск
     let vlgA = 0;
     let vlgB = 0;
@@ -108,6 +186,11 @@ $(document).ready(function() {
         $('#vlgExcModal #vlgSelectMusem').text(vlgB);
     }
 
+    /* Перетаскивание блоков */
+    $(function () {
+        $("#vlgListExc").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
+        $("#vlgListExc").disableSelection();
+    });
 
 
     /* Отодвигаем блок помощь */
