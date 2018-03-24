@@ -42,13 +42,13 @@ if(!empty($_POST) && is_admin()) {
 <? endif; ?>
 
 <form method="post">
-    До 10 чел: <input type="text" name="prise1" value="<?=$prise1?>" />
+    До 10 чел: <input type="text" name="prise1" value="<?=$prise1?>" /> руб
     <br><br>
-    До 20 чел: <input type="text" name="prise2" value="<?=$prise2?>" />
+    До 20 чел: <input type="text" name="prise2" value="<?=$prise2?>" /> руб
     <br><br>
-    До 30 чел: <input type="text" name="prise3" value="<?=$prise3?>" />
+    До 30 чел: <input type="text" name="prise3" value="<?=$prise3?>" /> руб
     <br><br>
-    До 40 чел: <input type="text" name="prise4" value="<?=$prise4?>" />
+    До 40 чел: <input type="text" name="prise4" value="<?=$prise4?>" /> руб
     <br><br>
     <input type="hidden" name="pricePerPerson" value="per-person">
     <input type="hidden" name="category" value="commission">
