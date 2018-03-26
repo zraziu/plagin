@@ -44,11 +44,11 @@ if(!empty($_POST) && is_admin()) {
 <form method="post">
     До 10 чел: <input type="text" name="prise1" value="<?=$prise1?>" /> руб
     <br><br>
-    До 20 чел: <input type="text" name="prise2" value="<?=$prise2?>" /> руб
+    До 30 чел: <input type="text" name="prise2" value="<?=$prise2?>" /> руб
     <br><br>
-    До 30 чел: <input type="text" name="prise3" value="<?=$prise3?>" /> руб
+    До 40 чел: <input type="text" name="prise3" value="<?=$prise3?>" /> руб
     <br><br>
-    До 40 чел: <input type="text" name="prise4" value="<?=$prise4?>" /> руб
+    Более 40 чел: <input type="text" name="prise4" value="<?=$prise4?>" /> руб
     <br><br>
     <input type="hidden" name="pricePerPerson" value="per-person">
     <input type="hidden" name="category" value="commission">
