@@ -7,11 +7,12 @@ $(document).ready(function() {
     let calcInputPeople = 0;
     let vlgDay = 1;
     let vlgHotelPrise = 0;
-    let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
+    let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив [350;300;250;135]
 
     let vlgExc = 0; // цена экскурсий
     let vlgHotel = 0; // цена на отель
     let vlgEat = 0; // цена на питание
+    let commis = 0;
 
 
     /* кол-во человек */
@@ -113,12 +114,10 @@ $(document).ready(function() {
 
     /* Расчет стоимости */
     $('#vlgBtnPrise').click(function() {
-        vlgExc = 0;
-        vlgHotel = 0;
-        vlgEat = 0;
 
         /* экскурсии */
         function calcExc () {
+            vlgExc = 0;
             if ($("#vlgExcModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
                 $("#vlgExcModal .vlg-catalog__BlActive").each(function(){
                     if ($(this).data('person') == 'per-person') {       // на любого чел
@@ -135,6 +134,7 @@ $(document).ready(function() {
 
         /* Проживание */
         function calcHotel () {
+            vlgHotel = 0;
             if ($("#vlgHotelModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
                 $("#vlgHotelModal .vlg-catalog__BlActive").each(function(){
                         vlgHotel = vlgHotel + $(this).data('price') * calcInputPeople;
@@ -144,6 +144,7 @@ $(document).ready(function() {
 
         /* Питание */
         function calcEat () {
+            vlgEat = 0;
             vlgEatP = $('#vlgEat').data('eat').split(';');
             $("#vlgEat .vlg-eat__BlActive").each(function(){  // кол-во дней
                 // кол-во завтр отмеч * завтр цена * кол-во чел
@@ -157,32 +158,37 @@ $(document).ready(function() {
 
         /* Комиссия */
         function calcCommission() {
-            var commis;
-            var people = calcInputPeople; // - inputPeopleFree
-            var chk = $('#accordion').find('input[type=checkbox]:checked').length - 4;
+            commis = 0;
+
+            let chk = $("#vlgExcModal .vlg-catalog__BlActive").length;
+            chk = (chk > 4) ? chk-4 : 0; // от 4 экск
+            //console.log(chk + '-экс; ');
     
-            var commisP = 0;
-            var ii = 1;
+            let commisP = 0;
+            let ii = 1;
             while (ii <= chk) {
-                ii++;
                 commisP += 20;
+                ii++;
             }
-    
-            if (people<30) {
-                commis = (excCommission[0]+commisP*chk)*people;
-            } else if (people<40) {
-                commis = (excCommission[2]+commisP*chk)*people;
+            //console.log(commisP + '-надбавка; ');
+            //console.log(calcInputPeople + '-чел; ');
+            if (calcInputPeople<10) {
+                commis = (+excCommission[0]+commisP*chk)*calcInputPeople;
+            } else if (calcInputPeople<30) {
+                commis = (+excCommission[1]+commisP*chk)*calcInputPeople;
+            } else if (calcInputPeople<40) {
+                commis = (+excCommission[2]+commisP*chk)*calcInputPeople;
             } else {
-                commis = (excCommission[3]+commisP*chk)*people; // больше 41 чел
+                commis = (+excCommission[3]+commisP*chk)*calcInputPeople; // больше 41 чел
             }
-            return (commis > 20000) ? 20000 : commis;  // не больше 20000
+            commis = (commis > 20000) ? 20000 : commis;  // не больше 20000
         }
 
         calcExc();
         calcHotel();
         calcEat();
         calcCommission();
-        console.log(vlgEat);
+        console.log(commis + '-итог; ');
     });
 
 
