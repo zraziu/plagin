@@ -59,7 +59,7 @@ $(document).ready(function() {
 
     /* Выбор экскурсий */
     $("#vlgModal .vlg-add-exc, #vlgModal .vlg-add-musem").click(function () {
-        var parentBlock = $(this).closest('.vlg-catalog__item');
+        let parentBlock = $(this).closest('.vlg-catalog__item');
 
         if (parentBlock.is('.vlg-catalog__BlActive')) { // удаление в модал
             parentBlock.removeClass('vlg-catalog__BlActive');
@@ -72,15 +72,18 @@ $(document).ready(function() {
             parentBlock.addClass('vlg-catalog__BlActive'); // добавить стиль
             parentBlock.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Удалить</span></i>');
             // добавить в список строку
-            var vlgListExc = '<div id="'+ parentBlock.attr('id') +'list" class="vlg-two__item '+ parentBlock.attr('id') +'"><div class="vlg-two_info"><div class="vlg-two__time">'+ parentBlock.find('.vlg-catalog__hours span').text() +'</div><div class="vlg-two__bus">Автобус</div></div><div class="vlg-two_title">'+ parentBlock.find('.vlg-catalog__title').text() +'<div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div></div>';
+            let vlgListExc = '<div id="'+ parentBlock.attr('id') +'list" class="vlg-two__item '+ parentBlock.attr('id') +'"><div class="vlg-two_info"><div class="vlg-two__time">'+ parentBlock.find('.vlg-catalog__hours span').text() +'</div><div class="vlg-two__bus">Автобус</div></div><div class="vlg-two_title">'+ parentBlock.find('.vlg-catalog__title').text() +'<div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div></div>';
             $('#vlgListExc').append(vlgListExc);
             // счетчик
             countExc(parentBlock, 'plus');
         }
+
+        // расчет часов автобуса
+        countBus();
     });
     $('#vlgListExc').on('click', 'i.vlg-two__delete', function(){ // удаление блоков в списке
-        var vlgListItem = $(this).closest('.vlg-two__item'); // нужный блок
-        var vlgListItemId = $('#vlgModal #'+vlgListItem.attr("id").split('list')[0]); // нужный блок модал
+        let vlgListItem = $(this).closest('.vlg-two__item'); // нужный блок
+        let vlgListItemId = $('#vlgModal #'+vlgListItem.attr("id").split('list')[0]); // нужный блок модал
         vlgListItem.remove(); // удалить в списке
         vlgListItemId.removeClass('vlg-catalog__BlActive'); // удалить в модальном
         vlgListItemId.find('i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i>');
@@ -112,10 +115,15 @@ $(document).ready(function() {
 
     });
 
+    /* Расчет часов автобуса */
+    // экскурсия = часов * кол-во
+    //
+
+
     /* Расчет стоимости */
     $('#vlgBtnPrise').click(function() {
 
-        /* экскурсии */
+        /* Экскурсии */
         function calcExc () {
             vlgExc = 0;
             if ($("#vlgExcModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
@@ -184,6 +192,9 @@ $(document).ready(function() {
             commis = (commis > 20000) ? 20000 : commis;  // не больше 20000
         }
 
+        /* Автобус */
+        // кол-во часов
+
         calcExc();
         calcHotel();
         calcEat();
@@ -213,6 +224,38 @@ $(document).ready(function() {
 
         $('#vlgExcModal #vlgSelectExc').text(vlgA);
         $('#vlgExcModal #vlgSelectMusem').text(vlgB);
+    }
+
+    /* Счтаем часы автобуса */
+    function countBus(){
+        let busH = 0;
+        let busM = 0;
+        // собираем экскурсии
+        $('#vlgListExc .vlg-two__item').each(function() {
+            // проверяем переключатель авто-пешком
+            if ($(this).find('.vlg-two__bus')) { // поменять vlg-two__bus на флаг переключателя
+                // обрезаем
+                let busHI = $(this).find('.vlg-two__time').text().split('ч')[0];
+                let busMI = $(this).find('.vlg-two__time').text().slice(-3, -1);
+
+                // минуты в часы
+                if (busMI >= 60) {
+                    let mins = busMI % 60;
+                    let hours = (busMI - mins) / 60;
+
+                    if (mins < 10) mins = '0' + mins;
+
+                    busHI = busHI + hours;
+                    busMI = mins;
+                }
+
+                // прибавляем
+                busH += busHI;
+                busM += busMI;
+
+            }
+        });
+        console.log(busH + ':' + busM);
     }
 
     /* Перетаскивание блоков */
