@@ -28,12 +28,12 @@
  flex-direction: row;
  flex-wrap: wrap;
 }
-.vlg-one .dropdown-toggle, .vlg-one .dropdown-menu, #vlgHotel .dropdown-toggle{
+button.dropdown-toggle, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu {
  border: 1px solid #33BBD4;
  border-radius: .3rem;
  cursor: pointer;
 }
-.vlg-one .dropdown-toggle:hover, .vlg-one .dropdown-menu, #vlgHotel .dropdown-toggle:hover {
+button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu {
  background-color: #fff;
  -webkit-box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
  box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
@@ -192,8 +192,6 @@
  transition: all .2s ease-in-out;
 }
 .vlg-two__add:hover {
- background: #00d124;
- color: #fff;
  -webkit-box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
  box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.1);
  z-index: 2;
@@ -203,18 +201,16 @@
  margin-top: 5px;
  transition: all .2s ease-in-out;
 }
-.vlg-two__add:hover i {
- color: #fff;
-}
 
 
 
 /* Третий блок */
-.vlg-three {
+.vlg-three__list {
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
  justify-content: space-between;
+ margin-bottom: 15px;
 }
 .vlg-three__item {
  display: none;
