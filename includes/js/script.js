@@ -234,25 +234,20 @@ $(document).ready(function() {
         $('#vlgListExc .vlg-two__item').each(function() {
             // проверяем переключатель авто-пешком
             if ($(this).find('.vlg-two__bus')) { // поменять vlg-two__bus на флаг переключателя
-                // обрезаем
-                let busHI = $(this).find('.vlg-two__time').text().split('ч')[0];
-                let busMI = $(this).find('.vlg-two__time').text().slice(-3, -1);
+                // обрезаем + собираем
+                busH = + $(this).find('.vlg-two__time').text().split('ч')[0] + busH;
+                busM = + $(this).find('.vlg-two__time').text().slice(-3, -1) + busM;
+            }
+            // минуты в часы
+            if (busM >= 60) {
+                let mins = busM % 60;
+                let hours = (busM - mins) / 60;
 
-                // минуты в часы
-                if (busMI >= 60) {
-                    let mins = busMI % 60;
-                    let hours = (busMI - mins) / 60;
+                if (mins = 0) mins = '';
+                if (mins < 10) mins = '0' + mins;
 
-                    if (mins < 10) mins = '0' + mins;
-
-                    busHI = busHI + hours;
-                    busMI = mins;
-                }
-
-                // прибавляем
-                busH += busHI;
-                busM += busMI;
-
+                busH = busH + hours;
+                busM = mins;
             }
         });
         console.log(busH + ':' + busM);
