@@ -30,8 +30,26 @@ $(document).ready(function() {
 
     /* кол-ва дней */
     $('#vlgDay input:radio').change(function() {
-        vlgDay = $('#vlgDay input:checked').val();
+        vlgDay = $('#vlgDay input:checked').val(); // кол-во
         $( "#vlgDropdownDay" ).text(vlgDay);
+
+        /* Проживание */
+        if (vlgDay >= 2) {
+            $('#vlgHotel').css('display', 'flex');
+        } else {
+            $('#vlgHotel').css('display', 'none');
+        }
+
+        /* Питание */
+        $('[id ^= vlgEatDay]').css('display', 'none');
+        $('[id ^= vlgEatDay]').removeClass('vlg-eat__BlActive');
+
+        let eati = 1;
+        while (eati <= vlgDay) {
+            $('#vlgEatDay'+eati).css('display', 'flex');
+            $('#vlgEatDay'+eati).addClass('vlg-eat__BlActive');
+            eati++;
+        }
     });
 
     /* Выбор отеля */
@@ -78,8 +96,7 @@ $(document).ready(function() {
             countExc(parentBlock, 'plus');
         }
 
-        // расчет часов автобуса
-        countBus();
+        countBus();// пересчет автобуса
     });
     $('#vlgListExc').on('click', 'i.vlg-two__delete', function(){ // удаление блоков в списке
         let vlgListItem = $(this).closest('.vlg-two__item'); // нужный блок
@@ -89,36 +106,13 @@ $(document).ready(function() {
         vlgListItemId.find('i.fa-add-exc').replaceWith('<i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i>');
         // счетчик
         countExc(vlgListItemId, 'minus');
+        countBus();// пересчет автобуса
     });
 
     /* Выбор питания */
-    $('#vlgDay').on('click', '.dropdown-item label', function(){
-        let vlgDayN = $(this).text();
-
-        if (vlgDayN >= 2) { // Блок проживание
-            $('#vlgHotel').css('display', 'flex');
-        } else {
-            $('#vlgHotel').css('display', 'none');
-        }
-
-        /* Питание */
-        // сбросить все
-        $('[id ^= vlgEatDay]').css('display', 'none');
-        $('[id ^= vlgEatDay]').removeClass('vlg-eat__BlActive');
-
-        let eati = 1;
-        while (eati <= vlgDayN) {
-            $('#vlgEatDay'+eati).css('display', 'flex');
-            $('#vlgEatDay'+eati).addClass('vlg-eat__BlActive');
-            eati++;
-        }
-
+    $('#vlgEat input').change(function(){
+        countBus();// пересчет автобуса
     });
-
-    /* Расчет часов автобуса */
-    // экскурсия = часов * кол-во
-    //
-
 
     /* Расчет стоимости */
     $('#vlgBtnPrise').click(function() {
@@ -160,8 +154,7 @@ $(document).ready(function() {
                 let vlgEat2 = $('#vlgEat input.eat-lunch:checked').length * vlgEatP[1] * calcInputPeople;
                 let vlgEat3 = $('#vlgEat input.eat-dinner:checked').length * vlgEatP[2] * calcInputPeople;
                 vlgEat = vlgEat1 + vlgEat2 + vlgEat3; // итого
-            })
-
+            });
         }
 
         /* Комиссия */
@@ -191,9 +184,6 @@ $(document).ready(function() {
             }
             commis = (commis > 20000) ? 20000 : commis;  // не больше 20000
         }
-
-        /* Автобус */
-        // кол-во часов
 
         calcExc();
         calcHotel();
@@ -234,23 +224,34 @@ $(document).ready(function() {
         $('#vlgListExc .vlg-two__item').each(function() {
             // проверяем переключатель авто-пешком
             if ($(this).find('.vlg-two__bus')) { // поменять vlg-two__bus на флаг переключателя
-                // обрезаем + собираем
+                // обрезаем + складываем
                 busH = + $(this).find('.vlg-two__time').text().split('ч')[0] + busH;
                 busM = + $(this).find('.vlg-two__time').text().slice(-3, -1) + busM;
             }
-            // минуты в часы
-            if (busM >= 60) {
-                let mins = busM % 60;
-                let hours = (busM - mins) / 60;
-
-                if (mins = 0) mins = '';
-                if (mins < 10) mins = '0' + mins;
-
-                busH = busH + hours;
-                busM = mins;
-            }
         });
-        console.log(busH + ':' + busM);
+        // минуты в часы
+        if (busM >= 60) {
+            let mins = busM % 60;
+            let hours = (busM - mins) / 60;
+            /*  // добавляем 0 и :
+            if (mins = 0) {
+                mins = '';
+            } else if (mins < 10) {
+                mins = ':0' + mins;
+            } else {
+                mins = ':' + mins;
+            } */
+            // округляем до часа
+            if (mins > 20) busH ++;
+
+            busH = busH + hours;
+            busM = mins;
+        }
+
+        busH = + $('#vlgEat .vlg-eat__BlActive input:checked').length + busH; // питание
+        $('#btnDropdownBus').text(busH);
+        $('#inputBus').val(busH);
+        console.log(busH+':'+busM);
     }
 
     /* Перетаскивание блоков */

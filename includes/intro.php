@@ -31,7 +31,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
     <div id="vlgDay" class="btn-group btn-group-margin">
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <span id="vlgDropdownDay">1</span></button>
         <div class="dropdown-menu">
-            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1"> <label for="vlgDay1">1</label></div>
+            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1" checked> <label for="vlgDay1">1</label></div>
             <div class="dropdown-item"><input id="vlgDay2" type="radio" name="vlgDay" value="2"> <label for="vlgDay2">2</label></div>
             <div class="dropdown-item"><input id="vlgDay3" type="radio" name="vlgDay" value="3"> <label for="vlgDay3">3</label></div>
             <div class="dropdown-item"><input id="vlgDay4" type="radio" name="vlgDay" value="4"> <label for="vlgDay4">4</label></div>
@@ -196,7 +196,7 @@ $priceEat = $priceEat.$vlg['prise'].'"';
         </div>
     </div>
     <div class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span class="btnDropdownBus">0</span></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span id="btnDropdownBus" class="btnDropdownBus">0</span></button>
         <div class="dropdown-menu">
             <div class="dropdown-item">
                 <label class="tgl" style="font-size:22px"><input type="checkbox" class="bus-to-or-no" checked /><span data-on="Туроператора" data-off="&nbsp;&nbsp;&nbsp;Заказчика&nbsp;&nbsp;&nbsp;"></span></label>
