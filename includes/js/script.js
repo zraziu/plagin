@@ -7,11 +7,14 @@ $(document).ready(function() {
     let calcInputPeople = 0;
     let vlgDay = 1;
     let vlgHotelPrise = 0;
-    let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив [350;300;250;135]
+    let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
+    let vlgEatP = $('#vlgEat').data('eat').split(';'); // массив цен питание
+    let vlgBusP = $('#btnDropdownBus').data('bus').split(';'); // массив цен автобуса
 
     let vlgExc = 0; // цена экскурсий
     let vlgHotel = 0; // цена на отель
     let vlgEat = 0; // цена на питание
+    let vlgBus = 0;  // цена на автобус
     let commis = 0;
 
 
@@ -147,7 +150,6 @@ $(document).ready(function() {
         /* Питание */
         function calcEat () {
             vlgEat = 0;
-            vlgEatP = $('#vlgEat').data('eat').split(';');
             $("#vlgEat .vlg-eat__BlActive").each(function(){  // кол-во дней
                 // кол-во завтр отмеч * завтр цена * кол-во чел
                 let vlgEat1 = $('#vlgEat input.eat-breakfast:checked').length * vlgEatP[0] * calcInputPeople;
@@ -157,13 +159,27 @@ $(document).ready(function() {
             });
         }
 
+        /* Автобус */
+        function calcBus () {
+            let busHour = $.isNumeric($("#btnDropdownBus").text()) ? +$("#btnDropdownBus").text() : 0;// +$("#btnDropdownBus").text(); // Берем кол-во часов
+            //if (busHour<3) busHour = 3;  // минимум 3 часа
+
+            if (calcInputPeople>60) { //calcInputPeople кол-во чел
+                vlgBus = busHour*vlgBusP[0];
+            } else if (calcInputPeople>40) {
+                vlgBus = busHour*vlgBusP[1];
+            } else if (calcInputPeople>17) {
+                vlgBus = busHour*vlgBusP[2];
+            } else if (calcInputPeople > 0) {
+                vlgBus = busHour*vlgBusP[3];
+            }
+        }
         /* Комиссия */
         function calcCommission() {
             commis = 0;
 
             let chk = $("#vlgExcModal .vlg-catalog__BlActive").length;
             chk = (chk > 4) ? chk-4 : 0; // от 4 экск
-            //console.log(chk + '-экс; ');
     
             let commisP = 0;
             let ii = 1;
@@ -171,8 +187,6 @@ $(document).ready(function() {
                 commisP += 20;
                 ii++;
             }
-            //console.log(commisP + '-надбавка; ');
-            //console.log(calcInputPeople + '-чел; ');
             if (calcInputPeople<10) {
                 commis = (+excCommission[0]+commisP*chk)*calcInputPeople;
             } else if (calcInputPeople<30) {
@@ -188,13 +202,15 @@ $(document).ready(function() {
         calcExc();
         calcHotel();
         calcEat();
+        calcBus ();
         calcCommission();
-        console.log(commis + '-итог; ');
+
+        console.log(vlgBus + '-цена автобус; ');
     });
 
 
     // функции
-    // счетчики экск
+    /* счетчики экск */
     let vlgA = 0;
     let vlgB = 0;
     function countExc(block, operator) { // счетчик
@@ -230,7 +246,7 @@ $(document).ready(function() {
             }
         });
         // минуты в часы
-        if (busM >= 60) {
+        if (busM >= 1) {
             let mins = busM % 60;
             let hours = (busM - mins) / 60;
             /*  // добавляем 0 и :
@@ -242,7 +258,7 @@ $(document).ready(function() {
                 mins = ':' + mins;
             } */
             // округляем до часа
-            if (mins > 20) busH ++;
+            if (mins > 20) busH = busH + 1;
 
             busH = busH + hours;
             busM = mins;
@@ -251,8 +267,8 @@ $(document).ready(function() {
         busH = + $('#vlgEat .vlg-eat__BlActive input:checked').length + busH; // питание
         $('#btnDropdownBus').text(busH);
         $('#inputBus').val(busH);
-        console.log(busH+':'+busM);
-    }
+        //console.log(busH+':'+busM);
+}
 
     /* Перетаскивание блоков */
     $(function () {
