@@ -202,8 +202,6 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
  transition: all .2s ease-in-out;
 }
 
-
-
 /* Третий блок */
 .vlg-three__list {
  display: flex;
@@ -222,6 +220,10 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
 .vlg-three__title {
  width: 100%;
  padding: 0 30px;
+}
+/* Четвертый блок */
+.vlg-four__calc{
+    border: 1px solid #33BBD4;
 }
 
 
