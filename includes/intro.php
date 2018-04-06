@@ -53,6 +53,9 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 <h2 class="excursion-switch-title">ШАГ 3: Дополнительные условия</h2>
 
 <?php
+$vlg = vlg_get(2);
+$priceBus = 'data-bus="'.$vlg['prise18'].';'.$vlg['prise16'].';'.$vlg['prise0'].';'.$vlg['prise'].'"';
+
 $vlg = vlg_get(4);
 $priceEat = 'data-eat="'.$vlg['prise'].';';
 
@@ -196,7 +199,7 @@ $priceEat = $priceEat.$vlg['prise'].'"';
         </div>
     </div>
     <div class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span id="btnDropdownBus" class="btnDropdownBus">0</span></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span id="btnDropdownBus" class="btnDropdownBus" <?=$priceBus?>>0</span></button>
         <div class="dropdown-menu">
             <div class="dropdown-item">
                 <label class="tgl" style="font-size:22px"><input type="checkbox" class="bus-to-or-no" checked /><span data-on="Туроператора" data-off="&nbsp;&nbsp;&nbsp;Заказчика&nbsp;&nbsp;&nbsp;"></span></label>
@@ -217,8 +220,10 @@ $priceEat = $priceEat.$vlg['prise'].'"';
     $priceCommis = 'data-commis="'.$vlg['prise'].';'.$vlg['prise0'].';'.$vlg['prise16'].';'.$vlg['prise18'].'"';
     ?>
 
-<button id="vlgBtnPrise" <?=$priceCommis?>>Кнопка рассчитать стоимость</button>
+    <div id="vlgBtnPrise" class="vlg-two__add vlg-four__calc" <?=$priceCommis?>><i class="fa fa-calculator fa-blue"></i> Рассчитать стоимость</div>
+    <div class="vlg-four__price">
 
+    </div>
 </div>
 
 
