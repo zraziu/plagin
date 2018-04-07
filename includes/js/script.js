@@ -7,6 +7,7 @@ $(document).ready(function() {
     let calcInputPeople = 0;
     let vlgDay = 1;
     let vlgHotelPrise = 0;
+    let vlgExcCount = 0; // кол-во выбранных экскурсий
     let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
     let vlgEatP = $('#vlgEat').data('eat').split(';'); // массив цен питание
     let vlgBusP = $('#btnDropdownBus').data('bus').split(';'); // массив цен автобуса
@@ -16,6 +17,7 @@ $(document).ready(function() {
     let vlgEat = 0; // цена на питание
     let vlgBus = 0;  // цена на автобус
     let commis = 0;
+    let vlgTotal = 0;
 
 
     /* кол-во человек */
@@ -119,6 +121,7 @@ $(document).ready(function() {
 
     /* Расчет стоимости */
     $('#vlgBtnPrise').click(function() {
+        vlgExcCount = 0; // кол-во экск
 
         /* Экскурсии */
         function calcExc () {
@@ -133,6 +136,7 @@ $(document).ready(function() {
                         let p = $(this).data('price').split(';');
                         vlgExc = vlgExc + (p[0] * inputPeople16) + (p[1] * inputPeople18) + (p[2] * inputPeople) + (p[2] * inputPeopleFree);
                     }
+                    vlgExcCount++; // кол-во выбранных экскурсий
                 })
             }
         }
@@ -156,6 +160,7 @@ $(document).ready(function() {
                 let vlgEat2 = $('#vlgEat input.eat-lunch:checked').length * vlgEatP[1] * calcInputPeople;
                 let vlgEat3 = $('#vlgEat input.eat-dinner:checked').length * vlgEatP[2] * calcInputPeople;
                 vlgEat = vlgEat1 + vlgEat2 + vlgEat3; // итого
+                vlgExcCount = $('#vlgEat input:checked').length + vlgExcCount; // кол-во выбранных экскурсий-питания
             });
         }
 
@@ -174,29 +179,32 @@ $(document).ready(function() {
                 vlgBus = busHour*vlgBusP[3];
             }
         }
+
         /* Комиссия */
         function calcCommission() {
             commis = 0;
-
-            let chk = $("#vlgExcModal .vlg-catalog__BlActive").length;
-            chk = (chk > 4) ? chk-4 : 0; // от 4 экск
-    
             let commisP = 0;
-            let ii = 1;
-            while (ii <= chk) {
-                commisP += 20;
-                ii++;
+            console.log(vlgExcCount+'экс');
+
+            if (vlgExcCount > 1) { // не считаем если экск 0
+                // понижающий коофициент
+                //if (vlgExcCount = 1) commisP = 0.25; //
+                //if (vlgExcCount = 2) commisP = 0.5; //
+                // от 4 экск
+                if (vlgExcCount > 4) commisP = 20 * vlgExcCount; // 20р * кол-во экск
+
+                console.log(commisP+'надб');
+                if (calcInputPeople<10) {
+                    commis = (+excCommission[0]+commisP)*calcInputPeople;
+                } else if (calcInputPeople<30) {
+                    commis = (+excCommission[1]+commisP)*calcInputPeople;
+                } else if (calcInputPeople<40) {
+                    commis = (+excCommission[2]+commisP)*calcInputPeople;
+                } else {
+                    commis = (+excCommission[3]+commisP)*calcInputPeople; // больше 41 чел
+                }
+                commis = (commis > 20000) ? 20000 : commis;  // не больше 20000
             }
-            if (calcInputPeople<10) {
-                commis = (+excCommission[0]+commisP*chk)*calcInputPeople;
-            } else if (calcInputPeople<30) {
-                commis = (+excCommission[1]+commisP*chk)*calcInputPeople;
-            } else if (calcInputPeople<40) {
-                commis = (+excCommission[2]+commisP*chk)*calcInputPeople;
-            } else {
-                commis = (+excCommission[3]+commisP*chk)*calcInputPeople; // больше 41 чел
-            }
-            commis = (commis > 20000) ? 20000 : commis;  // не больше 20000
         }
 
         calcExc();
@@ -205,7 +213,17 @@ $(document).ready(function() {
         calcBus ();
         calcCommission();
 
-        console.log(vlgBus + '-цена автобус; ');
+        /* Складываем */
+        console.log(vlgExc + '-экс;' + vlgHotel + '-отель;' + vlgEat + '-еда;' + vlgBus + '-авто;' + commis + '-коми;');
+
+        let vlgTotalPeopl = Math.round((vlgExc + vlgHotel + vlgEat + vlgBus + commis) / (calcInputPeople - inputPeopleFree)); // ) * 10
+        vlgTotal = vlgTotalPeopl * (calcInputPeople - inputPeopleFree);
+
+        /* Публикуем */
+        $('#vlgTotalPrice').text(vlgTotalPeopl); // на чел
+        $('#vlgTotalPriceGroup').text(vlgTotal); // на группу
+
+
     });
 
 
