@@ -144,7 +144,7 @@ $(document).ready(function() {
         /* Проживание */
         function calcHotel () {
             vlgHotel = 0;
-            if ($("#vlgHotelModal .vlg-catalog__item").is('.vlg-catalog__BlActive')) {
+            if ($("#vlgHotelModal .vlg-catalog__item").is('.vlg-catalog__BlActive') && vlgDay > 1) {
                 $("#vlgHotelModal .vlg-catalog__BlActive").each(function(){
                         vlgHotel = vlgHotel + $(this).data('price') * calcInputPeople;
                 })
@@ -184,7 +184,6 @@ $(document).ready(function() {
         function calcCommission() {
             commis = 0;
             let commisP = 0;
-            console.log(vlgExcCount+'экс');
 
             if (vlgExcCount > 1) { // не считаем если экск 0
                 // понижающий коофициент
@@ -193,7 +192,6 @@ $(document).ready(function() {
                 // от 4 экск
                 if (vlgExcCount > 4) commisP = 20 * vlgExcCount; // 20р * кол-во экск
 
-                console.log(commisP+'надб');
                 if (calcInputPeople<10) {
                     commis = (+excCommission[0]+commisP)*calcInputPeople;
                 } else if (calcInputPeople<30) {
@@ -214,7 +212,7 @@ $(document).ready(function() {
         calcCommission();
 
         /* Складываем */
-        console.log(vlgExc + '-экс;' + vlgHotel + '-отель;' + vlgEat + '-еда;' + vlgBus + '-авто;' + commis + '-коми;');
+        console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
 
         let vlgTotalPeopl = Math.round((vlgExc + vlgHotel + vlgEat + vlgBus + commis) / (calcInputPeople - inputPeopleFree)); // ) * 10
         vlgTotal = vlgTotalPeopl * (calcInputPeople - inputPeopleFree);
@@ -223,9 +221,12 @@ $(document).ready(function() {
         $('#vlgTotalPrice').text(vlgTotalPeopl); // на чел
         $('#vlgTotalPriceGroup').text(vlgTotal); // на группу
 
-
     });
 
+    /* Меняем Рассчитать-Пересчитать */
+    $('#vlgBtnPrise').one('click', function(){
+        $(this).html('<i class="fa fa-calculator fa-blue"> </i> Пересчитать стоимость');
+    });
 
     // функции
     /* счетчики экск */
