@@ -189,6 +189,7 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
  -ms-flex-align: center;
  align-items: center;
  cursor: pointer;
+ width: 100%;
  transition: all .2s ease-in-out;
 }
 .vlg-two__add:hover {
@@ -246,6 +247,37 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
     color: red;
     font-size: 14px;
     vertical-align: text-top;
+}
+/* Пятый блок */
+.vlg-five__list {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ margin-bottom: 25px;
+}
+.vlg-five .vlg-five__item {
+ display: flex;
+ border: 1px solid #33BBD4;
+ border-radius: .3rem;
+ font-size: 16px;
+ font-weight: 700;
+ color: #363636;
+ min-height: 50px;
+ width: 30%;
+}
+.vlg-five .vlg-five__item span {
+ border: 0;
+}
+.vlg-five .vlg-five__item input {
+ border-radius: 0 0.3rem 0.3rem 0;
+}
+.vlg-five .input-group-addon {
+ color: #fff;
+ background-color: #33BBD4;
+}
+button.vlg-two__add i {
+ margin-top: 0;
 }
 
 /* Модальный блок */

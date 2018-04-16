@@ -166,7 +166,7 @@ $(document).ready(function() {
 
         /* Автобус */
         function calcBus () {
-            let busHour = $.isNumeric($("#btnDropdownBus").text()) ? +$("#btnDropdownBus").text() : 0;// +$("#btnDropdownBus").text(); // Берем кол-во часов
+            let busHour = $.isNumeric($("#btnDropdownBus").text()) ? +$("#btnDropdownBus").text() : 0; // Берем кол-во часов
             if (busHour == 1) busHour = 2;  // минимум 2 часа
 
             if (calcInputPeople>60) { //calcInputPeople кол-во чел
@@ -304,4 +304,8 @@ $(document).ready(function() {
         $('#sh_button').css('right', '0');
     });
 
+
+    /* ОТПРАВКА ЗАЯВКИ */
+    /* Собираем данные */
+    
 });

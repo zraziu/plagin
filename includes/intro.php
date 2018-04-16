@@ -8,6 +8,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
 ?>
 
 <h1>Калькулятор</h1>
+<form  method="post" id="form-excursion">
 <h2 class="excursion-switch-title">ШАГ 1: Основные данные</h2>
 
 <div class="vlg-one">
@@ -213,7 +214,7 @@ $priceEat = $priceEat.$vlg['prise'].'"';
     </div>
 </div>
 
-<h2 class="excursion-switch-title">ШАГ 4: Бронирование</h2>
+<h2 class="excursion-switch-title">ШАГ 4: Рассчет</h2>
 <div class="vlg-four">
     <?php
     $vlg = vlg_get(1);
@@ -225,9 +226,29 @@ $priceEat = $priceEat.$vlg['prise'].'"';
         <div class="vlg-four__price-people">Итого <span id="vlgTotalPrice">0</span> руб за чел / </div><div class="vlg-four__price-group"><span id="vlgTotalPriceGroup">0</span> руб за группу<i class="asterisk">*</i></div>
     </div>
 </div>
-
-
 <p class="ad2"><i class="asterisk">*</i> - Цена расчитывается ориентировочно. Для более точного расчета ждем Вашу заявку.</p>
+
+
+<h2 class="excursion-switch-title">ШАГ 5: Заявка</h2>
+<div class="vlg-five">
+    <div class="vlg-five__list">
+        <div class="vlg-five__item better-placeholder">
+            <span class="input-group-addon"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i></span><input type="text" class="form-control form-control-modal better-placeholder__input" id="input_name" name="name" placeholder="Как к Вам обращаться?"><label for="input_name" class="better-placeholder__label">Как к Вам обращаться?</label>
+        </div>
+        <div class="vlg-five__item better-placeholder">
+            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span><input type="email" class="form-control form-control-modal better-placeholder__input" id="input_email" name="email" placeholder="Куда Вам написать?"><label for="input_email" class="better-placeholder__label">Куда Вам написать?</label>
+        </div>
+        <div class="vlg-five__item better-placeholder">
+            <span class="input-group-addon"><i class="fa fa-phone fa-fw"aria-hidden="true"></i></span><input type="tel" class="form-control form-control-modal better-placeholder__input" id="input_tel" name="tel" placeholder="Куда Вам позвонить?"><label for="input_tel" class="better-placeholder__label">Куда Вам позвонить?</label>
+        </div>
+    </div>
+
+    <button class="vlg-two__add" type="submit">
+        <i class="fa fa-envelope fa-lg fa-green"></i> Отправить
+    </button>
+    <p class="msgs"></p>
+</div>
+
 
 <!-- Модальное Экскурсии -->
 <div id="vlgExcModal" class="modal fade modal-sm-exc" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -239,10 +260,10 @@ $priceEat = $priceEat.$vlg['prise'].'"';
             <!-- Форма заявки -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Выберите экскурсии <span id="vlgSelectExc">0</span></a>
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Экскурсии <span id="vlgSelectExc">0</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Выберите музеи <span id="vlgSelectMusem">0</span></a>
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Музеи <span id="vlgSelectMusem">0</span></a>
                 </li>
             </ul>
 
@@ -427,3 +448,4 @@ $priceEat = $priceEat.$vlg['prise'].'"';
         </div>
     </div>
 </div>
+</form>
