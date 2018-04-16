@@ -242,7 +242,11 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
 #vlgTotalPriceGroup {
     color: #0e74b8;
 }
-
+.asterisk {
+    color: red;
+    font-size: 14px;
+    vertical-align: text-top;
+}
 
 /* Модальный блок */
 /* ТАБЫ */
