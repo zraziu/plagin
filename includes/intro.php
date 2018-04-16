@@ -222,12 +222,12 @@ $priceEat = $priceEat.$vlg['prise'].'"';
 
     <div id="vlgBtnPrise" class="vlg-two__add vlg-four__calc" <?=$priceCommis?>><i class="fa fa-calculator fa-blue"></i> Рассчитать стоимость</div>
     <div class="vlg-four__price">
-        <div class="vlg-four__price-people">Итого <span id="vlgTotalPrice">0</span> руб за чел / </div><div class="vlg-four__price-group"><span id="vlgTotalPriceGroup">0</span> руб за группу</div>
+        <div class="vlg-four__price-people">Итого <span id="vlgTotalPrice">0</span> руб за чел / </div><div class="vlg-four__price-group"><span id="vlgTotalPriceGroup">0</span> руб за группу<i class="asterisk">*</i></div>
     </div>
 </div>
 
 
-
+<p class="ad2"><i class="asterisk">*</i> - Цена расчитывается ориентировочно. Для более точного расчета ждем Вашу заявку.</p>
 
 <!-- Модальное Экскурсии -->
 <div id="vlgExcModal" class="modal fade modal-sm-exc" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
