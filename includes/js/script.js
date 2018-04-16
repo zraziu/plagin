@@ -167,7 +167,7 @@ $(document).ready(function() {
         /* Автобус */
         function calcBus () {
             let busHour = $.isNumeric($("#btnDropdownBus").text()) ? +$("#btnDropdownBus").text() : 0;// +$("#btnDropdownBus").text(); // Берем кол-во часов
-            //if (busHour<3) busHour = 3;  // минимум 3 часа
+            if (busHour == 1) busHour = 2;  // минимум 2 часа
 
             if (calcInputPeople>60) { //calcInputPeople кол-во чел
                 vlgBus = busHour*vlgBusP[0];
