@@ -10,6 +10,7 @@ $(document).ready(function() {
     let busH = 0; // автобус часы
     let busM = 0; // автобус минуты
     let vlgExcCount = 0; // кол-во выбранных экскурсий
+    let vlgEatCount = ''; // кол-во выбранного питания
     let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
     let vlgEatP = $('#vlgEat').data('eat').split(';'); // массив цен питание
     let vlgBusP = $('#btnDropdownBus').data('bus').split(';'); // массив цен автобуса
@@ -157,10 +158,15 @@ $(document).ready(function() {
         function calcEat () {
             vlgEat = 0;
             $("#vlgEat .vlg-eat__BlActive").each(function(){  // кол-во дней
+                let vlgEat1 = $('#vlgEat input.eat-breakfast:checked').length;
+                let vlgEat2 = $('#vlgEat input.eat-lunch:checked').length;
+                let vlgEat3 = $('#vlgEat input.eat-dinner:checked').length;
+                vlgEatCount = 'Завтраков:'+vlgEat1+' Обедов:'+vlgEat2+' Ужинов:'+vlgEat3; // для отправки
+
                 // кол-во завтр отмеч * завтр цена * кол-во чел
-                let vlgEat1 = $('#vlgEat input.eat-breakfast:checked').length * vlgEatP[0] * calcInputPeople;
-                let vlgEat2 = $('#vlgEat input.eat-lunch:checked').length * vlgEatP[1] * calcInputPeople;
-                let vlgEat3 = $('#vlgEat input.eat-dinner:checked').length * vlgEatP[2] * calcInputPeople;
+                vlgEat1 = vlgEat1 * vlgEatP[0] * calcInputPeople;
+                vlgEat2 = vlgEat2 * vlgEatP[1] * calcInputPeople;
+                vlgEat3 = vlgEat3 * vlgEatP[2] * calcInputPeople;
                 vlgEat = vlgEat1 + vlgEat2 + vlgEat3; // итого
                 vlgExcCount = $('#vlgEat input:checked').length + vlgExcCount; // кол-во выбранных экскурсий-питания
             });
@@ -301,6 +307,7 @@ $(document).ready(function() {
         //let excGuideOut =    (excGuideHours>0)?'Доп. часов гида: '+excGuideHours+'. ':'';
         let date =    'Кол-во дней: '+vlgDay;
         let vlgHotel =    vlgHotelPrise != 0 ? $('#vlgHotelModal .vlg-catalog__BlActive .vlg-catalog__title').text() : 'нет'; // проверяем проживание
+
         let inputBusOut =    'Часов автобуса: '+busH+'ч '+busM+' мин';
 
         $('.inputHidden').html('' +
@@ -308,6 +315,7 @@ $(document).ready(function() {
             '<input type="hidden" name="outputPeople" value="'+inputPeopleOut+'">' +
             '<input type="hidden" name="date" value="'+date+'">' +
             '<input type="hidden" name="hotel" value="'+vlgHotel+'">' +
+            '<input type="hidden" name="eat" value="'+vlgEatCount+'">' +
             '<input type="hidden" name="outInputBus" value="'+inputBusOut+'">' +
             '<input type="hidden" name="formInfo" value="Заявка на прием в Волгограде"/>' +
             '<input type="hidden" name="url" value="'+document.location.href+' - '+document.title+'">');
