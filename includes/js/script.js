@@ -7,6 +7,8 @@ $(document).ready(function() {
     let calcInputPeople = 0;
     let vlgDay = 1;
     let vlgHotelPrise = 0;
+    let busH = 0; // автобус часы
+    let busM = 0; // автобус минуты
     let vlgExcCount = 0; // кол-во выбранных экскурсий
     let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
     let vlgEatP = $('#vlgEat').data('eat').split(';'); // массив цен питание
@@ -210,9 +212,10 @@ $(document).ready(function() {
         calcEat();
         calcBus ();
         calcCommission();
+        mailForm()
 
         /* Складываем */
-        console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
+        //console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
 
         let vlgTotalPeopl = Math.round((vlgExc + vlgHotel + vlgEat + vlgBus + commis) / (calcInputPeople - inputPeopleFree)); // ) * 10
         vlgTotal = vlgTotalPeopl * (calcInputPeople - inputPeopleFree);
@@ -221,11 +224,6 @@ $(document).ready(function() {
         $('#vlgTotalPrice').text(vlgTotalPeopl); // на чел
         $('#vlgTotalPriceGroup').text(vlgTotal); // на группу
 
-    });
-
-    /* Меняем Рассчитать-Пересчитать */
-    $('#vlgBtnPrise').one('click', function(){
-        $(this).html('<i class="fa fa-calculator fa-blue"> </i> Пересчитать стоимость');
     });
 
     // функции
@@ -253,8 +251,8 @@ $(document).ready(function() {
 
     /* Счтаем часы автобуса */
     function countBus(){
-        let busH = 0;
-        let busM = 0;
+        busH = 0;
+        busM = 0;
         // собираем экскурсии
         $('#vlgListExc .vlg-two__item').each(function() {
             // проверяем переключатель авто-пешком
@@ -289,13 +287,39 @@ $(document).ready(function() {
         //console.log(busH+':'+busM);
 }
 
+    /* ОТПРАВКА ЗАЯВКИ */
+    /* Собираем данные */
+    function mailForm() {
+        var excursionCheckedTitle = '';
+        $('#vlgModal .vlg-catalog__BlActive .vlg-catalog__title').each(function(){
+            excursionCheckedTitle += $(this).text() + ', ';
+        });
+        let inputPeopleOut = ((inputPeople16>0)?'Дети до 15: '+inputPeople16+', ':'') +
+            ((inputPeople18>0)?'Дети до 18: '+inputPeople18+', ':'') +
+            ((inputPeople>0)?'Взрослые: '+inputPeople+', ':'') +
+            ((inputPeopleFree>0)?'Бесплатных: '+inputPeopleFree+'. ':'');
+        //let excGuideOut =    (excGuideHours>0)?'Доп. часов гида: '+excGuideHours+'. ':'';
+        let date =    'Кол-во дней: '+vlgDay;
+        let vlgHotel =    vlgHotelPrise != 0 ? $('#vlgHotelModal .vlg-catalog__BlActive .vlg-catalog__title').text() : 'нет'; // проверяем проживание
+        let inputBusOut =    'Часов автобуса: '+busH+'ч '+busM+' мин';
+
+        $('.inputHidden').html('' +
+            '<input type="hidden" name="outexcursionChecked" value="'+excursionCheckedTitle+'">' +
+            '<input type="hidden" name="outputPeople" value="'+inputPeopleOut+'">' +
+            '<input type="hidden" name="date" value="'+date+'">' +
+            '<input type="hidden" name="hotel" value="'+vlgHotel+'">' +
+            '<input type="hidden" name="outInputBus" value="'+inputBusOut+'">' +
+            '<input type="hidden" name="formInfo" value="Заявка на прием в Волгограде"/>' +
+            '<input type="hidden" name="url" value="'+document.location.href+' - '+document.title+'">');
+    }
+
+
+    /* ВИЗУАЛЬНЫЕ ЭФЕКТЫ */
     /* Перетаскивание блоков */
     $(function () {
         $("#vlgListExc").sortable({handle: 'i.vlg-two__move', placeholder: "vlg-placeholder"});
         $("#vlgListExc").disableSelection();
     });
-
-
     /* Отодвигаем блок помощь */
     $('#vlgExcModal, #vlgHotelModal').on('show.bs.modal', function (e) {
         $('#sh_button').css('right', '20px');
@@ -303,9 +327,13 @@ $(document).ready(function() {
     $('#vlgExcModal, #vlgHotelModal').on('hide.bs.modal', function (e) {
         $('#sh_button').css('right', '0');
     });
+    /* Меняем Рассчитать-Пересчитать */
+    $('#vlgBtnPrise').one('click', function(){
+        $(this).html('<i class="fa fa-calculator fa-blue"> </i> Пересчитать стоимость');
+    });
+    /* запретить срабатывание на click для радио кнопки ТО-заказик */
+    $('div.dropdown-menu div.dropdown-item label.tgl').click(function(e) {
+        e.stopPropagation();
+    });
 
-
-    /* ОТПРАВКА ЗАЯВКИ */
-    /* Собираем данные */
-    
 });

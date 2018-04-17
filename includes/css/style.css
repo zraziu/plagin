@@ -21,7 +21,9 @@
 
 
 /***** FRONTEND *****/
-
+.excursion-switch-title {
+ margin-top: 50px;
+}
 /* Первый блок */
 .vlg-one {
  display: flex;

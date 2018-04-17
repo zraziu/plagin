@@ -7,7 +7,6 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
           <script type="text/javascript" src="'.plugins_url("vlg_plagin/includes/js/script.js").'"></script>';
 ?>
 
-<h1>Калькулятор</h1>
 <form  method="post" id="form-excursion">
 <h2 class="excursion-switch-title">ШАГ 1: Основные данные</h2>
 
@@ -243,6 +242,7 @@ $priceEat = $priceEat.$vlg['prise'].'"';
         </div>
     </div>
 
+    <span class="inputHidden"></span>
     <button class="vlg-two__add" type="submit">
         <i class="fa fa-envelope fa-lg fa-green"></i> Отправить
     </button>
