@@ -226,7 +226,7 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
 }
 /* Четвертый блок */
 .vlg-four__calc{
-    border: 1px solid #33BBD4;
+    /*border: 1px solid #33BBD4;*/
     margin-bottom: 25px;
 }
 .vlg-four__price {

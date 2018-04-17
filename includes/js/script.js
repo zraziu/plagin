@@ -133,12 +133,15 @@ $(document).ready(function() {
                 $("#vlgExcModal .vlg-catalog__BlActive").each(function(){
                     if ($(this).data('person') == 'per-person') {       // на любого чел
                         vlgExc = vlgExc + $(this).data('price') * calcInputPeople;
+                        vlgExc = vlgExc + $(this).data('pricedop'); // доп цена = гид
                     } else if ($(this).data('person') == 'per-group') { // на группу
                         vlgExc = vlgExc + $(this).data('price');
                     } else {                                            // на чел по возр
                         let p = $(this).data('price').split(';');
                         vlgExc = vlgExc + (p[0] * inputPeople16) + (p[1] * inputPeople18) + (p[2] * inputPeople) + (p[2] * inputPeopleFree);
+                        vlgExc = vlgExc + $(this).data('pricedop'); // доп цена = гид
                     }
+
                     vlgExcCount++; // кол-во выбранных экскурсий
                 })
             }
@@ -221,7 +224,7 @@ $(document).ready(function() {
         mailForm()
 
         /* Складываем */
-        //console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
+        console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
 
         let vlgTotalPeopl = Math.round((vlgExc + vlgHotel + vlgEat + vlgBus + commis) / (calcInputPeople - inputPeopleFree)); // ) * 10
         vlgTotal = vlgTotalPeopl * (calcInputPeople - inputPeopleFree);
@@ -337,7 +340,7 @@ $(document).ready(function() {
     });
     /* Меняем Рассчитать-Пересчитать */
     $('#vlgBtnPrise').one('click', function(){
-        $(this).html('<i class="fa fa-calculator fa-blue"> </i> Пересчитать стоимость');
+        $(this).html('<i class="fa fa-calculator fa-green"> </i> Пересчитать стоимость');
     });
     /* запретить срабатывание на click для радио кнопки ТО-заказик */
     $('div.dropdown-menu div.dropdown-item label.tgl').click(function(e) {

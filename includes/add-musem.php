@@ -53,11 +53,15 @@ if (!empty($_POST)) {
             <i class="icon-happy-baby" aria-hidden="true"></i> До 18: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="prise16" value="<?=$prise16?>" />
             <br><br>
             <i class="icon-smile" aria-hidden="true"></i> Взрослые: <input type="text" name="prise18" value="<?=$prise18?>" />
+            <br><br>
+            <i class="icon-users" aria-hidden="true"></i> Доплата за группу: <input type="text" name="prise" value="<?=$prise?>" />
         </p>
     </div>
     <div id='Block2' style='display: none;'>
         <p>
-            <i class="icon-male" aria-hidden="true"></i> Цена <input type="text" name="prise" value="<?=$prise?>" />
+            <i class="icon-male" aria-hidden="true"></i> Цена <input type="text" name="prise0" value="<?=$prise0?>" />
+            <br><br>
+            <i class="icon-users" aria-hidden="true"></i> Доплата за группу: <input type="text" name="prise" value="<?=$prise?>" />
         </p>
     </div>
     <div id='Block3' style='display: none;'>

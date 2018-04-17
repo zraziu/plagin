@@ -57,13 +57,13 @@ $vlg = vlg_get(2);
 $priceBus = 'data-bus="'.$vlg['prise18'].';'.$vlg['prise16'].';'.$vlg['prise0'].';'.$vlg['prise'].'"';
 
 $vlg = vlg_get(4);
-$priceEat = 'data-eat="'.$vlg['prise'].';';
+$priceEat = 'data-eat="'.$vlg['prise0'].';';
 
 $vlg = vlg_get(5);
-$priceEat = $priceEat.$vlg['prise'].';';
+$priceEat = $priceEat.$vlg['prise0'].';';
 
 $vlg = vlg_get(6);
-$priceEat = $priceEat.$vlg['prise'].'"';
+$priceEat = $priceEat.$vlg['prise0'].'"';
 ?>
 <div class="vlg-three">
     <div id="vlgEat" class="vlg-three__list" <?=$priceEat?>>
@@ -220,7 +220,7 @@ $priceEat = $priceEat.$vlg['prise'].'"';
     $priceCommis = 'data-commis="'.$vlg['prise'].';'.$vlg['prise0'].';'.$vlg['prise16'].';'.$vlg['prise18'].'"';
     ?>
 
-    <div id="vlgBtnPrise" class="vlg-two__add vlg-four__calc" <?=$priceCommis?>><i class="fa fa-calculator fa-blue"></i> Рассчитать стоимость</div>
+    <div id="vlgBtnPrise" class="vlg-two__add vlg-four__calc" <?=$priceCommis?>><i class="fa fa-calculator fa-green"></i> Рассчитать стоимость</div>
     <div class="vlg-four__price">
         <div class="vlg-four__price-people">Итого <span id="vlgTotalPrice">0</span> руб за чел / </div><div class="vlg-four__price-group"><span id="vlgTotalPriceGroup">0</span> руб за группу<i class="asterisk">*</i></div>
     </div>
@@ -278,11 +278,17 @@ $priceEat = $priceEat.$vlg['prise'].'"';
 
                         foreach ($vlg as $op):
                             // цена
-                            $priceInfo = '';
+                            $priceInfo = ''; // прайс основной
+                            $priceInfoDop = ''; // прайс доплата
                             if ($op['pricePerPerson'] == 'per-person-by-age') {
                                 $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                                $priceInfoDop = 'data-pricedop="'.$op['prise'].'"'; // цена доп за гида
+                            } else if ($op['pricePerPerson'] == 'per-person') {
+                                $priceInfo = 'data-price="'.$op['prise0'].'"';
+                                $priceInfoDop = 'data-pricedop="'.$op['prise'].'"'; // цена доп за гида
                             } else {
                                 $priceInfo = 'data-price="'.$op['prise'].'"';
+                                $priceInfoDop = 'data-pricedop="0"';
                             }
                             // время
                             $timeInfo = '';
@@ -293,10 +299,9 @@ $priceEat = $priceEat.$vlg['prise'].'"';
                             }
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
-
                             ?>
 
-                            <div id="vlgEcx<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?>>
+                            <div id="vlgEcx<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?>>
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>
@@ -338,11 +343,17 @@ $priceEat = $priceEat.$vlg['prise'].'"';
 
                         foreach ($vlg as $op):
                             // цена
-                            $priceInfo = '';
+                            $priceInfo = ''; // прайс основной
+                            $priceInfoDop = ''; // прайс доплата
                             if ($op['pricePerPerson'] == 'per-person-by-age') {
                                 $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                                $priceInfoDop = 'data-pricedop="'.$op['prise'].'"';
+                            } else if ($op['pricePerPerson'] == 'per-person') {
+                                $priceInfo = 'data-price="'.$op['prise0'].'"';
+                                $priceInfoDop = 'data-pricedop="'.$op['prise'].'"';
                             } else {
                                 $priceInfo = 'data-price="'.$op['prise'].'"';
+                                $priceInfoDop = 'data-pricedop="0"';
                             }
                             // время
                             $timeInfo = '';
@@ -354,7 +365,7 @@ $priceEat = $priceEat.$vlg['prise'].'"';
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
                             ?>
-                            <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?>>
+                            <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?>>
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>
@@ -411,6 +422,8 @@ $priceEat = $priceEat.$vlg['prise'].'"';
                         $priceInfo = '';
                         if ($op['pricePerPerson'] == 'per-person-by-age') {
                             $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                        } else if ($op['pricePerPerson'] == 'per-person') {
+                            $priceInfo = 'data-price="'.$op['prise0'].'"';
                         } else {
                             $priceInfo = 'data-price="'.$op['prise'].'"';
                         }
