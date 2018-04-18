@@ -275,14 +275,6 @@ $(document).ready(function() {
         if (busM >= 1) {
             let mins = busM % 60;
             let hours = (busM - mins) / 60;
-            /*  // добавляем 0 и :
-            if (mins = 0) {
-                mins = '';
-            } else if (mins < 10) {
-                mins = ':0' + mins;
-            } else {
-                mins = ':' + mins;
-            } */
             // округляем до часа
             if (mins > 20) busH = busH + 1;
 
@@ -291,9 +283,10 @@ $(document).ready(function() {
         }
 
         busH = + $('#vlgEat .vlg-eat__BlActive input:checked').length + busH; // питание
+
+        //if (busH < 0) busH = 0;
         $('#btnDropdownBus').text(busH);
         $('#inputBus').val(busH);
-        //console.log(busH+':'+busM);
 }
 
     /* ОТПРАВКА ЗАЯВКИ */
