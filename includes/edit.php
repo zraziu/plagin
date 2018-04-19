@@ -112,5 +112,4 @@ include_once('m/vlg.php');
     <input type="hidden" name="category" value="<?=$category?>">
     <input type="submit" name="save" value="Сохранить" />
     <input type="submit" name="delete" value="Удалить" />
-
 </form>

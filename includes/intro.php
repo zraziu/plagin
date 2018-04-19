@@ -221,15 +221,15 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
     ?>
 
     <div id="vlgBtnPrise" class="vlg-two__add vlg-four__calc" <?=$priceCommis?>><i class="fa fa-calculator fa-green"></i> Рассчитать стоимость</div>
-    <div class="vlg-four__price">
+    <div class="vlg-four__price vlg-display-none">
         <div class="vlg-four__price-people">Итого <span id="vlgTotalPrice">0</span> руб за чел / </div><div class="vlg-four__price-group"><span id="vlgTotalPriceGroup">0</span> руб за группу<i class="asterisk">*</i></div>
     </div>
 </div>
-<p class="ad2"><i class="asterisk">*</i> - Цена расчитывается ориентировочно. Для более точного расчета ждем Вашу заявку.</p>
+<p class="ad2  vlg-display-none"><i class="asterisk">*</i> - Цена расчитывается ориентировочно. Для более точного расчета ждем Вашу заявку.</p>
 
 
-<h2 class="excursion-switch-title">ШАГ 5: Заявка</h2>
-<div class="vlg-five">
+<h2 class="excursion-switch-title vlg-display-none">ШАГ 5: Заявка</h2>
+<div class="vlg-five vlg-display-none">
     <div class="vlg-five__list">
         <div class="vlg-five__item better-placeholder">
             <span class="input-group-addon"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i></span><input type="text" class="form-control form-control-modal better-placeholder__input" id="input_name" name="name" placeholder="Как к Вам обращаться?"><label for="input_name" class="better-placeholder__label">Как к Вам обращаться?</label>

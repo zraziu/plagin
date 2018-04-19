@@ -14,13 +14,13 @@ function ready() {
 
 
             // если 2 или 3 блок
-            if (i == 1) {
+/*            if (i == 1) {
                 $('#Block3 input').attr('name', '0');
                 $('#Block2 input').attr('name', 'prise');
             } else if (i == 2) {
                 $('#Block2 input').attr('name', '0');
                 $('#Block3 input').attr('name', 'prise');
-            }
+            }*/
 
             // меняем иконку человек-группа
             /*
@@ -57,4 +57,14 @@ $('.remove_image_button').click(function() {
         $(this).prev().prev().val('');
     }
     return false;
+});
+
+/* Синхронизация инпутов - важно */
+$( "input[type='text']" ).blur(function(){
+    let name = $(this).attr("name");
+    let val = $(this).val();
+
+    if ($("input[name="+name+"]").length >= 2) {
+        $("input[name="+name+"]").attr("value", val);
+    }
 });

@@ -334,7 +334,12 @@ $(document).ready(function() {
     /* Меняем Рассчитать-Пересчитать */
     $('#vlgBtnPrise').one('click', function(){
         $(this).html('<i class="fa fa-calculator fa-green"> </i> Пересчитать стоимость');
+        $('.vlg-display-none').show();
     });
+    $('.vlg-display-none').hide(); // спрятать нижние блоки
+
+
+
     /* запретить срабатывание на click для радио кнопки ТО-заказик */
     $('div.dropdown-menu div.dropdown-item label.tgl').click(function(e) {
         e.stopPropagation();
