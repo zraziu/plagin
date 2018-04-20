@@ -39,7 +39,7 @@ $(document).ready(function() {
     /* кол-ва дней */
     $('#vlgDay input:radio').change(function() {
         vlgDay = $('#vlgDay input:checked').val(); // кол-во
-        $( "#vlgDropdownDay" ).text(vlgDay);
+        $( "#vlgDropdownDay" ).text(vlgDay-1);
 
         /* Проживание */
         if (vlgDay >= 2) {
@@ -155,6 +155,7 @@ $(document).ready(function() {
                         vlgHotel = vlgHotel + $(this).data('price') * calcInputPeople;
                 })
             }
+            vlgHotel = vlgHotel * (vlgDay-1);
         }
 
         /* Питание */
@@ -180,11 +181,11 @@ $(document).ready(function() {
             let busHour = $.isNumeric($("#btnDropdownBus").text()) ? +$("#btnDropdownBus").text() : 0; // Берем кол-во часов
             if (busHour == 1) busHour = 2;  // минимум 2 часа
 
-            if (calcInputPeople>60) { //calcInputPeople кол-во чел
+            if (calcInputPeople>49) { //calcInputPeople кол-во чел
                 vlgBus = busHour*vlgBusP[0];
-            } else if (calcInputPeople>40) {
+            } else if (calcInputPeople>19) {
                 vlgBus = busHour*vlgBusP[1];
-            } else if (calcInputPeople>17) {
+            } else if (calcInputPeople>7) {
                 vlgBus = busHour*vlgBusP[2];
             } else if (calcInputPeople > 0) {
                 vlgBus = busHour*vlgBusP[3];
@@ -194,13 +195,14 @@ $(document).ready(function() {
         /* Комиссия */
         function calcCommission() {
             commis = 0;
-            let commisP = 0;
 
             if (vlgExcCount > 1) { // не считаем если экск 0
                 // понижающий коофициент
                 //if (vlgExcCount = 1) commisP = 0.25; //
                 //if (vlgExcCount = 2) commisP = 0.5; //
                 // от 4 экск
+
+                let commisP = 0;
                 if (vlgExcCount > 4) commisP = 20 * vlgExcCount; // 20р * кол-во экск
 
                 if (calcInputPeople<10) {
@@ -212,6 +214,7 @@ $(document).ready(function() {
                 } else {
                     commis = (+excCommission[3]+commisP)*calcInputPeople; // больше 41 чел
                 }
+
                 commis = (commis > 20000) ? 20000 : commis;  // не больше 20000
             }
         }

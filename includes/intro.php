@@ -29,13 +29,13 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div>
     </div>
     <div id="vlgDay" class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Дней: <span id="vlgDropdownDay">1</span></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Ночей: <span id="vlgDropdownDay">1</span></button>
         <div class="dropdown-menu">
-            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1" checked> <label for="vlgDay1">1</label></div>
-            <div class="dropdown-item"><input id="vlgDay2" type="radio" name="vlgDay" value="2"> <label for="vlgDay2">2</label></div>
-            <div class="dropdown-item"><input id="vlgDay3" type="radio" name="vlgDay" value="3"> <label for="vlgDay3">3</label></div>
-            <div class="dropdown-item"><input id="vlgDay4" type="radio" name="vlgDay" value="4"> <label for="vlgDay4">4</label></div>
-            <div class="dropdown-item"><input id="vlgDay5" type="radio" name="vlgDay" value="5"> <label for="vlgDay5">5</label></div>
+            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1" checked> <label for="vlgDay1">0</label></div>
+            <div class="dropdown-item"><input id="vlgDay2" type="radio" name="vlgDay" value="2"> <label for="vlgDay2">1</label></div>
+            <div class="dropdown-item"><input id="vlgDay3" type="radio" name="vlgDay" value="3"> <label for="vlgDay3">2</label></div>
+            <div class="dropdown-item"><input id="vlgDay4" type="radio" name="vlgDay" value="4"> <label for="vlgDay4">3</label></div>
+            <div class="dropdown-item"><input id="vlgDay5" type="radio" name="vlgDay" value="5"> <label for="vlgDay5">4</label></div>
         </div>
     </div>
     <div id="vlgHotel" class="btn-group btn-group-margin">

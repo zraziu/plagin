@@ -11,26 +11,6 @@ function ready() {
             document.getElementById('Block3').style.display='none';
 
             document.getElementById('Block'+(i+1)).style.display='block';
-
-
-            // если 2 или 3 блок
-/*            if (i == 1) {
-                $('#Block3 input').attr('name', '0');
-                $('#Block2 input').attr('name', 'prise');
-            } else if (i == 2) {
-                $('#Block2 input').attr('name', '0');
-                $('#Block3 input').attr('name', 'prise');
-            }*/
-
-            // меняем иконку человек-группа
-            /*
-            if (i == 1 ) {
-                $('#Block2 input').val($('#Block3 input').val());
-            } else {
-                $('#Block3 input').removeClass('icon-male');
-                $('#Block2 input').addClass('icon-users');
-            }
-            */
         }
     }
 }
