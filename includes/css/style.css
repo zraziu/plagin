@@ -301,7 +301,7 @@ button.vlg-two__add i {
  bottom: 5px;
  position: relative;
 }
-#myTab #vlgSelectExc, #vlgSelectMusem {
+#vlgSelectExc, #vlgSelectMusem, #vlgSelectObl {
  font-size: 12px;
  position: relative;
  padding: 2px 4px;
@@ -395,6 +395,7 @@ button.vlg-two__add i {
  font-size: 20px;
  display: flex;
  flex-direction: column;
+ align-items: center;
  line-height: 1.3ex;
  font-size: 18px;
 }

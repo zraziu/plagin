@@ -23,6 +23,15 @@
     <? endforeach; ?>
 </div>
 <br><hr>
+<h2 class="vlg-a__h2">Загородные / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add-obl">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h2>
+<div class="vlg-a__list">
+    <?
+    $vlg = vlg_cat('excursion-obl');
+    foreach ($vlg as $op): ?>
+        <div class="vlg-a__item"><?=wp_unslash($op['name'])?> <a href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=edit&id=<?=$op['id']?>"><i class="fa fa-pencil"></i> изменить</a></div>
+    <? endforeach; ?>
+</div>
+<br><hr>
 <h2 class="vlg-a__h2">Гостиницы / <a  href="<?=$_SERVER["PHP_SELF"]?>?page=vlg&c=add-hotel">Добавить <i class="fa fa-plus-circle fa-green"></i></a></h2>
 <div class="vlg-a__list">
     <?

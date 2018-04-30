@@ -99,6 +99,9 @@ function vlg_options_page() {
         case 'edit':
             $action = 'edit';
             break;
+        case 'add-obl':
+            $action = 'add-obl';
+            break;
         case 'add-musem':
             $action = 'add-musem';
             break;

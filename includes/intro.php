@@ -265,6 +265,9 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                 <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Музеи <span id="vlgSelectMusem">0</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="region-tab" data-toggle="tab" href="#region" role="tab" aria-controls="region" aria-selected="false">Загородные <span id="vlgSelectObl">0</span></a>
+                </li>
             </ul>
 
             <div class="tab-content vlg-modal" id="vlgModal">
@@ -387,6 +390,69 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                                         }
                                         ?>
                                         <div class="vlg-add-musem"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?
+                            $count++;
+                            endforeach;
+                        ?>
+                    </div>
+                </div>
+                <!-- вкладка 3 -->
+                <div class="tab-pane fade" id="region" role="tabpanel" aria-labelledby="region-tab">
+                    <div class="vlg-catalog">
+                        <?
+                        $vlg = vlg_cat('excursion-obl');
+
+                        $count = 0; // для id
+
+                        foreach ($vlg as $op):
+                            // цена
+                            $priceInfo = ''; // прайс основной
+                            $priceInfoDop = ''; // прайс доплата
+                            if ($op['pricePerPerson'] == 'per-person-by-age') {
+                                $priceInfo = 'data-price="'.$op['prise0'].';'.$op['prise16'].';'.$op['prise18'].'"';
+                                $priceInfoDop = 'data-pricedop="'.$op['prise'].'"';
+                            } else if ($op['pricePerPerson'] == 'per-person') {
+                                $priceInfo = 'data-price="'.$op['prise0'].'"';
+                                $priceInfoDop = 'data-pricedop="'.$op['prise'].'"';
+                            } else {
+                                $priceInfo = 'data-price="'.$op['prise'].'"';
+                                $priceInfoDop = 'data-pricedop="0"';
+                            }
+                            // время
+                            $timeInfo = '';
+                            if (strlen($op['hours']) >= 2) {
+                                $timeInfo = "<span>".substr($op['hours'], 0, 1)." ч ".substr($op['hours'], 2, 2)."м</span> <div>продолжительность</div>";
+                            } else {
+                                $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
+                            }
+                            // цена на чел или группу
+                            $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
+                            ?>
+                            <div id="vlgObl<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?>>
+                                <div class="vlg-catalog__photo">
+                                    <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
+                                    <div class="vlg-catalog__triangle"></div>
+                                    <div class="vlg-catalog__title"><?=$op['name']?></div>
+                                </div>
+                                <div class="vlg-catalog__discription">
+                                    <div class="vlg-catalog__info">
+                                        <div class="vlg-catalog__hours"><?=$timeInfo?></div>
+                                        <div class="vlg-catalog__rating"><?=$op['rating']?><div>рейтинг</div></div>
+                                    </div>
+                                    <div class="vlg-catalog__text"><?=$op['description']?></div>
+                                    <div class="vlg-catalog__footer">
+                                        <?
+                                        if ($op['urlPage']) {
+                                            echo '<a href="'.$op['urlPage'].'" target="_blank" class="vlg-catalog__link"><i class="fa fa-link fa-link-exc"><span>Подробно</span></i></a>';
+                                        }
+                                        else {
+                                            echo '<div></div>';
+                                        }
+                                        ?>
+                                        <div class="vlg-add-obl"><i class="fa fa-plus fa-add-exc fa-add-green"><span>Добавить</span></i></div>
                                     </div>
                                 </div>
                             </div>

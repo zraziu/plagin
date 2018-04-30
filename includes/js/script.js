@@ -84,7 +84,7 @@ $(document).ready(function() {
     });
 
     /* Выбор экскурсий */
-    $("#vlgModal .vlg-add-exc, #vlgModal .vlg-add-musem").click(function () {
+    $("#vlgModal .vlg-add-exc, #vlgModal .vlg-add-musem, #vlgModal .vlg-add-obl").click(function () {
         let parentBlock = $(this).closest('.vlg-catalog__item');
 
         if (parentBlock.is('.vlg-catalog__BlActive')) { // удаление в модал
@@ -242,23 +242,29 @@ $(document).ready(function() {
     /* счетчики экск */
     let vlgA = 0;
     let vlgB = 0;
+    let vlgC = 0;
     function countExc(block, operator) { // счетчик
         if (operator == 'plus') {
             if (block.is('[id ^= vlgEcx]')) {
                 vlgA++;
             } else if (block.is('[id ^= vlgMusem]')) {
                 vlgB++;
+            } else if (block.is('[id ^= vlgObl]')) {
+                vlgC++;
             }
         } else {
             if (block.is('[id ^= vlgEcx]')) {
                 vlgA--;
             } else if (block.is('[id ^= vlgMusem]')) {
                 vlgB--;
+            } else if (block.is('[id ^= vlgObl]')) {
+                vlgC--;
             }
         }
 
         $('#vlgExcModal #vlgSelectExc').text(vlgA);
         $('#vlgExcModal #vlgSelectMusem').text(vlgB);
+        $('#vlgExcModal #vlgSelectObl').text(vlgC);
     }
 
     /* Счтаем часы автобуса */
