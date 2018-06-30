@@ -39,7 +39,7 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         </div>
     </div>
     <div id="vlgHotel" class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <span id="vlgDropdownHotel">без проживания</span></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="modal" data-target=".modal-sm-hotel"><i class="fa fa-bed fa-icon-btn" aria-hidden="true"></i> Проживание: <span id="vlgDropdownHotel">нет</span></button>
     </div>
 </div>
 
@@ -254,7 +254,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
 <div id="vlgExcModal" class="modal fade modal-sm-exc" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="">
+            <div class="vlg-modal-close">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <!-- Форма заявки -->
@@ -296,9 +296,17 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                             // время
                             $timeInfo = '';
                             if (strlen($op['hours']) >= 2) {
-                                $timeInfo = "<span>".substr($op['hours'], 0, 1)." ч ".substr($op['hours'], 2, 2)."м</span> <div>продолжительность</div>";
+                                $timeInfo = '<div>продолжительность</div> <span><i class="fa fa-clock-o"></i> '.substr($op['hours'], 0, 1).' ч '.substr($op['hours'], 2, 2).'м</span>';
                             } else {
-                                $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
+                                $timeInfoName = '';
+                                if ($op['hours'] == 1) {
+                                    $timeInfoName = ' час';
+                                } else if ($op['hours'] >= 2 && $op['hours'] <= 4) {
+                                    $timeInfoName = ' часа';
+                                } else if ($op['hours'] >= 5) {
+                                    $timeInfoName = ' часов';
+                                }
+                                $timeInfo = '<div>продолжительность</div> <span><i class="fa fa-clock-o"></i> '.$op['hours'].$timeInfoName.'</span>';
                             }
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
@@ -313,7 +321,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                                 <div class="vlg-catalog__discription">
                                     <div class="vlg-catalog__info">
                                         <div class="vlg-catalog__hours"><?=$timeInfo?></div>
-                                        <div class="vlg-catalog__rating"><?=$op['rating']?><div>рейтинг</div></div>
+                                        <div class="vlg-catalog__rating"><div>рейтинг</div> <span><i class="fa fa-signal" aria-hidden="true"></i> <?=$op['rating']?></span></div>
                                     </div>
                                     <div class="vlg-catalog__text"><?=$op['description']?></div>
                                     <div class="vlg-catalog__footer">
@@ -361,9 +369,17 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                             // время
                             $timeInfo = '';
                             if (strlen($op['hours']) >= 2) {
-                                $timeInfo = "<span>".substr($op['hours'], 0, 1)." ч ".substr($op['hours'], 2, 2)."м</span> <div>продолжительность</div>";
+                                $timeInfo = '<div>продолжительность</div> <span><i class="fa fa-clock-o"></i>'.substr($op['hours'], 0, 1).' ч '.substr($op['hours'], 2, 2).'м</span>';
                             } else {
-                                $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
+                                $timeInfoName = '';
+                                if ($op['hours'] == 1) {
+                                    $timeInfoName = ' час';
+                                } else if ($op['hours'] >= 2 && $op['hours'] <= 4) {
+                                    $timeInfoName = ' часа';
+                                } else if ($op['hours'] >= 5) {
+                                    $timeInfoName = ' часов';
+                                }
+                                $timeInfo = '<div>продолжительность</div> <span><i class="fa fa-clock-o"></i> '.$op['hours'].$timeInfoName.'</span>';
                             }
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
@@ -377,7 +393,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                                 <div class="vlg-catalog__discription">
                                     <div class="vlg-catalog__info">
                                         <div class="vlg-catalog__hours"><?=$timeInfo?></div>
-                                        <div class="vlg-catalog__rating"><?=$op['rating']?><div>рейтинг</div></div>
+                                        <div class="vlg-catalog__rating"><div>рейтинг</div> <span><i class="fa fa-signal" aria-hidden="true"></i> <?=$op['rating']?></span></div>
                                     </div>
                                     <div class="vlg-catalog__text"><?=$op['description']?></div>
                                     <div class="vlg-catalog__footer">
@@ -424,9 +440,17 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                             // время
                             $timeInfo = '';
                             if (strlen($op['hours']) >= 2) {
-                                $timeInfo = "<span>".substr($op['hours'], 0, 1)." ч ".substr($op['hours'], 2, 2)."м</span> <div>продолжительность</div>";
+                                $timeInfo = '<div>продолжительность</div> <span><i class="fa fa-clock-o"></i>'.substr($op['hours'], 0, 1).' ч '.substr($op['hours'], 2, 2).'м</span>';
                             } else {
-                                $timeInfo = "<span>".$op['hours']."ч 00м</span> <div>продолжительность</div>";
+                                $timeInfoName = '';
+                                if ($op['hours'] == 1) {
+                                    $timeInfoName = ' час';
+                                } else if ($op['hours'] >= 2 && $op['hours'] <= 4) {
+                                    $timeInfoName = ' часа';
+                                } else if ($op['hours'] >= 5) {
+                                    $timeInfoName = ' часов';
+                                }
+                                $timeInfo = '<div>продолжительность</div> <span><i class="fa fa-clock-o"></i> '.$op['hours'].$timeInfoName.'</span>';
                             }
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
@@ -440,7 +464,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                                 <div class="vlg-catalog__discription">
                                     <div class="vlg-catalog__info">
                                         <div class="vlg-catalog__hours"><?=$timeInfo?></div>
-                                        <div class="vlg-catalog__rating"><?=$op['rating']?><div>рейтинг</div></div>
+                                        <div class="vlg-catalog__rating"><div>рейтинг</div> <span><i class="fa fa-signal" aria-hidden="true"></i> <?=$op['rating']?></span></div>
                                     </div>
                                     <div class="vlg-catalog__text"><?=$op['description']?></div>
                                     <div class="vlg-catalog__footer">
@@ -472,7 +496,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
 <div id="vlgHotelModal" class="modal fade modal-sm-hotel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="">
+            <div class="vlg-modal-close">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <!-- Форма -->
