@@ -88,9 +88,10 @@ add_action('admin_menu', 'vlg_add_menu');
 
 // шаблон стр настроек в админке
 function vlg_options_page() {
-    if (jQuery.fn.jquery>"3.0.0"){
+/*    if (jQuery.fn.jquery>"3.0.0"){
         echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>';
-    }
+    }*/
+
     // распределитель в зависимости от GET
     switch($_GET['c']){
         case 'add':
