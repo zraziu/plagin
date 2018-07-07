@@ -9,7 +9,7 @@ include_once('m/vlg.php');
     $id = (int)$_GET['id'];
 
     if($id == 0)
-        die('Не передан id');
+    die('Не передан id');
 
     if(!empty($_POST)) {
         if (isset($_POST['save'])) {
