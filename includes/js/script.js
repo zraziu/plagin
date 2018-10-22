@@ -1,5 +1,6 @@
 /***** FRONTEND *****/
 $(document).ready(function() {
+    /* Значения по умолчанию */
     let inputPeople = 0;
     let inputPeople16 = 40;
     let inputPeople18 = 0;
@@ -10,6 +11,7 @@ $(document).ready(function() {
     let busH = 0; // автобус часы
     let busM = 0; // автобус минуты
     let vlgExcCount = 0; // кол-во выбранных экскурсий
+    let vlgEat1, vlgEat2, vlgEat3;
     let vlgEatCount = ''; // кол-во выбранного питания
     let excCommission = $("#vlgBtnPrise").data("commis").split(';'); // массив
     let vlgEatP = $('#vlgEat').data('eat').split(';'); // массив цен питание
@@ -41,7 +43,7 @@ $(document).ready(function() {
         vlgDay = $('#vlgDay input:checked').val(); // кол-во
         $( "#vlgDropdownDay" ).text(vlgDay-1);
 
-        /* Проживание */
+        /* Проживание показать-спрятать*/
         if (vlgDay >= 2) {
             $('#vlgHotel').css('display', 'flex');
         } else {
@@ -162,9 +164,9 @@ $(document).ready(function() {
         function calcEat () {
             vlgEat = 0;
             $("#vlgEat .vlg-eat__BlActive").each(function(){  // кол-во дней
-                let vlgEat1 = $('#vlgEat input.eat-breakfast:checked').length;
-                let vlgEat2 = $('#vlgEat input.eat-lunch:checked').length;
-                let vlgEat3 = $('#vlgEat input.eat-dinner:checked').length;
+                vlgEat1 = $('#vlgEat input.eat-breakfast:checked').length;
+                vlgEat2 = $('#vlgEat input.eat-lunch:checked').length;
+                vlgEat3 = $('#vlgEat input.eat-dinner:checked').length;
                 vlgEatCount = 'Завтраков:'+vlgEat1+' Обедов:'+vlgEat2+' Ужинов:'+vlgEat3; // для отправки
 
                 // кол-во завтр отмеч * завтр цена * кол-во чел
@@ -227,7 +229,7 @@ $(document).ready(function() {
         mailForm();
 
         /* Складываем */
-        console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
+        //console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
 
         let vlgTotalPeopl = Math.round((vlgExc + vlgHotel + vlgEat + vlgBus + commis) / (calcInputPeople - inputPeopleFree)); // ) * 10
         vlgTotal = vlgTotalPeopl * (calcInputPeople - inputPeopleFree);
@@ -315,6 +317,25 @@ $(document).ready(function() {
 
         let inputBusOut =    'Часов автобуса: '+busH+'ч '+busM+' мин';
 
+        /* сылка */
+        /* кол-во чел */
+        let urlPeopleOut = ((inputPeople16>0)? inputPeople16 :'0') + ',' +
+            ((inputPeople18>0)? inputPeople18 : '0') + ',' +
+            ((inputPeople>0)? inputPeople: '0') + ',' +
+            ((inputPeopleFree>0)? inputPeopleFree :'0');
+
+        let urlHotel = $('#vlgHotelModal .vlg-catalog__BlActive').data('hotel') ? $('#vlgHotelModal .vlg-catalog__BlActive').data('hotel') : '';
+        /* экскурсии */
+        let urlExc = '';
+        $('#vlgModal .vlg-catalog__BlActive').each(function(indx, element){
+            if (indx >= 1 ) {
+                urlExc += ',';
+            }
+            urlExc += $(this).data('excid');
+        });
+        /* питание */
+        let urlEat = ($('#vlgEat input.eat-breakfast:checked').length ? $('#vlgEat input.eat-breakfast:checked').length : '0') + ',' + ($('#vlgEat input.eat-lunch:checked').length ? $('#vlgEat input.eat-lunch:checked').length : '0') + ',' + ($('#vlgEat input.eat-dinner:checked').length ? $('#vlgEat input.eat-dinner:checked').length : '0');
+
         $('.inputHidden').html('' +
             '<input type="hidden" name="outexcursionChecked" value="'+excursionCheckedTitle+'">' +
             '<input type="hidden" name="outputPeople" value="'+inputPeopleOut+'">' +
@@ -323,9 +344,10 @@ $(document).ready(function() {
             '<input type="hidden" name="eat" value="'+vlgEatCount+'">' +
             '<input type="hidden" name="outInputBus" value="'+inputBusOut+'">' +
             '<input type="hidden" name="formInfo" value="Заявка на прием в Волгограде"/>' +
-            '<input type="hidden" name="url" value="'+document.location.href+' - '+document.title+'">');
-    }
+            '<input type="hidden" name="url" value="https://parusvlg.ru'+document.location.pathname+'?vlg_people='+urlPeopleOut+'&vlg_day='+vlgDay+'&vlg_hotel='+urlHotel+'&vlg_exc='+urlExc+'&vlg_eat='+urlEat+'&vlg_bus='+busH+' - '+document.title+'">');
 
+        $('#copyTarget').val('https://parusvlg.ru'+document.location.pathname+'?vlg_people='+urlPeopleOut+'&vlg_day='+vlgDay+'&vlg_hotel='+urlHotel+'&vlg_exc='+urlExc+'&vlg_eat='+urlEat+'&vlg_bus='+busH);
+    }
 
     /* ВИЗУАЛЬНЫЕ ЭФЕКТЫ */
     /* Перетаскивание блоков */
@@ -347,11 +369,54 @@ $(document).ready(function() {
     });
     $('.vlg-display-none').hide(); // спрятать нижние блоки
 
+    /* Копировать ссылку */
+    function selectText(elementId) {
+        var doc = document,
+            text = doc.getElementById(elementId),
+            range,
+            selection;
+        if (doc.body.createTextRange) {
+            range = document.body.createTextRange();
+            range.moveToElementText(text);
+            range.select();
+        } else if (window.getSelection) {
+            selection = window.getSelection();
+            range = document.createRange();
+            range.selectNodeContents(text);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }}
+    $(".copy").click(function() {
+        selectText(this.id);
+        document.execCommand("copy");
+    });
+
 
 
     /* запретить срабатывание на click для радио кнопки ТО-заказик */
     $('div.dropdown-menu div.dropdown-item label.tgl').click(function(e) {
         e.stopPropagation();
     });
+
+
+    /* Первая загрузка */
+    function loadPage(){ // удаление блоков в списке
+        let hotelSelect = $('#vlgHotelModal .vlg-catalog__BlActive');
+        hotelSelect.find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Отменить</span></i>');
+        $('#vlgDropdownHotel').text(hotelSelect.find('.vlg-catalog__title').text());
+        vlgHotelPrise = hotelSelect.data("price"); // цена проживания
+
+        $('#vlgModal .vlg-catalog__BlActive').each(function(){
+            $(this).find('i.fa-add-exc').replaceWith('<i class="fa fa-times fa-add-exc fa-add-red"><span>Удалить</span></i>');
+            // добавить в список строку
+            let vlgListExc = '<div id="'+ $(this).attr('id') +'list" class="vlg-two__item '+ $(this).attr('id') +'"><div class="vlg-two_info"><div class="vlg-two__time">'+ $(this).find('.vlg-catalog__hours span').text() +'</div><div class="vlg-two__bus">Автобус</div></div><div class="vlg-two_title">'+ $(this).find('.vlg-catalog__title').text() +'<div class="vlg-two__btn"><i class="fa fa-trash fa-red vlg-two__delete"></i> <i class="fa fa-arrows vlg-two__move"></i></div></div></div>';
+            $('#vlgListExc').append(vlgListExc);
+        });
+
+        vlgA = $('#home .vlg-catalog__BlActive').length;
+        vlgB = $('#profile .vlg-catalog__BlActive').length;
+        vlgC = $('#region .vlg-catalog__BlActive').length;
+    }
+    loadPage();
 
 });

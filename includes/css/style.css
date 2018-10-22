@@ -280,6 +280,19 @@ button.dropdown-toggle:hover, .vlg-one .dropdown-menu, .vlg-three .dropdown-menu
 button.vlg-two__add i {
  margin-top: 0;
 }
+/* Копирование ссылки */
+.copyButton {
+ color: #fff;
+ text-decoration: none;
+ user-select: none;
+ background: #33BBD4;
+ padding: .1em 1.1em;
+ outline: none;
+ cursor: pointer;
+}
+.copyButton:hover { background: #31BBD4; } /* при наведении курсора мышки */
+.copyButton:active { background: #0e74b8; } /* при нажатии */
+
 
 /* Модальный блок */
 /* ТАБЫ */

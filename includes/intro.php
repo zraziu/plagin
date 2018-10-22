@@ -3,6 +3,27 @@
     include_once('m/vlg.php');
     $vlg = vlg_all();
 
+    /* Данные GET*/
+    // ?vlg_people=0,1,2,3&vlg_day=3&vlg_hotel=37&vlg_exc=21,28,45,49,55&vlg_eat=1,2,3&vlg_bus=13
+    if (true) {
+        // кол-во чел (4)
+        $getPeople = $_GET['vlg_people'] ? $_GET['vlg_people'] : '40,0,0,4';
+        $getPeople = explode(',', $getPeople); // на массив
+        // кол-во дней
+        $getDay = htmlspecialchars($_GET['vlg_day'] ? $_GET['vlg_day'] : '1');
+        // гостиница
+        $getHotel = (int)$_GET['vlg_hotel'];
+        // экскурсии
+        $getExc = $_GET['vlg_exc'];
+        $getExc = explode(',', $getExc); // на массив
+        // Питание
+        $getEat = $_GET['vlg_eat'];
+        $getEat = explode(',', $getEat); // на массив
+        // Трансфер
+        $getBus = (int)$_GET['vlg_bus'];
+    }
+
+
 echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/includes/css/style.css").'">
           <script type="text/javascript" src="'.plugins_url("vlg_plagin/includes/js/script.js").'"></script>';
 ?>
@@ -15,27 +36,27 @@ echo '<link rel="stylesheet" type="text/css" href="'.plugins_url("vlg_plagin/inc
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users fa-icon-btn" aria-hidden="true"></i> Человек: <span class="btnDropdownPeople"></span> <span class="btnDropdownPeopleFree"></span>
         </button>
         <div class="dropdown-menu">
-            <div class="dropdown-item"><div class="dropdown-item-people">Дети до 15 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople16" class="input-calc-exc" type="text" min="0" max="100" value="40"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <div class="dropdown-item"><div class="dropdown-item-people">Дети до 15 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople16" class="input-calc-exc" type="text" min="0" max="100" value="<?=$getPeople[0]?>"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
                 </div>
             </div>
-            <div class="dropdown-item"><div class="dropdown-item-people">Дети до 18 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople18" class="input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+            <div class="dropdown-item"><div class="dropdown-item-people">Дети до 18 лет</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople18" class="input-calc-exc" type="text" min="0" max="100" value="<?=$getPeople[1]?>"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
             </div>
-            <div class="dropdown-item"><div class="dropdown-item-people">Взрослые</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople" class="input-calc-exc" type="text" min="0" max="100" value="0"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+            <div class="dropdown-item"><div class="dropdown-item-people">Взрослые</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeople" class="input-calc-exc" type="text" min="0" max="100" value="<?=$getPeople[2]?>"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
             </div>
             <div class="dropdown-divider"></div>
-            <div class="dropdown-item"><div class="dropdown-item-people">Бесплатно</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeopleFree"  class="input-calc-exc" type="text" min="0" max="10" value="4"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <div class="dropdown-item"><div class="dropdown-item-people">Бесплатно</div><div class="number"><span class="quont-minus"><i class="fa fa-minus" aria-hidden="true"></i></span><input id="inputPeopleFree"  class="input-calc-exc" type="text" min="0" max="10" value="<?=$getPeople[3]?>"><span class="quont-plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
                 </div>
             </div>
         </div>
     </div>
     <div id="vlgDay" class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Ночей: <span id="vlgDropdownDay">1</span></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-calendar fa-icon-btn" aria-hidden="true"></i> Ночей: <span id="vlgDropdownDay"><?=$getDay?></span></button>
         <div class="dropdown-menu">
-            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1" checked> <label for="vlgDay1">0</label></div>
-            <div class="dropdown-item"><input id="vlgDay2" type="radio" name="vlgDay" value="2"> <label for="vlgDay2">1</label></div>
-            <div class="dropdown-item"><input id="vlgDay3" type="radio" name="vlgDay" value="3"> <label for="vlgDay3">2</label></div>
-            <div class="dropdown-item"><input id="vlgDay4" type="radio" name="vlgDay" value="4"> <label for="vlgDay4">3</label></div>
-            <div class="dropdown-item"><input id="vlgDay5" type="radio" name="vlgDay" value="5"> <label for="vlgDay5">4</label></div>
+            <div class="dropdown-item"><input id="vlgDay1" type="radio" name="vlgDay" value="1" <?php if ( 1 == $getDay ) echo 'checked="checked"'; ?>> <label for="vlgDay1">0</label></div>
+            <div class="dropdown-item"><input id="vlgDay2" type="radio" name="vlgDay" value="2" <?php if ( 2 == $getDay ) echo 'checked="checked"'; ?>> <label for="vlgDay2">1</label></div>
+            <div class="dropdown-item"><input id="vlgDay3" type="radio" name="vlgDay" value="3" <?php if ( 3 == $getDay ) echo 'checked="checked"'; ?>> <label for="vlgDay3">2</label></div>
+            <div class="dropdown-item"><input id="vlgDay4" type="radio" name="vlgDay" value="4" <?php if ( 4 == $getDay ) echo 'checked="checked"'; ?>> <label for="vlgDay4">3</label></div>
+            <div class="dropdown-item"><input id="vlgDay5" type="radio" name="vlgDay" value="5" <?php if ( 5 == $getDay ) echo 'checked="checked"'; ?>> <label for="vlgDay5">4</label></div>
         </div>
     </div>
     <div id="vlgHotel" class="btn-group btn-group-margin">
@@ -72,21 +93,21 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
             </div><div class="vlg-three__title">
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города" <?php if ( $getEat[0] >= 1 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Завтрак</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города" <?php if ( $getEat[1] >= 1 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Обед</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города" <?php if ( $getEat[2] >= 1 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Ужин</b></span>
                     </label>
@@ -98,21 +119,21 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
             </div><div class="vlg-three__title">
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города" <?php if ( $getEat[0] >= 2 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Завтрак</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города" <?php if ( $getEat[1] >= 2 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Обед</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города" <?php if ( $getEat[2] >= 2 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Ужин</b></span>
                     </label>
@@ -124,21 +145,21 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
             </div><div class="vlg-three__title">
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города" <?php if ( $getEat[0] >= 3 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Завтрак</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города" <?php if ( $getEat[1] >= 3 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Обед</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города" <?php if ( $getEat[2] >= 3 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Ужин</b></span>
                     </label>
@@ -150,21 +171,21 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
             </div><div class="vlg-three__title">
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города" <?php if ( $getEat[0] >= 4 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Завтрак</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города" <?php if ( $getEat[1] >= 4 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Обед</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города" <?php if ( $getEat[2] >= 4 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Ужин</b></span>
                     </label>
@@ -176,21 +197,21 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
             </div><div class="vlg-three__title">
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-breakfast" value="Завтрак в кафе города" <?php if ( $getEat[0] >= 5 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Завтрак</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-lunch" value="Обед в кафе города" <?php if ( $getEat[1] >= 5 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Обед</b></span>
                     </label>
                 </div>
                 <div class="vlg-three__input">
                     <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города">
+                        <input type="checkbox" class="custom-control-input eat-dinner" value="Ужин в кафе города" <?php if ( $getEat[2] >= 5 ) echo 'checked="checked"'; ?>>
                         <span class="custom-control-indicator"></span>
                         <span class="custom-control-description"><b>Ужин</b></span>
                     </label>
@@ -199,7 +220,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
         </div>
     </div>
     <div class="btn-group btn-group-margin">
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span id="btnDropdownBus" class="btnDropdownBus" <?=$priceBus?>>0</span></button>
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus fa-icon-btn" aria-hidden="true"></i> Трансфер: <span id="btnDropdownBus" class="btnDropdownBus" <?=$priceBus?>><?=$getBus?></span></button>
         <div class="dropdown-menu">
             <div class="dropdown-item">
                 <label class="tgl" style="font-size:22px"><input type="checkbox" class="bus-to-or-no" checked /><span data-on="Туроператора" data-off="&nbsp;&nbsp;&nbsp;Заказчика&nbsp;&nbsp;&nbsp;"></span></label>
@@ -247,6 +268,8 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
         <i class="fa fa-envelope fa-lg fa-green"></i> Отправить
     </button>
     <p class="msgs"></p>
+    <br><br>
+    <div ><div class="copy" id="copyTargetB"><input type="text" id="copyTarget" value=""></div> <label class="copyButton" for="copyTarget"><i class="fa fa-clone" aria-hidden="true"></i> Копировать ссылку</label></div>
 </div>
 
 
@@ -310,9 +333,22 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                             }
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
+                            // отметить - первая загрузка
+                            $urlSelect = '';
+                            if ($getExc){
+                                foreach ($getExc as $value) {
+                                    if ($value == $op['id'] ) {
+                                        $urlSelect = 'vlg-catalog__BlActive';
+                                    }
+                                }
+                            }
+                            if ( $op['id'] == $getHotel ) echo 'vlg-catalog__BlActive';
+
+
+
                             ?>
 
-                            <div id="vlgEcx<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?>>
+                            <div id="vlgEcx<?=$count?>" class="vlg-catalog__item <?=$urlSelect?>" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?> data-excid="<?=$op['id']?>">
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>
@@ -384,7 +420,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
                             ?>
-                            <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?>>
+                            <div id="vlgMusem<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?> data-excid="<?=$op['id']?>">
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>
@@ -455,7 +491,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                             // цена на чел или группу
                             $pricePerPerson = 'data-person="'.$op['pricePerPerson'].'"';
                             ?>
-                            <div id="vlgObl<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?>>
+                            <div id="vlgObl<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> <?=$pricePerPerson?> <?=$priceInfoDop?> data-excid="<?=$op['id']?>">
                                 <div class="vlg-catalog__photo">
                                     <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                     <div class="vlg-catalog__triangle"></div>
@@ -519,7 +555,7 @@ $priceEat = $priceEat.$vlg['prise0'].'"';
                         }
                         ?>
 
-                        <div id="vlgHotel<?=$count?>" class="vlg-catalog__item" <?=$priceInfo?> style="order:<?=$op['rating']?>">
+                        <div id="vlgHotel<?=$count?>" class="vlg-catalog__item <?php if ( $op['id'] == $getHotel ) echo 'vlg-catalog__BlActive'; ?>" <?=$priceInfo?> style="order:<?=$op['rating']?>" data-hotel="<?=$op['id']?>">
                             <div class="vlg-catalog__photo">
                                 <img src="<? echo wp_get_attachment_image_url( $op['imgUpload'], array(300, 200) ); ?>" alt="">
                                 <div class="vlg-catalog__triangle"></div>
