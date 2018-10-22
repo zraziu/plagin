@@ -224,7 +224,7 @@ $(document).ready(function() {
         calcEat();
         calcBus ();
         calcCommission();
-        mailForm()
+        mailForm();
 
         /* Складываем */
         console.log(vlgExc + '-экс; ' + vlgHotel + '-отель; ' + vlgEat + '-еда; ' + vlgBus + '-авто; ' + commis + '-коми');
